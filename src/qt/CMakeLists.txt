@@ -46,6 +46,7 @@ file(
     orzasteel.qt_SRC
     "${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.cpp"
     Resource/*.cpp
+	Widget/BackgroundImage.cpp
     Window.cpp
     main.cpp
     ui_Window.h
@@ -57,6 +58,7 @@ file(
 file( GLOB orzasteel.qt_moc_files
     "${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.h"
     Window.h
+	Widget/BackgroundImage.h
 )
 
 

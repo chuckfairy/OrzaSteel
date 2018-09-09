@@ -12,6 +12,8 @@
 
 #include "Resource/Icons.h"
 
+#include "Widget/BackgroundImage.h"
+
 #include "Window.h"
 
 using Orza::App::Resource::Icons;
@@ -53,6 +55,25 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	QString style( styleFile.readAll() );
 
 	UI.centralWidget->setStyleSheet( style );
+
+	 //background neck
+
+	//QWidget * widget = new BackgroundImage(":/necks/basic-white.png");
+	//UI.neck->addWidget( widget );
+
+	//QPixmap pixmap;
+	//pixmap.load(":/necks/basic-white.png");
+
+	//pixmap = pixmap.scaled(UI.neck_content->size(), Qt::IgnoreAspectRatio);
+
+	//QPalette palette;
+	//palette.setBrush(QPalette::Background, pixmap);
+
+	//UI.neck_content->setPalette(palette);
+
+	UI.neck_content->setStyleSheet(
+		 "border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch; \
+	" );
 
 };
 

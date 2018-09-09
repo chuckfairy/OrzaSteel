@@ -1,0 +1,71 @@
+/**
+ * String instrument frequency instrument
+ */
+#pragma once
+
+#include <cstdint>
+#include <map>
+#include <vector>
+
+
+using std::map;
+using std::vector;
+
+
+namespace Orza { namespace Instrument {
+
+
+class StringInstrument {
+
+	public:
+
+		/**
+		 * Static neck types
+		 */
+
+		static vector<float_t> TYPE_DEFAULT;
+
+		static vector<float_t> TYPE_COUNTRY_NECK;
+
+		static vector<float_t> TYPE_GUITAR_STANDARD;
+
+		static vector<float_t> TYPE_GUITAR_DROP_D;
+
+
+		/**
+		 * constructs
+		 */
+
+		StringInstrument();
+		StringInstrument( vector<float_t> strings );
+
+
+		/**
+		 * Get pitches from instruments
+		 * from vector of strings => 0-100 on neck
+		 */
+
+		vector<float_t> getPitches( map<uint8_t, uint8_t> );
+		float_t getPitch( uint8_t stringNum, uint8_t position );
+
+
+		/**
+		 * Set strings and create map
+		 */
+
+		void setStrings( vector<float_t> strings );
+
+		void setString( uint8_t num, float_t freq );
+
+
+	private:
+
+		/**
+		 * vector of starting fequencies and note
+		 */
+
+		vector<float_t> _strings;
+
+};
+
+} }
