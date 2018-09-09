@@ -9,7 +9,7 @@ CTestTestfile.cmake
 CMakeScripts
 compile_commands.json
 
-#build
+build
 
 CPack*
 
