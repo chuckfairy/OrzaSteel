@@ -12,8 +12,6 @@
 
 #include "Resource/Icons.h"
 
-#include "Widget/BackgroundImage.h"
-
 #include "Window.h"
 
 using Orza::App::Resource::Icons;

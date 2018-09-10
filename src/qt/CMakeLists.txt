@@ -3,7 +3,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Instruct CMake to run moc automatically when needed.
 #set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
+#set(CMAKE_AUTOUIC ON)
 set(AUTOGEN_TARGET_DEPENDS ON)
 
 # find the location of Qt header files and libraries
@@ -71,7 +71,7 @@ file(GLOB orzasteel.qt_SRC
 
 qt5_wrap_ui(orzasteel.qt_UIS ${orzasteel.qt_UIS} )
 
-QT5_WRAP_CPP( MY_MOCED_FILES ${orzasteel.qt_moc_files} )
+qt5_wrap_cpp( MY_MOCED_FILES ${orzasteel.qt_moc_files} )
 
 
 # Configure config headers
@@ -81,7 +81,7 @@ configure_file(Config/Config.h.in Config/Config.h)
 
 # Main executable
 
-add_executable(orzasteel.qt ${orzasteel.qt_SRC} ${RESOURCES} ${MY_MOCED_FILES} )
+add_executable(orzasteel.qt ${orzasteel.qt_SRC} ${RESOURCES} ${MY_MOCED_FILES} ${orzasteel.qt_UIS} )
 
 target_link_libraries( orzasteel.qt
     PUBLIC

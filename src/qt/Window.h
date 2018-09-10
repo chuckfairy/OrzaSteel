@@ -25,6 +25,7 @@ class Window : public QMainWindow {
 		// override the constructor
 
 		explicit Window(QApplication *, QWidget * parent = 0, ::Qt::WindowFlags flags = 0);
+        ~Window() {};
 
 
 		/**
