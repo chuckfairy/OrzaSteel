@@ -8,7 +8,7 @@ using std::map;
 using std::vector;
 
 
-namespace Orza { namespace Instrument {
+namespace Orza { namespace Steel { namespace Audio {
 
 
 /**
@@ -94,4 +94,4 @@ float_t StringInstrument::getPitch( uint8_t num, uint8_t position ) {
 
 };
 
-} }
+} } }

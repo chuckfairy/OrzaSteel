@@ -12,7 +12,7 @@ using std::map;
 using std::vector;
 
 
-namespace Orza { namespace Instrument {
+namespace Orza { namespace Steel { namespace Audio {
 
 
 class StringInstrument {
@@ -68,4 +68,4 @@ class StringInstrument {
 
 };
 
-} }
+} } }
