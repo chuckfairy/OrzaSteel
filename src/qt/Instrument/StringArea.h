@@ -7,7 +7,7 @@
 #include <QtCore>
 #include <QWidget>
 
-namespace Orza { namespace Steel { namespace Bridge {
+namespace Orza { namespace Steel { namespace Instrument {
 
 class StringArea : public QWidget {
 
@@ -16,6 +16,7 @@ class StringArea : public QWidget {
 	public:
 
 		StringArea( const char * color );
+        ~StringArea() {};
 
 	private:
 

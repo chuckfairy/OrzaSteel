@@ -1,5 +1,5 @@
 /**
- * Module
+ * Bridge
  */
 #pragma once
 
@@ -13,24 +13,16 @@
 
 using std::vector;
 
-namespace Orza { namespace Steel { namespace Bridge {
+namespace Orza { namespace Steel { namespace Instrument {
 
-class Module {
+class Bridge : public QWidget {
+
+    Q_OBJECT;
 
 	public:
 
-		Module();
-
-		/**
-		 * Getters
-		 */
-
-		QWidget * getWidget() {
-
-			return _content;
-
-		};
-
+		Bridge();
+		~Bridge() {};
 
 		/**
 		 * Main string changer
@@ -56,7 +48,7 @@ class Module {
 		 * Private helpers
 		 */
 
-		void createStringArea( uint8_t index );
+		StringArea * createStringArea( uint8_t index );
 
 };
 

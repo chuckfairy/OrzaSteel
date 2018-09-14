@@ -59,6 +59,8 @@ file( GLOB orzasteel.qt_moc_files
     "${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.h"
     Window.h
 	Widget/BackgroundImage.h
+	Instrument/StringArea.h
+	Instrument/Bridge.h
 )
 
 
