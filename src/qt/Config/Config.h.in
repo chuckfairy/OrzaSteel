@@ -3,8 +3,11 @@
  */
 #pragma once
 
-namespace Orza { namespace App { namespace Config {
+namespace Orza { namespace Steel { namespace Config {
 
-static const char * DEFAULT_LAYOUT = "${ORZABAL_QT_DEFAULT_LAYOUT}";
+static const char * DEFAULT_NUM_STRINGS = "${OZRASTEEL_NUM_STRINGS}";
 
-}; }; };
+//@TODO
+//static const char * DEFAULT_STRINGS = "${OZRASTEEL_STRINGS}";
+
+} } }

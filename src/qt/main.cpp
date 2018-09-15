@@ -9,7 +9,7 @@
 #include "Window.h"
 
 using namespace std;
-using Orza::App::Window;
+using Orza::Steel::Window;
 
 QApplication * app;
 

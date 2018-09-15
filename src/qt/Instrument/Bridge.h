@@ -8,6 +8,7 @@
 
 #include <QtGui>
 #include <QWidget>
+#include <QVBoxLayout>
 
 #include "StringArea.h"
 
@@ -17,11 +18,13 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class Bridge : public QWidget {
 
-    Q_OBJECT;
+	Q_OBJECT;
 
 	public:
 
 		Bridge();
+		Bridge( uint8_t );
+
 		~Bridge() {};
 
 		/**
@@ -43,10 +46,14 @@ class Bridge : public QWidget {
 
 		QWidget * _content;
 
+		QVBoxLayout * _layout;
+
 
 		/**
 		 * Private helpers
 		 */
+
+		void setupLayout();
 
 		StringArea * createStringArea( uint8_t index );
 

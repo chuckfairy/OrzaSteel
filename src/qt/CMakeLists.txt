@@ -42,25 +42,27 @@ include_directories(
 # Src code base, extended in CMakeFiles in each App
 
 file(
-    GLOB
-    orzasteel.qt_SRC
-    "${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.cpp"
-    Resource/*.cpp
+	GLOB
+	orzasteel.qt_SRC
+	"${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.cpp"
+	Resource/*.cpp
+	Instrument/*.cpp
 	Widget/BackgroundImage.cpp
-    Window.cpp
-    main.cpp
-    ui_Window.h
+	Window.cpp
+	main.cpp
+	ui_Window.h
 )
 
 
 # Qt Objects / mocs
 
 file( GLOB orzasteel.qt_moc_files
-    "${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.h"
-    Window.h
+	"${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.h"
+	Window.h
 	Widget/BackgroundImage.h
 	Instrument/StringArea.h
 	Instrument/Bridge.h
+	Instrument/Neck.h
 )
 
 

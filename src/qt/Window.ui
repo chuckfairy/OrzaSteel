@@ -59,24 +59,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="bridge">
-        <item>
-         <widget class="QWidget" name="bridge_content" native="true">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>250</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <layout class="QVBoxLayout" name="bridge"/>
       </item>
      </layout>
     </item>

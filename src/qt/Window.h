@@ -10,7 +10,7 @@
 #include "ui_Window.h"
 
 
-namespace Orza { namespace App {
+namespace Orza { namespace Steel {
 
 /**
  *	class
@@ -25,7 +25,7 @@ class Window : public QMainWindow {
 		// override the constructor
 
 		explicit Window(QApplication *, QWidget * parent = 0, ::Qt::WindowFlags flags = 0);
-        ~Window() {};
+		~Window() {};
 
 
 		/**

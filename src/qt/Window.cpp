@@ -12,11 +12,13 @@
 
 #include "Resource/Icons.h"
 
+#include "Instrument/Module.h"
+
 #include "Window.h"
 
 using Orza::App::Resource::Icons;
 
-namespace Orza { namespace App {
+namespace Orza { namespace Steel {
 
 
 /**
@@ -54,24 +56,17 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 	UI.centralWidget->setStyleSheet( style );
 
-	 //background neck
 
-	//QWidget * widget = new BackgroundImage(":/necks/basic-white.png");
-	//UI.neck->addWidget( widget );
-
-	//QPixmap pixmap;
-	//pixmap.load(":/necks/basic-white.png");
-
-	//pixmap = pixmap.scaled(UI.neck_content->size(), Qt::IgnoreAspectRatio);
-
-	//QPalette palette;
-	//palette.setBrush(QPalette::Background, pixmap);
-
-	//UI.neck_content->setPalette(palette);
+	//Background image
 
 	UI.neck_content->setStyleSheet(
-		 "border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch; \
-	" );
+		"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
+	);
+
+
+	//Module messin
+
+	Instrument::Module * mod = new Instrument::Module( this );
 
 };
 
