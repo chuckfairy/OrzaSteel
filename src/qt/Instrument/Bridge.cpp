@@ -3,7 +3,15 @@
  */
 #include <iostream>
 
+#include <Color/Color.h>
+
 #include "Bridge.h"
+
+#include "Events/StringDownEvent.h"
+#include "Events/StringUpEvent.h"
+
+
+using namespace Orza::Steel::Color;
 
 
 namespace Orza { namespace Steel { namespace Instrument {
@@ -14,17 +22,12 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 Bridge::Bridge() {
 
-	QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Preferred);
-	sizePolicy2.setHorizontalStretch(0);
-	sizePolicy2.setVerticalStretch(0);
-	sizePolicy2.setHeightForWidth( sizePolicy().hasHeightForWidth() );
-
-	setSizePolicy(sizePolicy2);
-	setMinimumSize(QSize(250, 0));
+	_downEvent = new StringDownEvent<Bridge, StringArea>( this );
+	_upEvent = new StringUpEvent<Bridge, StringArea>( this );
 
 	setupLayout();
 
-	setNumStrings( 1 );
+	setNumStrings( 2 );
 
 };
 
@@ -37,9 +40,7 @@ void Bridge::setNumStrings( uint8_t numStrings ) {
 
 	_areas.clear();
 
-	for ( uint8_t i = 0; i < numStrings; ++ i ) {
-
-		std::cout << i << "TEST\n";
+	for( uint8_t i = 0; i < numStrings; ++ i ) {
 
 		StringArea * area = createStringArea( i );
 
@@ -53,14 +54,36 @@ void Bridge::setNumStrings( uint8_t numStrings ) {
 
 
 /**
+ * String area handlers
+ */
+
+void Bridge::handleStringUp( StringArea * area ) {
+
+	std::cout << unsigned(getIndexFromStringArea( area )) << "\n";
+
+};
+
+void Bridge::handleStringDown( StringArea * area ) {
+
+	std::cout << unsigned(getIndexFromStringArea( area )) << "\n";
+
+};
+
+
+/**
  * Main constructor
  */
 
 StringArea * Bridge::createStringArea( uint8_t index ) {
 
-	const char * color = "#FF0000";
+	const char * color = STEPS_12[ index ];
 
-	return new StringArea( color );
+	StringArea * area = new StringArea( color );
+
+	area->on( StringArea::EVENT_DOWN, _downEvent );
+	area->on( StringArea::EVENT_UP, _upEvent );
+
+	return area;
 
 };
 
@@ -72,9 +95,33 @@ StringArea * Bridge::createStringArea( uint8_t index ) {
 void Bridge::setupLayout() {
 
 	_layout = new QVBoxLayout();
+	_layout->setSpacing( 0 );
+	_layout->setContentsMargins(0, 0, 0, 0);
 
 	setLayout( _layout );
 
-}
+};
+
+
+/**
+ * Get index helper
+ */
+
+uint8_t Bridge::getIndexFromStringArea( StringArea * area ) {
+
+	for ( uint8_t i = 0; i < _areas.size(); ++ i ) {
+
+		if ( _areas[ i ] == area ) {
+
+			return i;
+
+		}
+
+	}
+
+	//@TODO error
+	return 0;
+
+};
 
 } } }

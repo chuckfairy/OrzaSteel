@@ -28,14 +28,17 @@ qt5_add_resources(RESOURCES ./Resources.qrc)
 find_package( Boost 1.45.0 COMPONENTS filesystem regex )
 
 include_directories(
-    ${CMAKE_CURRENT_BINARY_DIR}
-    ../common
+	${CMAKE_CURRENT_BINARY_DIR}
+	../common
 
-    "${ORZASTEEL_ROOT_PATH}"
-    "${ORZASTEEL_ROOT_PATH}/src"
-    "${ORZASTEEL_ROOT_PATH}/lib-src"
+	"${ORZASTEEL_ROOT_PATH}"
+	"${ORZASTEEL_ROOT_PATH}/src"
+	"${ORZASTEEL_ROOT_PATH}/lib-src"
 
-    ${Boost_INCLUDE_DIR}
+	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
+
+
+	${Boost_INCLUDE_DIR}
 )
 
 
