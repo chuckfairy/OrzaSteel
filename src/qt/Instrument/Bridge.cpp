@@ -27,8 +27,6 @@ Bridge::Bridge() {
 
 	setupLayout();
 
-	setNumStrings( 2 );
-
 };
 
 
@@ -38,7 +36,7 @@ Bridge::Bridge() {
 
 void Bridge::setNumStrings( uint8_t numStrings ) {
 
-	_areas.clear();
+	clearArea();
 
 	for( uint8_t i = 0; i < numStrings; ++ i ) {
 
@@ -47,6 +45,31 @@ void Bridge::setNumStrings( uint8_t numStrings ) {
 		_layout->addWidget( area );
 
 		_areas.push_back( area );
+
+	}
+
+};
+
+
+/**
+ * Clear old string area
+ */
+
+void Bridge::clearArea() {
+
+	_areas.clear();
+
+	QLayoutItem *item;
+
+	while( ( item = _layout->takeAt( 0 ) ) ) {
+
+		if( item->widget() ) {
+
+			delete item->widget();
+
+		}
+
+		delete item;
 
 	}
 

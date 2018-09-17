@@ -7,6 +7,8 @@
 #include <QtCore>
 #include <Qt>
 
+#include <Jack/Server.h>
+
 #include "ui_Window.h"
 
 
@@ -38,6 +40,12 @@ class Window : public QMainWindow {
 
 		};
 
+		Jack::Server * getServer() {
+
+			return _Server;
+
+		};
+
 
 		/**
 		 * Window actions
@@ -55,6 +63,12 @@ class Window : public QMainWindow {
 		 */
 
 		Ui_Window UI;
+
+		/**
+		 * Main audio server
+		 */
+
+		Jack::Server * _Server;
 
 };
 

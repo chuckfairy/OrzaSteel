@@ -64,6 +64,13 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	);
 
 
+	//Jack Startup
+
+	//_Server = new Jack::Server();
+	//_Server->start();
+	//_Server->connectDefault();
+
+
 	//Module messin
 
 	Instrument::Module * mod = new Instrument::Module( this );

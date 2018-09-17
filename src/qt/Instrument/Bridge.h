@@ -85,6 +85,8 @@ class Bridge : public QWidget {
 
 		uint8_t getIndexFromStringArea( StringArea * );
 
+		void clearArea();
+
 };
 
 }; }; };

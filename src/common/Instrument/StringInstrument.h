@@ -3,6 +3,7 @@
  */
 #pragma once
 
+#include <cmath>
 #include <cstdint>
 #include <map>
 #include <vector>
@@ -38,6 +39,13 @@ class StringInstrument {
 
 		StringInstrument();
 		StringInstrument( vector<float_t> strings );
+
+
+		/**
+		 * Getters
+		 */
+
+		uint8_t getNumStrings();
 
 
 		/**

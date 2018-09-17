@@ -2,4 +2,4 @@
 
 # Requires entr
 
-find ../src/ -name '*.cpp' | entr sh -c 'make -j8 && ./src/qt/*.qt'
+find ../src/ | grep -E '(cpp|h|txt)' | entr sh -c 'make -j8 && ./src/qt/*.qt'

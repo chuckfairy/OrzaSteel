@@ -15,6 +15,7 @@ configure_file(Config/Config.h.in Config/Config.h)
 file( GLOB
 	ORZASTEEL_COMMON_INCLUDE_FILES
 	"*.cpp"
+	"Instrument/*.cpp"
 	"*.h"
 )
 
@@ -25,7 +26,9 @@ add_library( orzasteel-common SHARED ${ORZASTEEL_COMMON_INCLUDE_FILES} )
 
 target_link_libraries( orzasteel-common )
 
-target_include_directories( orzasteel-common PUBLIC )
+target_include_directories( orzasteel-common PUBLIC 
+	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
+)
 
 set_target_properties(orzasteel-common PROPERTIES LINKER_LANGUAGE CXX)
 

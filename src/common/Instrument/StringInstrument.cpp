@@ -1,7 +1,9 @@
 /**
  * String instrument frequency instrument
  */
-#include "StringInstrument.cpp"
+#include <Util/Vector.h>
+
+#include "StringInstrument.h"
 
 
 using std::map;
@@ -17,7 +19,7 @@ namespace Orza { namespace Steel { namespace Audio {
 
 vector<float_t> StringInstrument::TYPE_DEFAULT = { 440 };
 
-static vector<float_t> StringInstrument::TYPE_COUNTRY_NECK = {
+vector<float_t> StringInstrument::TYPE_COUNTRY_NECK = {
 	261,
 	329,
 	392,
@@ -31,7 +33,7 @@ static vector<float_t> StringInstrument::TYPE_COUNTRY_NECK = {
  * Constructs
  */
 
-StringInstrument() {
+StringInstrument::StringInstrument() {
 
 };
 
@@ -43,6 +45,16 @@ StringInstrument::StringInstrument( vector<float_t> strings ) {
 
 
 /**
+ * Getters
+ */
+
+uint8_t StringInstrument::getNumStrings() {
+
+	return _strings.size();
+
+};
+
+/**
  * String setters
  */
 
@@ -50,11 +62,7 @@ void StringInstrument::setStrings( vector<float_t> newStrings ) {
 
 	_strings.clear();
 
-	_strings.insert(
-		std::end( _strings ),
-		std::begin( newStrings ),
-		std::end( newStrings )
-	);
+	Util::Vector::append( &_strings, newStrings );
 
 };
 
@@ -73,9 +81,11 @@ vector<float_t> StringInstrument::getPitches( map<uint8_t, uint8_t> hand ) {
 
 	vector<float_t> out;
 
-	for( uint8_t const& [stringNum, position] : hand ) {
+	map<uint8_t, uint8_t>::const_iterator it;
 
-		out.push_back( getPitch( stringNum, position ) );
+	for ( it = hand.begin(); it != hand.end(); ++ it ) {
+
+		out.push_back( getPitch( it->first, it->second ) );
 
 	}
 
@@ -90,7 +100,7 @@ float_t StringInstrument::getPitch( uint8_t num, uint8_t position ) {
 
 	float_t starting = _strings[ num ];
 
-	return starting + ( starting * ( position / 100 ) );
+	return (float_t)( starting + ( starting * ( position / 100 ) ) );
 
 };
 

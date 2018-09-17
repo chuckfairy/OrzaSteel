@@ -37,7 +37,6 @@ include_directories(
 
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
 
-
 	${Boost_INCLUDE_DIR}
 )
 
@@ -93,6 +92,8 @@ add_executable(orzasteel.qt ${orzasteel.qt_SRC} ${RESOURCES} ${MY_MOCED_FILES} $
 target_link_libraries( orzasteel.qt
     PUBLIC
     dl
+	liborza-common-jack
+	orzasteel-common
     Qt5::Widgets
     Qt5::Core
     Qt5::Gui

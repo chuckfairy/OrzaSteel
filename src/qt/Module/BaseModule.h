@@ -3,6 +3,8 @@
  */
 #pragma once
 
+#include <jack/jack.h>
+
 
 namespace Orza { namespace Steel {
 
@@ -17,6 +19,15 @@ using Orza::Steel::Window;
  */
 
 class BaseModule {
+
+	public:
+
+		/**
+		 * Main processor virtual
+		 */
+
+		virtual void process( jack_nframe_t nframe ) {};
+
 
 	protected:
 
