@@ -37,27 +37,7 @@ Module::Module( Window * win ) :
  * Jack processing
  */
 
-void Module::process( jack_nframe_t nframe ) {
-
-};
-
-
-/**
- * Get hand for instrument processing
- */
-
-map<uint8_t, float_t> Module::getHand() {
-
-
-
-};
-
-
-/**
- * Get frequencies for jack writing
- */
-
-vector<float_t> Module::getFrequencies() {
+void Module::process( jack_nframes_t nframe ) {
 
 
 

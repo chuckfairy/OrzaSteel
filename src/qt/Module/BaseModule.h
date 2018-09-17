@@ -4,6 +4,7 @@
 #pragma once
 
 #include <jack/jack.h>
+#include <jack/midiport.h>
 
 
 namespace Orza { namespace Steel {
@@ -26,7 +27,7 @@ class BaseModule {
 		 * Main processor virtual
 		 */
 
-		virtual void process( jack_nframe_t nframe ) {};
+		virtual void process( jack_nframes_t nframe ) {};
 
 
 	protected:

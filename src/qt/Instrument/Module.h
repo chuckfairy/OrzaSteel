@@ -15,6 +15,7 @@
 #include "Bridge.h"
 #include "Neck.h"
 
+
 using std::map;
 using std::vector;
 
@@ -68,15 +69,6 @@ class Module : public BaseModule {
 		Bridge * _bridge;
 
 		Neck * _neck;
-
-
-		/**
-		 * Processing
-		 */
-
-		map<uint8_t, float_t> getHand();
-
-		vector<float_t> getFrequencies();
 
 };
 

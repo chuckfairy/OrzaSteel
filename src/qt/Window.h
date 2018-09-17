@@ -7,15 +7,27 @@
 #include <QtCore>
 #include <Qt>
 
+#include <vector>
+
 #include <Jack/Server.h>
 
 #include "ui_Window.h"
 
 
+using std::vector;
+
+
 namespace Orza { namespace Steel {
 
 /**
- *	class
+ * Forwarding
+ */
+
+class BaseModule;
+
+
+/**
+ * class
  */
 
 class Window : public QMainWindow {
@@ -56,6 +68,20 @@ class Window : public QMainWindow {
 		void goWindowed();
 
 
+		/**
+		 * Jack processor
+		 */
+
+		void process( jack_nframes_t );
+
+
+		/**
+		 * add module
+		 */
+
+		void addModule( BaseModule * );
+
+
 	private:
 
 		/**
@@ -69,6 +95,14 @@ class Window : public QMainWindow {
 		 */
 
 		Jack::Server * _Server;
+
+
+		/**
+		 * Modules
+		 */
+
+		vector<BaseModule*> _modules;
+
 
 };
 

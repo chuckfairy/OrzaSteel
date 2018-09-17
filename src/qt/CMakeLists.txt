@@ -92,6 +92,7 @@ add_executable(orzasteel.qt ${orzasteel.qt_SRC} ${RESOURCES} ${MY_MOCED_FILES} $
 target_link_libraries( orzasteel.qt
     PUBLIC
     dl
+	jack
 	liborza-common-jack
 	orzasteel-common
     Qt5::Widgets

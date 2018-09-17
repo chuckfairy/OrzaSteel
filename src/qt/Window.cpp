@@ -10,13 +10,20 @@
 #include <QIcon>
 #include <QDesktopWidget>
 
-#include "Resource/Icons.h"
+#include <Event/JackProcess.h>
 
+#include "Module/BaseModule.h"
+#include "Resource/Icons.h"
 #include "Instrument/Module.h"
 
 #include "Window.h"
 
+
+using std::vector;
+
 using Orza::App::Resource::Icons;
+using Orza::Steel::Event::JackProcess;
+
 
 namespace Orza { namespace Steel {
 
@@ -66,14 +73,48 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 	//Jack Startup
 
-	//_Server = new Jack::Server();
-	//_Server->start();
-	//_Server->connectDefault();
+	_Server = new Jack::Server();
+	_Server->start();
+	_Server->connectDefault();
+
+	Util::Event * e = new JackProcess<Window>( this );
+
+	_Server->on( Jack::Server::UPDATE_EVENT, e );
 
 
 	//Module messin
 
 	Instrument::Module * mod = new Instrument::Module( this );
+
+	addModule( mod );
+
+};
+
+
+/**
+ * Jack processing
+ */
+
+void Window::process( jack_nframes_t nframes ) {
+
+	vector<BaseModule*>::iterator it;
+
+	for( it = _modules.begin(); it != _modules.end(); ++ it ) {
+
+		(*it)->process( nframes );
+
+	}
+
+};
+
+
+/**
+ * Add module helper
+ */
+
+void Window::addModule( BaseModule * mod ) {
+
+	_modules.push_back( mod );
 
 };
 

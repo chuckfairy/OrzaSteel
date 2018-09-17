@@ -3,6 +3,8 @@
  */
 #include <iostream>
 
+#include <Util/Vector.h>
+
 #include <Color/Color.h>
 
 #include "Bridge.h"
@@ -59,7 +61,7 @@ void Bridge::clearArea() {
 
 	_areas.clear();
 
-	QLayoutItem *item;
+	QLayoutItem * item;
 
 	while( ( item = _layout->takeAt( 0 ) ) ) {
 
@@ -80,15 +82,27 @@ void Bridge::clearArea() {
  * String area handlers
  */
 
-void Bridge::handleStringUp( StringArea * area ) {
+void Bridge::handleStringDown( StringArea * area ) {
 
-	std::cout << unsigned(getIndexFromStringArea( area )) << "\n";
+	uint8_t index = getIndexFromStringArea( area );
+
+	_hand.push_back( index );
+
+	std::cout << "MouseDown : " << unsigned(index) << "\n";
 
 };
 
-void Bridge::handleStringDown( StringArea * area ) {
+void Bridge::handleStringUp( StringArea * area ) {
 
-	std::cout << unsigned(getIndexFromStringArea( area )) << "\n";
+	uint8_t index = getIndexFromStringArea( area );
+
+	if ( Util::Vector::has<uint8_t>( &_hand, index ) ) {
+
+		Util::Vector::remove<uint8_t>( &_hand, index );
+
+	}
+
+	std::cout << "MouseUp : " << unsigned(index) << "\n";
 
 };
 

@@ -72,8 +72,6 @@ void StringArea::mousePressEvent( QMouseEvent * event ) {
 
 	dispatch( EVENT_DOWN, (void*) this );
 
-	std::cout << "MouseDown\n";
-
 };
 
 void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
@@ -81,8 +79,6 @@ void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
 	_isMouseDown = false;
 
 	dispatch( EVENT_UP, (void*) this );
-
-	std::cout << "MouseUp\n";
 
 };
 

@@ -3,7 +3,9 @@
  */
 #pragma once
 
+#include <cmath>
 #include <cstdint>
+#include <map>
 #include <vector>
 
 #include <QtGui>
@@ -15,6 +17,7 @@
 #include "StringArea.h"
 
 
+using std::map;
 using std::vector;
 
 
@@ -50,6 +53,17 @@ class Bridge : public QWidget {
 		void handleStringPause( StringArea * );
 
 
+		/**
+		 * Processing
+		 */
+
+		vector<uint8_t> * getHand() {
+
+			return &_hand;
+
+		};
+
+
 	private:
 
 		/**
@@ -63,6 +77,8 @@ class Bridge : public QWidget {
 		QWidget * _content;
 
 		QVBoxLayout * _layout;
+
+		vector<uint8_t> _hand;
 
 
 		/**
