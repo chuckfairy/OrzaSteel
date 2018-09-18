@@ -6,16 +6,11 @@ project(orzasteel-common CXX)
 configure_file(Config/Config.h.in Config/Config.h)
 
 
-# Modules
-#add_subdirectory(Network)
-#add_subdirectory(Phone)
-
-
 #set( ORZASTEEL_GUI_INCLUDE_FILES )
 file( GLOB
 	ORZASTEEL_COMMON_INCLUDE_FILES
 	"*.cpp"
-	"Instrument/*.cpp"
+	"Audio/String*.cpp"
 	"*.h"
 )
 

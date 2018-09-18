@@ -8,7 +8,7 @@
 #include <map>
 #include <vector>
 
-#include <Instrument/StringInstrument.h>
+#include <Audio/StringInstrument.h>
 
 #include <Module/BaseModule.h>
 
