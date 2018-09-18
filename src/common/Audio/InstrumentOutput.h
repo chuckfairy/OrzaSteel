@@ -10,8 +10,6 @@
 #include <jack/jack.h>
 #include <jack/midiport.h>
 
-#include <Instrument/BaseInstrument.h>
-
 
 using std::vector;
 
@@ -23,7 +21,7 @@ class InstrumentOutput {
 
 	public:
 
-		InstrumentOutput( BaseInstrument * );
+		InstrumentOutput();
 
 
 		/**
@@ -33,25 +31,11 @@ class InstrumentOutput {
 		jack_default_audio_sample_t * writeOutput(
 			jack_port_t * port,
 			jack_nframes_t nframes,
-			vector<float_t> freqs = 0
+			vector<float_t> freqs
 		);
 
 
 	private:
-
-		/**
-		 * Main instrument
-		 */
-
-		BaseInstrument * _instrument;
-
-
-		/**
-		 * Notes to know when to stop frequencies and such
-		 */
-
-		vector<float_t> _heldNotes;
-
 
 		/**
 		 * Jack props

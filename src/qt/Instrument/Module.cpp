@@ -3,6 +3,11 @@
  */
 #include "Module.h"
 
+#include <cmath>
+#include <cstdint>
+
+#include <map>
+
 #include <Window.h>
 
 
@@ -23,7 +28,8 @@ namespace Orza { namespace Steel { namespace Instrument {
 Module::Module( Window * win ) :
 	BaseModule( win ),
 	_bridge( new Bridge ),
-	_instrument( new StringInstrument )
+	_instrument( new StringInstrument ),
+	_outputter( new InstrumentOutput )
 {
 
 	setStrings( StringInstrument::TYPE_DEFAULT );
@@ -37,9 +43,22 @@ Module::Module( Window * win ) :
  * Jack processing
  */
 
-void Module::process( jack_nframes_t nframe ) {
+void Module::process( jack_nframes_t nframes ) {
+
+	//Get frequencies
+
+	vector<uint8_t> * hand = _bridge->getHand();
+
+	vector<float_t> freqs = _instrument->getPitches( *hand );
 
 
+	//Output
+
+	_outputter->writeOutput(
+		_window->getServer()->getPatchbay()->getInputPortRight(),
+		nframes,
+		freqs
+	);
 
 };
 

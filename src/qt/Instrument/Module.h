@@ -5,10 +5,10 @@
 
 #include <cmath>
 #include <cstdint>
-#include <map>
 #include <vector>
 
 #include <Audio/StringInstrument.h>
+#include <Audio/InstrumentOutput.h>
 
 #include <Module/BaseModule.h>
 
@@ -16,12 +16,12 @@
 #include "Neck.h"
 
 
-using std::map;
 using std::vector;
 
 using Orza::Steel::BaseModule;
 using Orza::Steel::Window;
 using Orza::Steel::Audio::StringInstrument;
+using Orza::Steel::Audio::InstrumentOutput;
 
 
 namespace Orza { namespace Steel { namespace Instrument {
@@ -61,6 +61,7 @@ class Module : public BaseModule {
 
 		StringInstrument * _instrument;
 
+		InstrumentOutput * _outputter;
 
 		/**
 		 * GUI

@@ -10,7 +10,7 @@ configure_file(Config/Config.h.in Config/Config.h)
 file( GLOB
 	ORZASTEEL_COMMON_INCLUDE_FILES
 	"*.cpp"
-	"Audio/String*.cpp"
+	"Audio/*.cpp"
 	"*.h"
 )
 
@@ -21,7 +21,7 @@ add_library( orzasteel-common SHARED ${ORZASTEEL_COMMON_INCLUDE_FILES} )
 
 target_link_libraries( orzasteel-common )
 
-target_include_directories( orzasteel-common PUBLIC 
+target_include_directories( orzasteel-common PUBLIC
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
 )
 

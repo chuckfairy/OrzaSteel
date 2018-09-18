@@ -93,6 +93,32 @@ vector<float_t> StringInstrument::getPitches( map<uint8_t, uint8_t> hand ) {
 
 };
 
+
+/**
+ * Get pitches assuming position 0
+ */
+
+vector<float_t> StringInstrument::getPitches( vector<uint8_t> hand ) {
+
+	vector<float_t> out;
+
+	vector<uint8_t>::const_iterator it;
+
+	for( it = hand.begin(); it != hand.end(); ++ it ) {
+
+		out.push_back( getPitch( *it, 0 ) );
+
+	}
+
+	return out;
+
+};
+
+
+/**
+ * get singular pitch
+ */
+
 float_t StringInstrument::getPitch( uint8_t num, uint8_t position ) {
 
 	//@TODO check

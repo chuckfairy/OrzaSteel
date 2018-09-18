@@ -54,6 +54,9 @@ class StringInstrument {
 		 */
 
 		vector<float_t> getPitches( map<uint8_t, uint8_t> );
+
+		vector<float_t> getPitches( vector<uint8_t> ); //Assumes position 0
+
 		float_t getPitch( uint8_t stringNum, uint8_t position );
 
 

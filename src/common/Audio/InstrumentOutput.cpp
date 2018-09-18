@@ -1,8 +1,6 @@
 /**
  * Instrument output to jack capable
  */
-#pragma once
-
 #include "InstrumentOutput.h"
 
 
@@ -12,9 +10,7 @@ namespace Orza { namespace Steel { namespace Audio {
  * Constructor
  */
 
-InstrumentOutput::InstrumentOutput( BaseInstrument * inst ) :
-	_instrument( inst )
-{
+InstrumentOutput::InstrumentOutput() {
 }
 
 
@@ -25,7 +21,7 @@ InstrumentOutput::InstrumentOutput( BaseInstrument * inst ) :
 jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 	jack_port_t * port,
 	jack_nframes_t nframes,
-	vector<float_t> freqs = 0
+	vector<float_t> freqs
 ) {
 
 	//resetting state
@@ -53,10 +49,10 @@ jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 			continue;
 		}
 
-		ramp += note_frqs[note];
-		ramp = (ramp > 1.0) ? ramp - 2.0 : ramp;
+		_ramp += noteFrequency;
+		_ramp = (_ramp > 1.0) ? _ramp - 2.0 : _ramp;
 
-		out[i] = note_on*sin(2*M_PI*ramp);
+		out[i] = sin( 2 * M_PI * _ramp );
 
 	}
 
