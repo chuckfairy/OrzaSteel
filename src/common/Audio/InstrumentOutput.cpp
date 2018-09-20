@@ -1,6 +1,8 @@
 /**
  * Instrument output to jack capable
  */
+#include <iostream>
+
 #include "InstrumentOutput.h"
 
 
@@ -27,9 +29,9 @@ jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 	//resetting state
 	_ramp = 0.0;
 
+
 	//Get port buffer
-	jack_default_audio_sample_t * out;
-	out = (jack_default_audio_sample_t *) jack_port_get_buffer(port, nframes);
+	jack_default_audio_sample_t * out = (jack_default_audio_sample_t *) jack_port_get_buffer(port, nframes);
 
 
 	//If note use srate math
@@ -38,6 +40,8 @@ jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 	if( freqs.size() > 0 ) {
 		noteFrequency = freqs[0] / _srate;
 	}
+
+	std::cout << noteFrequency << "\n";
 
 
 	//loop frames

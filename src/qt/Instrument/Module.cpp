@@ -10,6 +10,8 @@
 
 #include <Window.h>
 
+#include <Jack/PatchbayEffects.h>
+
 
 using std::map;
 using std::vector;
@@ -32,7 +34,7 @@ Module::Module( Window * win ) :
 	_outputter( new InstrumentOutput )
 {
 
-	setStrings( StringInstrument::TYPE_DEFAULT );
+	setStrings( StringInstrument::TYPE_COUNTRY_NECK );
 
 	_window->getUI()->bridge->addWidget( _bridge );
 
@@ -55,7 +57,13 @@ void Module::process( jack_nframes_t nframes ) {
 	//Output
 
 	_outputter->writeOutput(
-		_window->getServer()->getPatchbay()->getInputPortRight(),
+		_window->getServer()->getPatchbay()->getEffects()->getInputPortRight(),
+		nframes,
+		freqs
+	);
+
+	_outputter->writeOutput(
+		_window->getServer()->getPatchbay()->getEffects()->getInputPortLeft(),
 		nframes,
 		freqs
 	);

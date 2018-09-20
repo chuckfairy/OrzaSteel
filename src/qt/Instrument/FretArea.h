@@ -1,5 +1,5 @@
 /**
- * String area clicking
+ * Fret area
  */
 #pragma once
 
@@ -15,7 +15,7 @@
 namespace Orza { namespace Steel { namespace Instrument {
 
 
-class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher {
+class FretArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher {
 
 	Q_OBJECT;
 
@@ -27,8 +27,6 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 
 		static const char * EVENT_DOWN;
 		static const char * EVENT_UP;
-		static const char * EVENT_CLICK;
-		static const char * EVENT_PAUSE;
 
 
 		/**
@@ -37,8 +35,8 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 
 		static const char * STYLE_SHEET_TEMPLATE;
 
-		StringArea( const char * color );
-		~StringArea() {};
+		FretArea( const char * color );
+		~FretArea() {};
 
 
 	protected:
@@ -64,4 +62,4 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 
 };
 
-}; }; };
+} } }

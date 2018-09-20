@@ -82,20 +82,4 @@ void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
 
 };
 
-
-/**
- * Paint override for stylesheets
- */
-
-void StringArea::paintEvent( QPaintEvent* event ) {
-
-	QStyleOption opt;
-	opt.init(this);
-	QPainter p(this);
-	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
-
-	QWidget::paintEvent(event);
-
-};
-
 }; }; };

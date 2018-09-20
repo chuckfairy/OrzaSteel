@@ -74,19 +74,23 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	//Jack Startup
 
 	_Server = new Jack::Server();
+
 	_Server->start();
 	_Server->connectDefault();
 
 	Util::Event * e = new JackProcess<Window>( this );
-
 	_Server->on( Jack::Server::UPDATE_EVENT, e );
-
 
 	//Module messin
 
 	Instrument::Module * mod = new Instrument::Module( this );
 
 	addModule( mod );
+
+
+	//Main start
+
+	_Server->run();
 
 };
 

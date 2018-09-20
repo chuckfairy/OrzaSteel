@@ -20,12 +20,12 @@ namespace Orza { namespace Steel { namespace Audio {
 vector<float_t> StringInstrument::TYPE_DEFAULT = { 440 };
 
 vector<float_t> StringInstrument::TYPE_COUNTRY_NECK = {
-	261,
-	329,
+	261.63,
+	329.63,
 	392,
 	440,
-	523,
-	659
+	523.25,
+	659.26
 };
 
 

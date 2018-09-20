@@ -41,7 +41,7 @@ class InstrumentOutput {
 		 * Jack props
 		 */
 
-		jack_default_audio_sample_t _srate;
+		jack_default_audio_sample_t _srate = 96000;
 
 		jack_default_audio_sample_t _ramp = 0.0;
 
