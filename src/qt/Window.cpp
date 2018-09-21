@@ -78,14 +78,17 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	_Server->start();
 	_Server->connectDefault();
 
-	Util::Event * e = new JackProcess<Window>( this );
-	_Server->on( Jack::Server::UPDATE_EVENT, e );
 
 	//Module messin
 
 	Instrument::Module * mod = new Instrument::Module( this );
 
 	addModule( mod );
+
+
+	Util::Event * e = new JackProcess<Window>( this );
+	_Server->on( Jack::Server::UPDATE_EVENT, e );
+
 
 
 	//Main start
@@ -101,13 +104,7 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 void Window::process( jack_nframes_t nframes ) {
 
-	vector<BaseModule*>::iterator it;
-
-	for( it = _modules.begin(); it != _modules.end(); ++ it ) {
-
-		(*it)->process( nframes );
-
-	}
+	_modules[0]->process(nframes);
 
 };
 

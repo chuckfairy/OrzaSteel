@@ -28,6 +28,8 @@ vector<float_t> StringInstrument::TYPE_COUNTRY_NECK = {
 	659.26
 };
 
+//vector<float_t> TYPE_GUITAR_STANDARD;
+
 
 /**
  * Constructs
@@ -102,11 +104,9 @@ vector<float_t> StringInstrument::getPitches( vector<uint8_t> hand ) {
 
 	vector<float_t> out;
 
-	vector<uint8_t>::const_iterator it;
+	for( int i = 0; i < hand.size(); ++ i ) {
 
-	for( it = hand.begin(); it != hand.end(); ++ it ) {
-
-		out.push_back( getPitch( *it, 0 ) );
+		out.push_back( _strings[ hand[ i ] ] );
 
 	}
 

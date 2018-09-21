@@ -31,6 +31,7 @@ class InstrumentOutput {
 		jack_default_audio_sample_t * writeOutput(
 			jack_port_t * port,
 			jack_nframes_t nframes,
+			jack_default_audio_sample_t sample_rate,
 			vector<float_t> freqs
 		);
 
@@ -40,8 +41,6 @@ class InstrumentOutput {
 		/**
 		 * Jack props
 		 */
-
-		jack_default_audio_sample_t _srate = 96000;
 
 		jack_default_audio_sample_t _ramp = 0.0;
 
