@@ -38,13 +38,13 @@ Module::Module( Window * win ) :
 
 	_window->getUI()->bridge->addWidget( _bridge );
 
-	_output_port = jack_port_register(
-		_window->getServer()->getJackClient(),
-		"orzasteel-output",
-		JACK_DEFAULT_AUDIO_TYPE,
-		JackPortIsOutput,
-		0
-	);
+	//_output_port = jack_port_register(
+		//_window->getServer()->getJackClient(),
+		//"orzasteel-output",
+		//JACK_DEFAULT_AUDIO_TYPE,
+		//JackPortIsOutput,
+		//0
+	//);
 
 };
 
@@ -65,7 +65,6 @@ void Module::process( jack_nframes_t nframes ) {
 	//Output
 
 	_outputter->writeOutput(
-		//_output_port,
 		_window->getServer()->getPatchbay()->getEffects()->getInputPortLeft(),
 		nframes,
 		_window->getServer()->getSampleRate(),
