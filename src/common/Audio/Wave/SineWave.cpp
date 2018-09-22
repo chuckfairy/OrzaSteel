@@ -1,8 +1,6 @@
 /**
  * Wavefrom base class
  */
-#pragma once
-
 #include "SineWave.h"
 
 
