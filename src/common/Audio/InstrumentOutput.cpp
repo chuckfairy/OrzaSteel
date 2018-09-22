@@ -52,7 +52,7 @@ jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 	jack_default_audio_sample_t noteFrequency = 0.0;
 
 	if( freqs.size() > 0 ) {
-		noteFrequency = (freqs[0]*2) / srate;
+		noteFrequency = freqs[0] / srate;
 	}
 
 

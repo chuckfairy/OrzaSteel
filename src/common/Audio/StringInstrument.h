@@ -28,6 +28,8 @@ class StringInstrument {
 
 		static vector<float_t> TYPE_COUNTRY_NECK;
 
+		static vector<float_t> TYPE_COUNTRY_NECK_L;
+
 		static vector<float_t> TYPE_GUITAR_STANDARD;
 
 		static vector<float_t> TYPE_GUITAR_DROP_D;
