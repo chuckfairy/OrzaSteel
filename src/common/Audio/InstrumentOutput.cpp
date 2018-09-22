@@ -33,6 +33,7 @@ float fastSin( float x ){
 	return P * (y * std::abs(y) - y) + y;
 }
 
+
 /**
  * Get output main method
  */
@@ -43,8 +44,6 @@ jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 	jack_default_audio_sample_t srate,
 	vector<float_t> freqs
 ) {
-
-
 	//Get port buffer
 	jack_default_audio_sample_t * out = (jack_default_audio_sample_t *) jack_port_get_buffer(port, nframes);
 
