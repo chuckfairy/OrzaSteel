@@ -38,7 +38,7 @@ void SineWave::setOutputForTime(
 			_ramp -= _delta;
 		}
 
-		output[i] = volume * sin( mpi * _ramp );
+		output[i] = volume * sin( DOUBLE_PI * _ramp );
 
 	}
 

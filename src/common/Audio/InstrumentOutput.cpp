@@ -74,13 +74,6 @@ jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 		}
 
 		out[i] = sin( mpi * _ramp );
-		//out[i] = fastSign( mpi * _ramp ) * 0.1;
-
-		//if (!(i % 7)) {
-			//printf("RAMP %F", _ramp);
-			//printf(", Freq %F", noteFrequency);
-			//printf(", SIGNAL %F\n", sin(2*M_PI*_ramp));
-		//}
 
 	}
 
