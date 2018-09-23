@@ -79,22 +79,22 @@ void Bridge::clearArea() {
 
 
 /**
- * String area handlers
+ * String down index handlers
  */
 
-void Bridge::handleStringDown( StringArea * area ) {
+void Bridge::setStringDown( uint8_t index ) {
 
-	uint8_t index = getIndexFromStringArea( area );
+	if ( ! Util::Vector::has<uint8_t>( &_hand, index ) ) {
 
-	_hand.push_back( index );
+        _hand.push_back( index );
 
-	std::cout << "MouseDown : " << unsigned(index) << "\n";
+    }
+
+	std::cout << "String Down : " << unsigned(index) << "\n";
 
 };
 
-void Bridge::handleStringUp( StringArea * area ) {
-
-	uint8_t index = getIndexFromStringArea( area );
+void Bridge::setStringUp( uint8_t index ) {
 
 	if ( Util::Vector::has<uint8_t>( &_hand, index ) ) {
 
@@ -102,7 +102,28 @@ void Bridge::handleStringUp( StringArea * area ) {
 
 	}
 
-	std::cout << "MouseUp : " << unsigned(index) << "\n";
+	std::cout << "String Up : " << unsigned(index) << "\n";
+
+};
+
+
+/**
+ * String area handlers
+ */
+
+void Bridge::handleStringDown( StringArea * area ) {
+
+	uint8_t index = getIndexFromStringArea( area );
+
+    setStringDown( index );
+
+};
+
+void Bridge::handleStringUp( StringArea * area ) {
+
+	uint8_t index = getIndexFromStringArea( area );
+
+    setStringUp( index );
 
 };
 

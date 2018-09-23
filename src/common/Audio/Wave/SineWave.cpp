@@ -20,7 +20,7 @@ float_t SineWave::DOUBLE_PI = 2 * M_PI;
 void SineWave::setOutputForTime(
 	float * output,
 	uint32_t nframes,
-	float_t volume = 1.0
+	float_t volume
 ) {
 
 	float noteFrequency = _freqs[ 0 ];
@@ -28,7 +28,7 @@ void SineWave::setOutputForTime(
 
 	//loop frames
 
-	for( int i = 0; i < nframes; ++ i ) {
+	for( uint32_t i = 0; i < nframes; ++ i ) {
 
 		_ramp += noteFrequency;
 

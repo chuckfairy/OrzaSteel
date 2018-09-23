@@ -6,6 +6,8 @@
 #include <jack/jack.h>
 #include <jack/midiport.h>
 
+#include <QKeyEvent>
+
 
 namespace Orza { namespace Steel {
 
@@ -28,6 +30,8 @@ class BaseModule {
 		 */
 
 		virtual void process( jack_nframes_t nframe ) {};
+
+        virtual void handleKeyEvent( QKeyEvent * event ) {};
 
 
 	protected:

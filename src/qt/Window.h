@@ -82,6 +82,17 @@ class Window : public QMainWindow {
 		void addModule( BaseModule * );
 
 
+    protected:
+
+        /**
+         * Override send to all mods
+         */
+
+        void keyPressEvent( QKeyEvent * event );
+
+        void keyReleaseEvent( QKeyEvent * event );
+
+
 	private:
 
 		/**

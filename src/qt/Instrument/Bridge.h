@@ -44,13 +44,14 @@ class Bridge : public QWidget {
 
 
 		/**
-		 * String area handlers
+		 * String handlers
 		 */
+
+        void setStringDown( uint8_t index );
+        void setStringUp( uint8_t index );
 
 		void handleStringDown( StringArea * );
 		void handleStringUp( StringArea * );
-		void handleStringClick( StringArea * );
-		void handleStringPause( StringArea * );
 
 
 		/**

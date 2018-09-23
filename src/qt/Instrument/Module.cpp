@@ -5,6 +5,7 @@
 
 #include <cmath>
 #include <cstdint>
+#include <sstream>
 
 #include <map>
 
@@ -14,6 +15,7 @@
 
 
 using std::map;
+using std::stringstream;
 using std::vector;
 
 using Orza::Steel::BaseModule;
@@ -76,6 +78,38 @@ void Module::process( jack_nframes_t nframes ) {
 		//nframes,
 		//freqs
 	//);
+
+};
+
+
+/**
+ * Key event handling
+ */
+
+void Module::handleKeyEvent( QKeyEvent * event ) {
+
+    std::cout << "Key Type : " << (event->type() == QEvent::KeyPress) << "\n";
+    std::cout << "Key Btn : " << event->text().toUtf8().data() << "\n";
+
+    //@TODO configs
+    switch( event->key() ) {
+        case Qt::Key_1:
+        case Qt::Key_2:
+        case Qt::Key_3:
+        case Qt::Key_4:
+        case Qt::Key_5:
+        case Qt::Key_6:
+            stringstream strValue;
+            strValue << event->text().toUtf8().data();
+
+            unsigned int index;
+            strValue >> index;
+
+            ( event->type() == QEvent::KeyPress )
+                ?  _bridge->setStringDown( index )
+                : _bridge->setStringUp( index );
+            break;
+    }
 
 };
 

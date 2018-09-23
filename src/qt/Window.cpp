@@ -12,11 +12,11 @@
 
 #include <Event/JackProcess.h>
 
+#include "Window.h"
+
 #include "Module/BaseModule.h"
 #include "Resource/Icons.h"
 #include "Instrument/Module.h"
-
-#include "Window.h"
 
 
 using std::vector;
@@ -104,7 +104,11 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 void Window::process( jack_nframes_t nframes ) {
 
-	_modules[0]->process(nframes);
+    for( int i = 0; i < _modules.size(); ++ i ) {
+
+        _modules[ i ]->process( nframes );
+
+    }
 
 };
 
@@ -116,6 +120,27 @@ void Window::process( jack_nframes_t nframes ) {
 void Window::addModule( BaseModule * mod ) {
 
 	_modules.push_back( mod );
+
+};
+
+
+/**
+ * Key press handler for modules
+ */
+
+void Window::keyPressEvent( QKeyEvent * event ) {
+
+    for( int i = 0; i < _modules.size(); ++ i ) {
+
+        _modules[ i ]->handleKeyEvent( event );
+
+    }
+
+};
+
+void Window::keyReleaseEvent( QKeyEvent * event ) {
+
+    keyPressEvent( event );
 
 };
 

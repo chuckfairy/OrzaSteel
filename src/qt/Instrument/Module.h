@@ -54,6 +54,8 @@ class Module : public BaseModule {
 
 		void process( jack_nframes_t );
 
+        void handleKeyEvent( QKeyEvent * event );
+
 
 	private:
 
