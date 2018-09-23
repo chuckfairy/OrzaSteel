@@ -65,9 +65,9 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 	//Background image
 
-	UI.neck_content->setStyleSheet(
-		"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
-	);
+	//UI.neck_content->setStyleSheet(
+		//"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
+	//);
 
 
 	//Jack Startup

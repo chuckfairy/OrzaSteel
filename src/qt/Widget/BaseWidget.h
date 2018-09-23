@@ -12,7 +12,7 @@
 namespace Orza { namespace Steel { namespace Widget {
 
 
-class BaseWidget : public QWidget {
+class BaseWidget : public QFrame {
 
 	protected:
 

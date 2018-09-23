@@ -17,8 +17,6 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher {
 
-	Q_OBJECT;
-
 	public:
 
 		/**
@@ -36,8 +34,8 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 
 		static const char * STYLE_SHEET_TEMPLATE;
 
-		StringArea( const char * color );
-		~StringArea() {};
+		Tonebar();
+		~Tonebar() {};
 
 
 	protected:
@@ -45,10 +43,6 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		/**
 		 * Mouse event watching for string control events
 		 */
-
-		void mousePressEvent( QMouseEvent * );
-
-		void mouseReleaseEvent( QMouseEvent * );
 
 
 	private:

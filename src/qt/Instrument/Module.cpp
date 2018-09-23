@@ -37,6 +37,7 @@ namespace Orza { namespace Steel { namespace Instrument {
 Module::Module( Window * win ) :
 	BaseModule( win ),
 	_bridge( new Bridge ),
+	_neck( new Neck ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
 	_wave( new SineWave ),
@@ -47,13 +48,9 @@ Module::Module( Window * win ) :
 
 	_window->getUI()->bridge->addWidget( _bridge );
 
-	//_output_port = jack_port_register(
-		//_window->getServer()->getJackClient(),
-		//"orzasteel-output",
-		//JACK_DEFAULT_AUDIO_TYPE,
-		//JackPortIsOutput,
-		//0
-	//);
+	_window->getUI()->neck->addWidget( _neck );
+
+	_window->getUI()->horizontalLayout->addWidget( _neck->getTonebar() );
 
 };
 
@@ -102,11 +99,11 @@ void Module::process( jack_nframes_t nframes ) {
 		nframes
 	);
 
-	//_outputter->writeOutput(
-		//_window->getServer()->getPatchbay()->getEffects()->getInputPortLeft(),
-		//nframes,
-		//freqs
-	//);
+	_outputter->writeOutput(
+		_window->getServer()->getPatchbay()->getEffects()->getInputPortRight(),
+		waveUse,
+		nframes
+	);
 
 };
 

@@ -5,9 +5,15 @@
 		<file alias="/fonts/fontawesome-4.7.0.ttf">../assets/fonts/fontawesome-4.7.0.ttf</file>
 		<file alias="icon.png">../assets/icon.png</file>
 
+		<!-- Necks -->
 		<file alias="/necks/basic-white.png">../assets/necks/basic-white.png</file>
 		<file alias="/necks/basic-wood.png">../assets/necks/basic-wood.png</file>
+
+		<!-- ToneBars -->
+		<file alias="/tonebar/pbr.png">../assets/tonebars/pbr-tonebar.png</file>
 	</qresource>
+
+	<!-- icon dark theme -->
 	<qresource prefix="/qss_icons/rc">
 		<file alias="up_arrow_disabled.png">../assets/icons/up_arrow_disabled.png</file>
 		<file alias="Hmovetoolbar.png">../assets/icons/Hmovetoolbar.png</file>

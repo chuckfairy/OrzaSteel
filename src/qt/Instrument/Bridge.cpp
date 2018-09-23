@@ -40,9 +40,11 @@ void Bridge::setNumStrings( uint8_t numStrings ) {
 
 	clearArea();
 
-	for( uint8_t i = 0; i < numStrings; ++ i ) {
+	while( numStrings ) {
 
-		StringArea * area = createStringArea( i );
+		-- numStrings;
+
+		StringArea * area = createStringArea( numStrings );
 
 		_layout->addWidget( area );
 

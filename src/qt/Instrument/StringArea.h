@@ -27,8 +27,6 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 
 		static const char * EVENT_DOWN;
 		static const char * EVENT_UP;
-		static const char * EVENT_CLICK;
-		static const char * EVENT_PAUSE;
 
 
 		/**

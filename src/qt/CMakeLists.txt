@@ -64,7 +64,6 @@ file( GLOB orzasteel.qt_moc_files
 	Widget/BackgroundImage.h
 	Instrument/StringArea.h
 	Instrument/Bridge.h
-	Instrument/Neck.h
 )
 
 

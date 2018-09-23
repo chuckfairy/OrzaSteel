@@ -9,6 +9,9 @@
 
 #include <QtGui>
 #include <QWidget>
+#include <QVBoxLayout>
+
+#include "Tonebar.h"
 
 
 using std::vector;
@@ -17,8 +20,6 @@ using std::vector;
 namespace Orza { namespace Steel { namespace Instrument {
 
 class Neck : public QWidget {
-
-	Q_OBJECT;
 
 	public:
 
@@ -38,11 +39,40 @@ class Neck : public QWidget {
 		vector<uint8_t> getPositions();
 
 
+		/**
+		 * Obj getters
+		 */
+
+		Tonebar * getTonebar() {
+
+			return _Bar;
+
+		};
+
+
 	private:
+
+		/**
+		 * Props
+		 */
 
 		vector<uint8_t> _positions;
 
+		QVBoxLayout * _layout;
+
+
+		/**
+		 * Tonebar
+		 */
+
+		Tonebar * _Bar;
+
+		/**
+		 * Internals
+		 */
+
 		void createBridgeArea( uint8_t );
+		void setupLayout();
 
 };
 

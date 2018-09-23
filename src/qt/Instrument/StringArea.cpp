@@ -15,8 +15,6 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 const char * StringArea::EVENT_DOWN = "d";
 const char * StringArea::EVENT_UP = "u";
-const char * StringArea::EVENT_CLICK = "c";
-const char * StringArea::EVENT_PAUSE = "p";
 
 
 /**
