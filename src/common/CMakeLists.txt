@@ -11,6 +11,7 @@ file( GLOB
 	ORZASTEEL_COMMON_INCLUDE_FILES
 	"*.cpp"
 	"Audio/*.cpp"
+	"Audio/Wave/*.cpp"
 	"*.h"
 )
 

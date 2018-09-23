@@ -38,7 +38,7 @@ float fastSin( float x ){
  * Get output main method
  */
 
-jack_default_audio_sample_t * InstrumentOutput::writeOutput(
+void InstrumentOutput::writeOutput(
 	jack_port_t * port,
 	jack_nframes_t nframes,
 	jack_default_audio_sample_t srate,
@@ -77,7 +77,26 @@ jack_default_audio_sample_t * InstrumentOutput::writeOutput(
 
 	}
 
-	return out;
+};
+
+
+/**
+ * Output wave
+ */
+
+void InstrumentOutput::writeOutputWave(
+	jack_port_t * port,
+	Wave::BaseWave * wave,
+	jack_nframes_t nframes
+) {
+
+	jack_default_audio_sample_t * out = (jack_default_audio_sample_t *) jack_port_get_buffer(port, nframes);
+
+	wave->setOutputForTime(
+		out,
+		nframes,
+		1.0
+	);
 
 };
 

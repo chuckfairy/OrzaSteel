@@ -47,8 +47,8 @@ class Bridge : public QWidget {
 		 * String handlers
 		 */
 
-        void setStringDown( uint8_t index );
-        void setStringUp( uint8_t index );
+		void setStringDown( uint8_t index );
+		void setStringUp( uint8_t index );
 
 		void handleStringDown( StringArea * );
 		void handleStringUp( StringArea * );
@@ -63,6 +63,23 @@ class Bridge : public QWidget {
 			return &_hand;
 
 		};
+
+
+		/**
+		 * Needs updating outside
+		 */
+
+		bool hasChange() {
+
+			return HAS_CHANGE;
+
+		}
+
+		void setChanged() {
+
+			HAS_CHANGE = false;
+
+		}
 
 
 	private:
@@ -81,6 +98,8 @@ class Bridge : public QWidget {
 
 		vector<uint8_t> _hand;
 
+		bool HAS_CHANGE = false;
+
 
 		/**
 		 * Events
@@ -88,8 +107,6 @@ class Bridge : public QWidget {
 
 		Util::Event * _downEvent;
 		Util::Event * _upEvent;
-		Util::Event * _clickEvent;
-		Util::Event * _pauseEvent;
 
 
 		/**

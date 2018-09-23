@@ -11,7 +11,7 @@ using std::vector;
 
 namespace Orza { namespace Steel { namespace Audio { namespace Wave {
 
-class NullWave : BaseWave {
+class NullWave : public BaseWave {
 
 	public:
 

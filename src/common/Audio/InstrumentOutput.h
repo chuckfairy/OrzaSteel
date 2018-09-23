@@ -10,6 +10,8 @@
 #include <jack/jack.h>
 #include <jack/midiport.h>
 
+#include "Wave/BaseWave.h"
+
 
 using std::vector;
 
@@ -28,11 +30,17 @@ class InstrumentOutput {
 		 * Get output main method
 		 */
 
-		jack_default_audio_sample_t * writeOutput(
+		void writeOutput(
 			jack_port_t * port,
 			jack_nframes_t nframes,
 			jack_default_audio_sample_t sample_rate,
 			vector<float_t> freqs
+		);
+
+		void writeOutputWave(
+			jack_port_t * port,
+			Wave::BaseWave * wave,
+			jack_nframes_t nframes
 		);
 
 

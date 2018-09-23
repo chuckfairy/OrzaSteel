@@ -40,22 +40,31 @@ class BaseWave {
 
 		void setWave(
 			vector<float_t> newFreqs,
-			uint32_t newRate,
-			float_t newDelta,
-			float_t newThres = 1.0
+			uint32_t newRate
 		) {
 
 			_freqs.clear();
+			_ramps.clear();
 
 			_rate = newRate;
 
 			for( int i = 0; i < newFreqs.size(); ++ i ) {
 
-				_freqs[ i ] = newFreqs / _rate;
+				_freqs.push_back( newFreqs[ i ] / _rate );
+
+				_ramps.push_back( 0.0 );
 
 			}
 
+		};
+
+		void setDelta( float_t newDelta ) {
+
 			_delta = newDelta;
+
+		};
+
+		void setThreshold( float_t newThres ) {
 
 			_threshold = newThres;
 
@@ -81,6 +90,8 @@ class BaseWave {
 		vector<float_t> _freqs;
 
 		uint32_t _rate;
+
+		vector<float_t> _ramps;
 
 };
 

@@ -63,7 +63,6 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 	UI.centralWidget->setStyleSheet( style );
 
-
 	//Background image
 
 	UI.neck_content->setStyleSheet(
@@ -104,11 +103,11 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 void Window::process( jack_nframes_t nframes ) {
 
-    for( int i = 0; i < _modules.size(); ++ i ) {
+	for( int i = 0; i < _modules.size(); ++ i ) {
 
-        _modules[ i ]->process( nframes );
+		_modules[ i ]->process( nframes );
 
-    }
+	}
 
 };
 
@@ -130,17 +129,26 @@ void Window::addModule( BaseModule * mod ) {
 
 void Window::keyPressEvent( QKeyEvent * event ) {
 
-    for( int i = 0; i < _modules.size(); ++ i ) {
+	if( event->isAutoRepeat() ) {
 
-        _modules[ i ]->handleKeyEvent( event );
+		return;
 
-    }
+	}
+
+
+	//Loop mods
+
+	for( int i = 0; i < _modules.size(); ++ i ) {
+
+		_modules[ i ]->handleKeyEvent( event );
+
+	}
 
 };
 
 void Window::keyReleaseEvent( QKeyEvent * event ) {
 
-    keyPressEvent( event );
+	keyPressEvent( event );
 
 };
 

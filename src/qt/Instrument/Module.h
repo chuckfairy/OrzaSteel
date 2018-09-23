@@ -14,6 +14,10 @@
 
 #include <Module/BaseModule.h>
 
+#include <Audio/Wave/BaseWave.h>
+#include <Audio/Wave/SineWave.h>
+#include <Audio/Wave/NullWave.h>
+
 #include "Bridge.h"
 #include "Neck.h"
 
@@ -24,6 +28,9 @@ using Orza::Steel::BaseModule;
 using Orza::Steel::Window;
 using Orza::Steel::Audio::StringInstrument;
 using Orza::Steel::Audio::InstrumentOutput;
+
+using Orza::Steel::Audio::Wave::BaseWave;
+using Orza::Steel::Audio::Wave::NullWave;
 
 
 namespace Orza { namespace Steel { namespace Instrument {
@@ -54,12 +61,18 @@ class Module : public BaseModule {
 
 		void process( jack_nframes_t );
 
-        void handleKeyEvent( QKeyEvent * event );
+		void handleKeyEvent( QKeyEvent * event );
 
 
 	private:
 
-		jack_port_t * _output_port;
+		/**
+		 * GUI / submod
+		 */
+
+		Bridge * _bridge;
+
+		Neck * _neck;
 
 
 		/**
@@ -70,13 +83,15 @@ class Module : public BaseModule {
 
 		InstrumentOutput * _outputter;
 
+
 		/**
-		 * GUI
+		 * Wave for output
 		 */
 
-		Bridge * _bridge;
+		BaseWave * _wave;
 
-		Neck * _neck;
+		NullWave * _nullWave;
+
 
 };
 

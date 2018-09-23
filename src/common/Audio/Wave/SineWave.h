@@ -31,6 +31,15 @@ class SineWave : public BaseWave {
 			float_t volume = 1.0
 		);
 
+
+	private:
+
+		/**
+		 * Internal
+		 */
+
+		float_t getRampSignal( int volume );
+
 };
 
 } } } }

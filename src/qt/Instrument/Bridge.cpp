@@ -86,9 +86,11 @@ void Bridge::setStringDown( uint8_t index ) {
 
 	if ( ! Util::Vector::has<uint8_t>( &_hand, index ) ) {
 
-        _hand.push_back( index );
+		_hand.push_back( index );
 
-    }
+		HAS_CHANGE = true;
+
+	}
 
 	std::cout << "String Down : " << unsigned(index) << "\n";
 
@@ -99,6 +101,8 @@ void Bridge::setStringUp( uint8_t index ) {
 	if ( Util::Vector::has<uint8_t>( &_hand, index ) ) {
 
 		Util::Vector::remove<uint8_t>( &_hand, index );
+
+		HAS_CHANGE = true;
 
 	}
 
@@ -115,7 +119,7 @@ void Bridge::handleStringDown( StringArea * area ) {
 
 	uint8_t index = getIndexFromStringArea( area );
 
-    setStringDown( index );
+	setStringDown( index );
 
 };
 
@@ -123,7 +127,7 @@ void Bridge::handleStringUp( StringArea * area ) {
 
 	uint8_t index = getIndexFromStringArea( area );
 
-    setStringUp( index );
+	setStringUp( index );
 
 };
 
