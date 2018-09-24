@@ -21,16 +21,9 @@ Tonebar::Tonebar( QWidget * parent ) :
 		"
 	);
 
+	setGeometry( 10, 0, 70, 200 );
 
-	//setStyleSheet(
-		//"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;\
-		//background: #FF0000;\
-		//"
-	//);
-
-	setGeometry( 10, 0, 85, 200 );
-
-	raise();
+    raise();
 
 	show();
 

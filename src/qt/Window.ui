@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>993</width>
-    <height>200</height>
+    <width>992</width>
+    <height>237</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,6 +20,19 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>210</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>OrzaSteel</string>
+    </property>
+   </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
