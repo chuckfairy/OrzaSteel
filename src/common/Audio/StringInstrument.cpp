@@ -88,11 +88,11 @@ void StringInstrument::setString( uint8_t num, float_t freq ) {
  * Main pitches getter
  */
 
-vector<float_t> StringInstrument::getPitches( map<uint8_t, uint8_t> hand ) {
+vector<float_t> StringInstrument::getPitches( map<uint8_t, float_t> hand ) {
 
 	vector<float_t> out;
 
-	map<uint8_t, uint8_t>::const_iterator it;
+	map<uint8_t, float_t>::const_iterator it;
 
 	for ( it = hand.begin(); it != hand.end(); ++ it ) {
 
@@ -135,7 +135,7 @@ float_t StringInstrument::getPitch( uint8_t num, uint8_t position ) {
 
 	float_t starting = _strings[ num ];
 
-	return (float_t)( starting + ( starting * ( position / 100 ) ) );
+	return (float_t)( starting + ( starting * ( (float_t)position / (float_t)100 ) ) );
 
 };
 

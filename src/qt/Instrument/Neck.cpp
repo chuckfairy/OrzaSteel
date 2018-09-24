@@ -13,7 +13,7 @@ Neck::Neck() {
 
 	_Bar = new Tonebar( this );
 
-	_positions.push_back( 0 );
+	_positions.push_back( 0.0 );
 
 	QSizePolicy sizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
 
@@ -35,11 +35,9 @@ Neck::Neck() {
  * Positions getter
  */
 
-vector<uint8_t> Neck::getPositions() {
+vector<float_t> Neck::getPositions() {
 
-	vector<uint8_t> out;
-
-	return out;
+	return _positions;
 
 };
 
@@ -52,10 +50,13 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
 	std::cout << "Mouse move : " << event->x() << " " << event->y() << "\n";
 
-	_positions[ 0 ] = ( event->y() / width() ) * 100;
+	_positions[ 0 ] = ( (float_t)event->x() / (float_t)width() ) * (float_t)100;
+
+	std::cout << "Position : " << _positions[ 0 ] << " " << width() << "\n";
+
+	HAS_CHANGE = true;
 
 	_Bar->move( event->x() - ( _Bar->width() / 2 ), 0 );
-
 
 };
 

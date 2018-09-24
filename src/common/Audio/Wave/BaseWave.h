@@ -44,7 +44,9 @@ class BaseWave {
 		) {
 
 			_freqs.clear();
-			_ramps.clear();
+			//_ramps.clear();
+
+			int rampSize = _ramps.size() - 1;
 
 			_rate = newRate;
 
@@ -52,7 +54,11 @@ class BaseWave {
 
 				_freqs.push_back( newFreqs[ i ] / _rate );
 
-				_ramps.push_back( 0.0 );
+				if( rampSize < i )  {
+
+					_ramps.push_back( 0.0 );
+
+				}
 
 			}
 

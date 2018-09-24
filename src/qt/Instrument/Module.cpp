@@ -63,12 +63,14 @@ void Module::process( jack_nframes_t nframes ) {
 
 	vector<uint8_t> * hand = _bridge->getHand();
 
-	vector<float_t> freqs = _instrument->getPitches( *hand );
+	map<uint8_t, float_t> handMap = getHandMap( hand );
+
+	vector<float_t> freqs = _instrument->getPitches( handMap );
 
 
 	//Check wave changes
 
-	if( _bridge->hasChange() ) {
+	if( _bridge->hasChange() || _neck->hasChange() ) {
 
 		//Wave setup
 
@@ -78,6 +80,7 @@ void Module::process( jack_nframes_t nframes ) {
 		);
 
 		_bridge->setChanged();
+		_neck->setChanged();
 
 	}
 
@@ -97,11 +100,32 @@ void Module::process( jack_nframes_t nframes ) {
 		nframes
 	);
 
-	_outputter->writeOutputWave(
-		_window->getServer()->getPatchbay()->getEffects()->getInputPortRight(),
-		waveUse,
-		nframes
-	);
+	//_outputter->writeOutputWave(
+		//_window->getServer()->getPatchbay()->getEffects()->getInputPortRight(),
+		//waveUse,
+		//nframes
+	//);
+
+};
+
+
+/**
+ * Handmap
+ */
+
+map<uint8_t, float_t> Module::getHandMap( vector<uint8_t> * bridged ) {
+
+	map<uint8_t, float_t> out;
+
+	float_t position = _neck->getPositions()[0];
+
+	for( int i = 0; i < bridged->size(); ++ i ) {
+
+		out[ bridged->at( i ) ] = position;
+
+	}
+
+	return out;
 
 };
 
@@ -129,9 +153,9 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 			unsigned int index;
 			strValue >> index;
 
-            index -= 1;
+			index -= 1;
 
-            if( index == -1 ) { index = 10; }
+			if( index == -1 ) { index = 10; }
 
 			( event->type() == QEvent::KeyPress )
 				?  _bridge->setStringDown( index )

@@ -38,7 +38,7 @@ class SineWave : public BaseWave {
 		 * Internal
 		 */
 
-		float_t getRampSignal( int volume );
+		float_t getRampSignal( float_t volume );
 
 };
 

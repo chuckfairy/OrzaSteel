@@ -55,7 +55,7 @@ class StringInstrument {
 		 * from vector of strings => 0-100 on neck
 		 */
 
-		vector<float_t> getPitches( map<uint8_t, uint8_t> );
+		vector<float_t> getPitches( map<uint8_t, float_t> );
 
 		vector<float_t> getPitches( vector<uint8_t> ); //Assumes position 0
 

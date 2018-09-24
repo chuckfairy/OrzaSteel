@@ -36,7 +36,7 @@ class Neck : public QWidget {
 		 * Get positions from bridge setup
 		 */
 
-		vector<uint8_t> getPositions();
+		vector<float_t> getPositions();
 
 
 		/**
@@ -46,6 +46,23 @@ class Neck : public QWidget {
 		Tonebar * getTonebar() {
 
 			return _Bar;
+
+		};
+
+
+		/**
+		 * Needs updating outside
+		 */
+
+		bool hasChange() {
+
+			return HAS_CHANGE;
+
+		};
+
+		void setChanged() {
+
+			HAS_CHANGE = false;
 
 		};
 
@@ -65,9 +82,11 @@ class Neck : public QWidget {
 		 * Props
 		 */
 
-		vector<uint8_t> _positions;
+		vector<float_t> _positions;
 
 		QVBoxLayout * _layout;
+
+		bool HAS_CHANGE = false;
 
 
 		/**

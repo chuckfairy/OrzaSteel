@@ -5,6 +5,7 @@
 
 #include <cmath>
 #include <cstdint>
+#include <map>
 #include <vector>
 
 #include <jack/jack.h>
@@ -22,6 +23,7 @@
 #include "Neck.h"
 
 
+using std::map;
 using std::vector;
 
 using Orza::Steel::BaseModule;
@@ -91,6 +93,9 @@ class Module : public BaseModule {
 		BaseWave * _wave;
 
 		NullWave * _nullWave;
+
+
+		map<uint8_t, float_t> getHandMap( vector<uint8_t> * bridged );
 
 
 };

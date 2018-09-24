@@ -73,13 +73,13 @@ class Bridge : public QWidget {
 
 			return HAS_CHANGE;
 
-		}
+		};
 
 		void setChanged() {
 
 			HAS_CHANGE = false;
 
-		}
+		};
 
 
 	private:

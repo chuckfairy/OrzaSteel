@@ -38,7 +38,7 @@ void SineWave::setOutputForTime(
  * Main signal math for chords
  */
 
-float_t SineWave::getRampSignal( int volume ) {
+float_t SineWave::getRampSignal( float_t volume ) {
 
 	float_t out = 0.0;
 
@@ -46,7 +46,7 @@ float_t SineWave::getRampSignal( int volume ) {
 
 	float_t volPer = freqSize == 1
 		? volume
-		: ((volume / _freqs.size()) + .25);
+		: (volume / (float_t) _freqs.size());
 
 	for( int i = 0; i < _freqs.size(); ++ i ) {
 
