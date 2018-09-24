@@ -34,7 +34,9 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 
 		static const char * STYLE_SHEET_TEMPLATE;
 
-		Tonebar();
+		Tonebar( QWidget * parent );
+
+		Tonebar() {};
 		~Tonebar() {};
 
 

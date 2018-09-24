@@ -9,23 +9,24 @@ namespace Orza { namespace Steel { namespace Instrument {
  * constructor
  */
 
-Neck::Neck() :
-	_Bar( new Tonebar )
-{
+Neck::Neck() {
 
-	//setupLayout();
+	_Bar = new Tonebar( this );
 
-	QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	_positions.push_back( 0 );
 
-	setSizePolicy(sizePolicy);
+	QSizePolicy sizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+
+	setSizePolicy( sizePolicy );
 
 	setStyleSheet(
 		"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
 	);
 
-	show();
+	setMouseTracking(true);
+	_Bar->setMouseTracking(true);
 
-	//_layout->addWidget( _Bar );
+	show();
 
 };
 
@@ -36,20 +37,25 @@ Neck::Neck() :
 
 vector<uint8_t> Neck::getPositions() {
 
-}
+	vector<uint8_t> out;
+
+	return out;
+
+};
 
 
 /**
- * setup widget layout
+ * Mouse move and tonebar setting
  */
 
-void Neck::setupLayout() {
+void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
-	_layout = new QVBoxLayout();
-	_layout->setSpacing( 0 );
-	_layout->setContentsMargins(0, 0, 0, 0);
+	std::cout << "Mouse move : " << event->x() << " " << event->y() << "\n";
 
-	setLayout( _layout );
+	_positions[ 0 ] = ( event->y() / width() ) * 100;
+
+	_Bar->move( event->x() - ( _Bar->width() / 2 ), 0 );
+
 
 };
 

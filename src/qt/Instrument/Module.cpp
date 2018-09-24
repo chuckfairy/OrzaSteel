@@ -50,8 +50,6 @@ Module::Module( Window * win ) :
 
 	_window->getUI()->neck->addWidget( _neck );
 
-	_window->getUI()->horizontalLayout->addWidget( _neck->getTonebar() );
-
 };
 
 
@@ -86,7 +84,7 @@ void Module::process( jack_nframes_t nframes ) {
 
 	//Null wave if 0 freqs
 
-	BaseWave * waveUse = (freqs.size() == 0)
+	BaseWave * waveUse = ( freqs.size() == 0 )
 		? _nullWave
 		: _wave;
 
@@ -99,7 +97,7 @@ void Module::process( jack_nframes_t nframes ) {
 		nframes
 	);
 
-	_outputter->writeOutput(
+	_outputter->writeOutputWave(
 		_window->getServer()->getPatchbay()->getEffects()->getInputPortRight(),
 		waveUse,
 		nframes
@@ -130,6 +128,10 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 
 			unsigned int index;
 			strValue >> index;
+
+            index -= 1;
+
+            if( index == -1 ) { index = 10; }
 
 			( event->type() == QEvent::KeyPress )
 				?  _bridge->setStringDown( index )

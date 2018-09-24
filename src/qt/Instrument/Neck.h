@@ -50,6 +50,15 @@ class Neck : public QWidget {
 		};
 
 
+	protected:
+
+		/**
+		 * Qt event overrides
+		 */
+
+		void mouseMoveEvent( QMouseEvent * event );
+
+
 	private:
 
 		/**
@@ -72,7 +81,6 @@ class Neck : public QWidget {
 		 */
 
 		void createBridgeArea( uint8_t );
-		void setupLayout();
 
 };
 

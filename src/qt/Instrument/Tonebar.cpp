@@ -7,19 +7,32 @@
 namespace Orza { namespace Steel { namespace Instrument {
 
 
-Tonebar::Tonebar() {
+Tonebar::Tonebar( QWidget * parent ) :
+	BaseWidget( parent )
+{
+	QSizePolicy sizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+
+	setSizePolicy( sizePolicy );
 
 	setStyleSheet(
 		"\
-		background-image:url(\":/tonebars/pbr.png\"); background-position: center;\
-		position: absolute;\
-		top: 0;\
-		left: 0;\
-		width: 200px;\
-		height: 200px;\
-		\
+		border-image:url(\":/tonebars/pbr.png\")  0 0 0 0 stretch stretch;\
+		background: transparent;\
 		"
 	);
+
+
+	//setStyleSheet(
+		//"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;\
+		//background: #FF0000;\
+		//"
+	//);
+
+	setGeometry( 10, 0, 85, 200 );
+
+	raise();
+
+	show();
 
 };
 

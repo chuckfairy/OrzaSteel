@@ -44,21 +44,26 @@ StringArea::StringArea( const char * color ) :
 	setSizePolicy(sizePolicy2);
 	setMinimumSize(QSize(250, 0));
 
-	char * css = (char*) malloc(
-		( sizeof( _color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
-		* sizeof( const char * )
-	);
-
-	sprintf( css, STYLE_SHEET_TEMPLATE, _color );
-
-	std::cout << css << "\n";
-
-	setStyleSheet( css );
+	setActive( false );
 
 	show();
 
 };
 
+
+void StringArea::setActive( bool flag ) {
+
+	const char * color = ( flag )
+		? "000000"
+		: _color;
+
+	char * css = formatStyleSheet( color );
+
+	std::cout << css << "\n";
+
+	setStyleSheet( css );
+
+};
 
 /**
  * Mouse event then push up
@@ -77,6 +82,20 @@ void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
 	_isMouseDown = false;
 
 	dispatch( EVENT_UP, (void*) this );
+
+};
+
+char * StringArea::formatStyleSheet( const char * color ) {
+
+	char * css = (char*) malloc(
+		( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
+		* sizeof( const char * )
+	);
+
+
+	sprintf( css, STYLE_SHEET_TEMPLATE, color );
+
+	return css;
 
 };
 

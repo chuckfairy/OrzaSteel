@@ -39,6 +39,13 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 		~StringArea() {};
 
 
+		/**
+		 * Mostly color indication
+		 */
+
+		void setActive( bool );
+
+
 	protected:
 
 		/**
@@ -59,6 +66,13 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 		const char * _color;
 
 		bool _isMouseDown = false;
+
+
+		/**
+		 * Internals
+		 */
+
+		char * formatStyleSheet( const char * color );
 
 };
 

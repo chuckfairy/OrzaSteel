@@ -16,6 +16,8 @@ class BaseWidget : public QFrame {
 
 	protected:
 
+		BaseWidget( QWidget * parent ) : QFrame( parent ) {};
+
 		BaseWidget() {};
 		~BaseWidget() {};
 
@@ -24,6 +26,8 @@ class BaseWidget : public QFrame {
 		 */
 
 		void paintEvent( QPaintEvent * event ) {
+
+			setAttribute(Qt::WA_TranslucentBackground);
 
 			QStyleOption opt;
 			opt.init(this);

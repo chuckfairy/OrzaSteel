@@ -10,7 +10,7 @@
 		<file alias="/necks/basic-wood.png">../assets/necks/basic-wood.png</file>
 
 		<!-- ToneBars -->
-		<file alias="/tonebar/pbr.png">../assets/tonebars/pbr-tonebar.png</file>
+		<file alias="/tonebars/pbr.png">../assets/tonebars/pbr-tonebar.png</file>
 	</qresource>
 
 	<!-- icon dark theme -->

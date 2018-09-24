@@ -46,7 +46,7 @@ float_t SineWave::getRampSignal( int volume ) {
 
 	float_t volPer = freqSize == 1
 		? volume
-		: (volume / _freqs.size()) + .25;
+		: ((volume / _freqs.size()) + .25);
 
 	for( int i = 0; i < _freqs.size(); ++ i ) {
 
@@ -77,7 +77,7 @@ float_t SineWave::getRampSignal( int volume ) {
 
 		float_t sig = sin( DOUBLE_PI * ramp );
 
-		out += sig * volPer;
+		out += ( sig * volPer );
 
 	}
 

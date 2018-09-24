@@ -90,6 +90,8 @@ void Bridge::setStringDown( uint8_t index ) {
 
 		_hand.push_back( index );
 
+		_areas[ index ]->setActive( true );
+
 		HAS_CHANGE = true;
 
 	}
@@ -103,6 +105,8 @@ void Bridge::setStringUp( uint8_t index ) {
 	if ( Util::Vector::has<uint8_t>( &_hand, index ) ) {
 
 		Util::Vector::remove<uint8_t>( &_hand, index );
+
+		_areas[ index ]->setActive( false );
 
 		HAS_CHANGE = true;
 
