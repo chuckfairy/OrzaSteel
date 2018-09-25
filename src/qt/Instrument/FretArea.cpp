@@ -1,27 +1,19 @@
 /**
  * String area clicking impl
  */
-#include "StringArea.h"
-
 #include <QStyleOption>
 
-#include <iostream>
+#include "FretArea.h"
+
 
 namespace Orza { namespace Steel { namespace Instrument {
-
-/**
- * Event types
- */
-
-const char * StringArea::EVENT_DOWN = "d";
-const char * StringArea::EVENT_UP = "u";
 
 
 /**
  * Template for CSS
  */
 
-const char * StringArea::STYLE_SHEET_TEMPLATE = "\
+const char * FretArea::STYLE_SHEET_TEMPLATE = "\
 	background-color: #%s;\n\
 	border: 2px solid #888;\n\
 	border-bottom: 1px solid #888;\n\
@@ -32,7 +24,7 @@ const char * StringArea::STYLE_SHEET_TEMPLATE = "\
  * Construct
  */
 
-StringArea::StringArea( const char * color ) :
+FretArea::FretArea( const char * color ) :
 	_color( color )
 {
 
@@ -44,48 +36,22 @@ StringArea::StringArea( const char * color ) :
 	setSizePolicy(sizePolicy2);
 	setMinimumSize(QSize(250, 0));
 
-	setActive( false );
-
-	show();
-
-};
-
-
-void StringArea::setActive( bool flag ) {
-
-	const char * color = ( flag )
-		? "000000"
-		: _color;
-
 	char * css = formatStyleSheet( color );
 
 	std::cout << css << "\n";
 
 	setStyleSheet( css );
 
+	show();
+
 };
+
 
 /**
- * Mouse event then push up
+ * CSS
  */
 
-void StringArea::mousePressEvent( QMouseEvent * event ) {
-
-	_isMouseDown = true;
-
-	dispatch( EVENT_DOWN, (void*) this );
-
-};
-
-void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
-
-	_isMouseDown = false;
-
-	dispatch( EVENT_UP, (void*) this );
-
-};
-
-char * StringArea::formatStyleSheet( const char * color ) {
+char * FretArea::formatStyleSheet( const char * color ) {
 
 	char * css = (char*) malloc(
 		( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )

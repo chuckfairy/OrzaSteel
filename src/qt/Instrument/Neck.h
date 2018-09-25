@@ -95,11 +95,14 @@ class Neck : public QWidget {
 
 		Tonebar * _Bar;
 
+
 		/**
 		 * Internals
 		 */
 
 		void createBridgeArea( uint8_t );
+
+        void setupBridgeUIHelper();
 
 };
 

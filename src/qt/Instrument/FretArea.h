@@ -17,8 +17,6 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class FretArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher {
 
-	Q_OBJECT;
-
 	public:
 
 		/**
@@ -39,17 +37,6 @@ class FretArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher
 		~FretArea() {};
 
 
-	protected:
-
-		/**
-		 * Mouse event watching for string control events
-		 */
-
-		void mousePressEvent( QMouseEvent * );
-
-		void mouseReleaseEvent( QMouseEvent * );
-
-
 	private:
 
 		/**
@@ -58,7 +45,7 @@ class FretArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher
 
 		const char * _color;
 
-		bool _isMouseDown = false;
+        char * formatStyleSheet( const char * color );
 
 };
 

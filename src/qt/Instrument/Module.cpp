@@ -25,6 +25,7 @@ using Orza::Steel::Audio::StringInstrument;
 using Orza::Steel::Audio::Wave::BaseWave;
 using Orza::Steel::Audio::Wave::NullWave;
 using Orza::Steel::Audio::Wave::SineWave;
+using Orza::Steel::Audio::Wave::TriangleWave;
 
 
 
@@ -40,7 +41,7 @@ Module::Module( Window * win ) :
 	_neck( new Neck ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
-	_wave( new SineWave ),
+	_wave( new TriangleWave ),
 	_nullWave( new NullWave )
 {
 

@@ -31,12 +31,15 @@ class BaseWidget : public QFrame {
 
 			QStyleOption opt;
 			opt.init(this);
-			QPainter p(this);
-			style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+			_painter = new QPainter(this);
+            //_painter->setOpacity( 0.5 );
+			style()->drawPrimitive(QStyle::PE_Widget, &opt, _painter, this);
 
 			QWidget::paintEvent(event);
 
-		}
+		};
+
+        QPainter * _painter;
 
 };
 

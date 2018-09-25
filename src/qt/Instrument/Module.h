@@ -16,8 +16,9 @@
 #include <Module/BaseModule.h>
 
 #include <Audio/Wave/BaseWave.h>
-#include <Audio/Wave/SineWave.h>
 #include <Audio/Wave/NullWave.h>
+#include <Audio/Wave/SineWave.h>
+#include <Audio/Wave/TriangleWave.h>
 
 #include "Bridge.h"
 #include "Neck.h"
