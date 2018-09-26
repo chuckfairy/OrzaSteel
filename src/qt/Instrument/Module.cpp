@@ -41,7 +41,7 @@ Module::Module( Window * win ) :
 	_neck( new Neck ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
-	_wave( new TriangleWave ),
+	_wave( new SineWave ),
 	_nullWave( new NullWave )
 {
 

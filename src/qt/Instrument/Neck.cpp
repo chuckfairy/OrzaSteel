@@ -22,7 +22,7 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 Neck::Neck() {
 
-    setupBridgeUIHelper();
+	//setupBridgeUIHelper();
 
 	_Bar = new Tonebar( this );
 
@@ -32,10 +32,9 @@ Neck::Neck() {
 
 	setSizePolicy( sizePolicy );
 
-	//setStyleSheet(
-		//"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
-	//);
-
+	setStyleSheet(
+		"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
+	);
 
 	setMouseTracking(true);
 	_Bar->setMouseTracking(true);
@@ -62,29 +61,28 @@ vector<float_t> Neck::getPositions() {
 
 void Neck::setupBridgeUIHelper() {
 
-    int semiTones = 12; //@TODO move further down line
+	int semiTones = 12; //@TODO move further down line
 
-    float widthSoFar = 0;
+	float widthSoFar = 0;
 
-    for( int i = 0; i < semiTones; ++ i ) {
+	for( int i = 0; i < semiTones; ++ i ) {
 
-        //Get division and prepare for base 10
-        float semiWidth = ( (float)i / (float)semiTones )
-            / ( (float)i / 10 );
+		//Get division and prepare for base 10
+		float semiWidth = ( (float)i / (float)semiTones )
+			/ ( (float)i / 10 );
 
-        semiWidth = ( log(semiWidth) * (float) width() ) - widthSoFar;
-        const char * color = STEPS_12[ i ];
+		semiWidth = ( log(semiWidth) * (float) width() ) - widthSoFar;
+		const char * color = STEPS_12[ i ];
 
-        FretArea * area = new FretArea( color );
-        area->setParent( this );
-        area->setGeometry( widthSoFar, 0, semiWidth, 200 );
-        area->move( widthSoFar, 0 );
-        area->setMouseTracking( true );
+		FretArea * area = new FretArea( color );
+		area->setParent( this );
+		area->setGeometry( widthSoFar, 0, semiWidth, 200 );
+		area->move( widthSoFar, 0 );
+		area->setMouseTracking( true );
 
-        widthSoFar += semiWidth;
+		widthSoFar += semiWidth;
 
-    }
-
+	}
 
 };
 
