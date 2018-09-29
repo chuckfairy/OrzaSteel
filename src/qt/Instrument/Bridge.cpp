@@ -144,7 +144,7 @@ void Bridge::handleStringUp( StringArea * area ) {
 
 StringArea * Bridge::createStringArea( uint8_t index ) {
 
-	const char * color = STEPS_12[ index ];
+	const char * color = STEPS_6[ index ];
 
 	StringArea * area = new StringArea( color );
 

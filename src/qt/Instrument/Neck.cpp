@@ -22,7 +22,7 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 Neck::Neck() {
 
-	//setupBridgeUIHelper();
+    setupBridgeUIHelper();
 
 	_Bar = new Tonebar( this );
 
@@ -32,9 +32,9 @@ Neck::Neck() {
 
 	setSizePolicy( sizePolicy );
 
-	setStyleSheet(
-		"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
-	);
+	//setStyleSheet(
+		//"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
+	//);
 
 	setMouseTracking(true);
 	_Bar->setMouseTracking(true);
@@ -54,24 +54,64 @@ vector<float_t> Neck::getPositions() {
 
 };
 
-
 /**
  * Helper UI for display frets more or less
  */
 
 void Neck::setupBridgeUIHelper() {
 
-	int semiTones = 12; //@TODO move further down line
+	float semiTones = 13; //@TODO move further down line
 
-	float widthSoFar = 0;
+	float widthSoFar = 0.0;
+    float fullWidth = (float) width();
+    float widthSplit = fullWidth / (semiTones - 1.5);
+
+	for( int i = 0; i < semiTones; ++ i ) {
+
+		float semiWidth = widthSplit;
+
+		const char * color = STEPS_13[ i ];
+
+		FretArea * area = new FretArea( color );
+		area->setParent( this );
+		area->setGeometry( 0, 0, semiWidth, 200 );
+		area->move( widthSoFar, 0 );
+		area->setMouseTracking( true );
+
+		widthSoFar += semiWidth;
+
+	}
+
+};
+
+
+/**
+ * Helper UI for display frets more or less
+ */
+
+void Neck::setupBridgeUIHelperLog() {
+
+	float semiTones = 12; //@TODO move further down line
+
+	float widthSoFar = 0.0;
+    float fullWidth = (float) width();
 
 	for( int i = 0; i < semiTones; ++ i ) {
 
 		//Get division and prepare for base 10
-		float semiWidth = ( (float)i / (float)semiTones )
-			/ ( (float)i / 10 );
+        float counter = (float)i + 1.0;
+		float_t semiWidth = ( counter / semiTones ) * 20;
+        //semiWidth += .5;
 
-		semiWidth = ( log(semiWidth) * (float) width() ) - widthSoFar;
+        std::cout << "Width : " << semiWidth << "\n";
+
+        std::cout << "Log : " << log(semiWidth) << "\n";
+
+		semiWidth = ( ( log(semiWidth) / log(20) ) * fullWidth ) - widthSoFar;
+
+
+        std::cout << "Width : " << semiWidth << "\n";
+
 		const char * color = STEPS_12[ i ];
 
 		FretArea * area = new FretArea( color );

@@ -19,6 +19,7 @@
 #include <Audio/Wave/NullWave.h>
 #include <Audio/Wave/SineWave.h>
 #include <Audio/Wave/TriangleWave.h>
+#include <Audio/Wave/SquareWave.h>
 
 #include "Bridge.h"
 #include "Neck.h"

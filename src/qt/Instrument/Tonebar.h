@@ -20,15 +20,6 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 	public:
 
 		/**
-		 * Event types
-		 */
-
-		static const char * EVENT_MOVE;
-		static const char * EVENT_UP;
-		static const char * EVENT_DOWN;
-
-
-		/**
 		 * Style sheet static for CSS
 		 */
 
@@ -46,14 +37,6 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		 * Mouse event watching for string control events
 		 */
 
-
-	private:
-
-		/**
-		 * Props
-		 */
-
-		bool _isMouseDown = false;
 
 };
 

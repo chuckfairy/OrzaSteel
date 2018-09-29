@@ -23,8 +23,8 @@ const char * StringArea::EVENT_UP = "u";
 
 const char * StringArea::STYLE_SHEET_TEMPLATE = "\
 	background-color: #%s;\n\
-	border: 2px solid #888;\n\
-	border-bottom: 1px solid #888;\n\
+	border-bottom: 1px solid #333;\n\
+	border-left: 1px solid #333;\n\
 ";
 
 

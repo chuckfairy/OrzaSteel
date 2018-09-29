@@ -19,6 +19,7 @@ using std::vector;
 
 namespace Orza { namespace Steel { namespace Instrument {
 
+
 class Neck : public QWidget {
 
 	public:
@@ -103,6 +104,8 @@ class Neck : public QWidget {
 		void createBridgeArea( uint8_t );
 
         void setupBridgeUIHelper();
+
+        void setupBridgeUIHelperLog();
 
 };
 

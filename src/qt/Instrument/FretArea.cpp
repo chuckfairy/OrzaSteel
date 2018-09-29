@@ -14,9 +14,8 @@ namespace Orza { namespace Steel { namespace Instrument {
  */
 
 const char * FretArea::STYLE_SHEET_TEMPLATE = "\
-	background-color: #%s;\n\
-	border: 2px solid #888;\n\
-	border-bottom: 1px solid #888;\n\
+	background-color: #%s;\
+	border-left: 1px solid #000000;\n\
 ";
 
 

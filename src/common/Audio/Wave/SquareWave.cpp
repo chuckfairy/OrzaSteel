@@ -1,7 +1,7 @@
 /**
  * Wavefrom base class
  */
-#include "TriangleWave.h"
+#include "SquareWave.h"
 
 
 using std::vector;
@@ -10,14 +10,14 @@ using std::vector;
 namespace Orza { namespace Steel { namespace Audio { namespace Wave {
 
 
-float_t TriangleWave::DOUBLE_PI = 2 * M_PI;
+float_t SquareWave::DOUBLE_PI = 2 * M_PI;
 
 
 /**
  * Main output
  */
 
-void TriangleWave::setOutputForTime(
+void SquareWave::setOutputForTime(
 	float * output,
 	uint32_t nframes,
 	float_t volume
@@ -42,7 +42,7 @@ void TriangleWave::setOutputForTime(
  *
  */
 
-float_t TriangleWave::getRampSignal( float_t volume ) {
+float_t SquareWave::getRampSignal( float_t volume ) {
 
 	float_t out = 0.0;
 
@@ -92,17 +92,11 @@ float_t TriangleWave::getRampSignal( float_t volume ) {
 
 		//Get sine signal
 
-        float_t oldSine = _sines[ i ];
-
 		float_t sig = sin( DOUBLE_PI * ramp );
 
-        //get what direction from old
-
-        out += ( sig - oldSine >= 0 )
+        out += ( sig >= 0 )
             ? deltaVol
             : -deltaVol;
-
-        _sines[ i ] = sig;
 
 	}
 
