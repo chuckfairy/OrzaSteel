@@ -93,13 +93,17 @@ void Module::process( jack_nframes_t nframes ) {
 		? _nullWave
 		: _wave;
 
+	float_t volume = (float_t)_window->getUI()->volume_slider->value();
+	volume = volume / 100;
+
 
 	//Output
 
 	_outputter->writeOutputWave(
 		_window->getServer()->getPatchbay()->getEffects()->getInputPortLeft(),
 		waveUse,
-		nframes
+		nframes,
+		volume
 	);
 
 	//_outputter->writeOutputWave(

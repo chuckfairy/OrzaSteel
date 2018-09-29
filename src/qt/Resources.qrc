@@ -11,6 +11,7 @@
 
 		<!-- ToneBars -->
 		<file alias="/tonebars/pbr.png">../assets/tonebars/pbr-tonebar.png</file>
+		<file alias="/tonebars/malort.png">../assets/tonebars/malort.png</file>
 	</qresource>
 
 	<!-- icon dark theme -->

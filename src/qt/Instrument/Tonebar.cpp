@@ -7,6 +7,10 @@
 namespace Orza { namespace Steel { namespace Instrument {
 
 
+/**
+ * Constructor
+ */
+
 Tonebar::Tonebar( QWidget * parent ) :
 	BaseWidget( parent )
 {
@@ -23,11 +27,10 @@ Tonebar::Tonebar( QWidget * parent ) :
 
 	setGeometry( 10, 0, 70, 200 );
 
-    raise();
+	raise();
 
 	show();
 
 };
 
-}; }; };
-
+} } }

@@ -30,17 +30,11 @@ class InstrumentOutput {
 		 * Get output main method
 		 */
 
-		void writeOutput(
-			jack_port_t * port,
-			jack_nframes_t nframes,
-			jack_default_audio_sample_t sample_rate,
-			vector<float_t> freqs
-		);
-
 		void writeOutputWave(
 			jack_port_t * port,
 			Wave::BaseWave * wave,
-			jack_nframes_t nframes
+			jack_nframes_t nframes,
+			float_t volume = 1.0
 		);
 
 

@@ -35,59 +35,14 @@ float fastSin( float x ){
 
 
 /**
- * Get output main method
- */
-
-void InstrumentOutput::writeOutput(
-	jack_port_t * port,
-	jack_nframes_t nframes,
-	jack_default_audio_sample_t srate,
-	vector<float_t> freqs
-) {
-	//Get port buffer
-	jack_default_audio_sample_t * out = (jack_default_audio_sample_t *) jack_port_get_buffer(port, nframes);
-
-
-	//If note use srate math
-	jack_default_audio_sample_t noteFrequency = 0.0;
-
-	if( freqs.size() > 0 ) {
-		noteFrequency = freqs[0] / srate;
-	}
-
-
-	float_t mpi = 2 * M_PI;
-
-	//loop frames
-	for( int i = 0; i < nframes; i ++ ) {
-
-		//No notes
-		if (noteFrequency == 0.0) {
-			out[i] = 0.0;
-			continue;
-		}
-
-		_ramp += noteFrequency;
-
-		if (_ramp > 1.0) {
-			_ramp -= 2.0;
-		}
-
-		out[i] = sin( mpi * _ramp );
-
-	}
-
-};
-
-
-/**
  * Output wave
  */
 
 void InstrumentOutput::writeOutputWave(
 	jack_port_t * port,
 	Wave::BaseWave * wave,
-	jack_nframes_t nframes
+	jack_nframes_t nframes,
+	float_t volume
 ) {
 
 	jack_default_audio_sample_t * out = (jack_default_audio_sample_t *) jack_port_get_buffer(port, nframes);
@@ -95,7 +50,7 @@ void InstrumentOutput::writeOutputWave(
 	wave->setOutputForTime(
 		out,
 		nframes,
-		1.0
+		volume
 	);
 
 };
