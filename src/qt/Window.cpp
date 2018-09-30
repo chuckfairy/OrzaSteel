@@ -21,7 +21,7 @@
 
 using std::vector;
 
-using Orza::App::Resource::Icons;
+using Orza::Resource::Icons;
 using Orza::Steel::Event::JackProcess;
 
 
@@ -43,10 +43,13 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 	setWindowTitle( "OrzaSteel" );
 
-
 	//Icons setup
 
 	Icons::setResource( app );
+
+    Orza::PluginSearch::LoadedPlugins::load();
+
+
 
 
 	//Icon

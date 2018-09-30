@@ -28,6 +28,9 @@ Layout::Layout( Server * server ) :
         SLOT( hide() )
     );
 
+    _UI.tab_effects_layout->addWidget( _Patchbay->getWidgetContainer() );
+
+
 };
 
 } } }
