@@ -14,6 +14,7 @@ find_package(Qt5Qml REQUIRED)
 
 file(GLOB orzasteel.qt_UIS
     Window.ui
+    Settings/Settings.ui
 )
 
 
@@ -49,6 +50,7 @@ file(
 	"${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.cpp"
 	Resource/*.cpp
 	Instrument/*.cpp
+    Settings/*.cpp
 	Widget/BackgroundImage.cpp
 	Window.cpp
 	main.cpp

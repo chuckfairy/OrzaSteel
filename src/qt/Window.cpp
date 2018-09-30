@@ -35,7 +35,8 @@ namespace Orza { namespace Steel {
  */
 
 Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
-	QMainWindow( parent, 0 )
+	QMainWindow( parent, 0 ),
+    _Settings( new Settings::Layout() )
 {
 	//QT ui from creator
 
@@ -87,6 +88,17 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	//Main start
 
 	_Server->run();
+
+
+    //Sizing
+
+    _Settings->setParent( UI.centralWidget );
+    _Settings->setGeometry( 0, 0, width(), height() );
+    _Settings->move(0, 0);
+    _Settings->raise();
+    _Settings->hide();
+
+    show();
 
 };
 

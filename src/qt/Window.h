@@ -13,6 +13,8 @@
 
 #include "ui_Window.h"
 
+#include "Settings/Layout.h"
+
 
 using std::vector;
 
@@ -81,6 +83,12 @@ class Window : public QMainWindow {
 
 		void addModule( BaseModule * );
 
+        /**
+         * settings
+         */
+
+        void showSettings();
+
 
     protected:
 
@@ -113,6 +121,8 @@ class Window : public QMainWindow {
 		 */
 
 		vector<BaseModule*> _modules;
+
+        Settings::Layout * _Settings;
 
 
 };

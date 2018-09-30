@@ -10,4 +10,8 @@ SOURCES += src/qt/main.cpp\
 
 HEADERS  += src/qt/Window.h
 
-FORMS    += src/qt/Window.ui
+FORMS    += src/qt/Window.ui\
+    src/qt/Settings/Settings.ui\
+    src/qt/Settings/PedalEditor.ui \
+    src/qt/Settings/PedalEditArea.ui
+
