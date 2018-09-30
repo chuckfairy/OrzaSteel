@@ -37,6 +37,8 @@ include_directories(
 	"${ORZASTEEL_ROOT_PATH}/lib-src"
 
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
+	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/src"
+	"${CMAKE_CURRENT_BINARY_DIR}/../../lib-src/liborza-qt/src"
 
 	${Boost_INCLUDE_DIR}
 )
@@ -95,6 +97,8 @@ target_link_libraries( orzasteel.qt
     dl
 	jack
 	liborza-common-jack
+	liborza-qt
+	liborza-common-plugin
 	orzasteel-common
     Qt5::Widgets
     Qt5::Core

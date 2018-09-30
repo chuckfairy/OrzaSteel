@@ -25,7 +25,7 @@ Tonebar::Tonebar( QWidget * parent ) :
 		"
 	);
 
-	setGeometry( 10, 0, 90, 200 );
+	setGeometry( 10, 0, 75, 200 );
 
 	raise();
 

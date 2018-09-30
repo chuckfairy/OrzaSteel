@@ -60,7 +60,7 @@ ENDIF()
 ## Main includes
 
 add_subdirectory( lib-src/liborza )
-#add_subdirectory( lib-src/liborza-qt )
+add_subdirectory( lib-src/liborza-qt )
 
 add_subdirectory( src/common )
 

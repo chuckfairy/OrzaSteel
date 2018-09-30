@@ -35,8 +35,7 @@ namespace Orza { namespace Steel {
  */
 
 Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
-	QMainWindow( parent, 0 ),
-    _Settings( new Settings::Layout() )
+	QMainWindow( parent, 0 )
 {
 	//QT ui from creator
 
@@ -80,6 +79,9 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	addModule( mod );
 
 
+    _Settings = new Settings::Layout( _Server );
+
+
 	Util::Event * e = new JackProcess<Window>( this );
 	_Server->on( Jack::Server::UPDATE_EVENT, e );
 
@@ -98,7 +100,22 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
     _Settings->raise();
     _Settings->hide();
 
-    show();
+
+    //Events
+
+    connect(
+        UI.settings_btn,
+        SIGNAL( clicked() ),
+        this,
+        SLOT( toggleSettings() )
+    );
+
+    connect(
+        UI.effects_btn,
+        SIGNAL( clicked() ),
+        this,
+        SLOT( toggleSettings() )
+    );
 
 };
 
@@ -114,6 +131,19 @@ void Window::process( jack_nframes_t nframes ) {
 		_modules[ i ]->process( nframes );
 
 	}
+
+};
+
+
+/**
+ * Show settings over App
+ */
+
+void Window::toggleSettings() {
+
+    ( _Settings->isVisible() )
+        ? _Settings->hide()
+        : _Settings->show();
 
 };
 

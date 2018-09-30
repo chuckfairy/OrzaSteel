@@ -83,11 +83,14 @@ class Window : public QMainWindow {
 
 		void addModule( BaseModule * );
 
+
+    protected slots:
+
         /**
          * settings
          */
 
-        void showSettings();
+        void toggleSettings();
 
 
     protected:

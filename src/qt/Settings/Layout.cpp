@@ -10,7 +10,10 @@ namespace Orza { namespace Steel { namespace Settings {
  * Construct
  */
 
-Layout::Layout() {
+Layout::Layout( Server * server ) :
+    _Server( server ),
+    _Patchbay( new Orza::Widget::Patchbay( server ) )
+{
 
     _UI.setupUi( this );
 
@@ -18,8 +21,13 @@ Layout::Layout() {
 	styleFile.open( QFile::ReadOnly );
 	QString style( styleFile.readAll() );
 
+    connect(
+        _UI.close_btn,
+        SIGNAL( clicked() ),
+        this,
+        SLOT( hide() )
+    );
+
 };
-
-
 
 } } }
