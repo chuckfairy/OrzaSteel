@@ -16,6 +16,7 @@ CPack*
 doc/
 
 lib-src/liborza
+lib-src/liborza-qt
 
 *.dylib
 
