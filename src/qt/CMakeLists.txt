@@ -38,6 +38,8 @@ include_directories(
 
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/src"
+	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/lib-src"
+
 	"${CMAKE_CURRENT_BINARY_DIR}/../../lib-src/liborza-qt/src"
 
 	${Boost_INCLUDE_DIR}
