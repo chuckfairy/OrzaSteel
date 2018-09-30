@@ -11,6 +11,8 @@
 
 #include <Widget/BaseWidget.h>
 
+#include "AreaData.h"
+
 
 namespace Orza { namespace Steel { namespace Instrument {
 
@@ -33,7 +35,7 @@ class FretArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher
 
 		static const char * STYLE_SHEET_TEMPLATE;
 
-		FretArea( const char * color );
+		FretArea( AreaData * );
 		~FretArea() {};
 
 
@@ -43,7 +45,7 @@ class FretArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher
 		 * Props
 		 */
 
-		const char * _color;
+        AreaData * _data;
 
         char * formatStyleSheet( const char * color );
 

@@ -4,10 +4,12 @@
 #include <cmath>
 
 #include <Color/Color.h>
+#include <Util/Numbers.h>
 
 #include "FretArea.h"
 
 #include "Neck.h"
+#include "AreaData.h"
 
 
 using namespace Orza::Steel::Color;
@@ -60,7 +62,7 @@ vector<float_t> Neck::getPositions() {
 
 void Neck::setupBridgeUIHelper() {
 
-	float semiTones = 13; //@TODO move further down line
+	float semiTones = 12; //@TODO move further down line
 
 	float widthSoFar = 0.0;
     float fullWidth = (float) width();
@@ -71,8 +73,13 @@ void Neck::setupBridgeUIHelper() {
 		float semiWidth = widthSplit;
 
 		const char * color = STEPS_13[ i ];
+		const char * label = Orza::Numbers::ROMAN_13[ i ];
 
-		FretArea * area = new FretArea( color );
+        AreaData * data = new AreaData();
+        data->color = color;
+        data->label = label ;
+
+		FretArea * area = new FretArea( data );
 		area->setParent( this );
 		area->setGeometry( 0, 0, semiWidth, 200 );
 		area->move( widthSoFar, 0 );
@@ -112,13 +119,17 @@ void Neck::setupBridgeUIHelperLog() {
 
         std::cout << "Width : " << semiWidth << "\n";
 
-		const char * color = STEPS_12[ i ];
 
-		FretArea * area = new FretArea( color );
+		const char * color = STEPS_12[ i ];
+        AreaData * data = new AreaData();
+        data->color = color;
+
+		FretArea * area = new FretArea( data );
 		area->setParent( this );
 		area->setGeometry( widthSoFar, 0, semiWidth, 200 );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
+        area->raise();
 
 		widthSoFar += semiWidth;
 

@@ -20,12 +20,12 @@ Tonebar::Tonebar( QWidget * parent ) :
 
 	setStyleSheet(
 		"\
-		border-image:url(\":/tonebars/pbr.png\")  0 0 0 0 stretch stretch;\
+		border-image:url(\":/tonebars/malort.png\")  0 0 0 0 stretch stretch;\
 		background: transparent;\
 		"
 	);
 
-	setGeometry( 10, 0, 70, 200 );
+	setGeometry( 10, 0, 90, 200 );
 
 	raise();
 

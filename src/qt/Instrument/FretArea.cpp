@@ -2,6 +2,8 @@
  * String area clicking impl
  */
 #include <QStyleOption>
+#include <QLabel>
+#include <QGraphicsDropShadowEffect>
 
 #include "FretArea.h"
 
@@ -23,8 +25,8 @@ const char * FretArea::STYLE_SHEET_TEMPLATE = "\
  * Construct
  */
 
-FretArea::FretArea( const char * color ) :
-	_color( color )
+FretArea::FretArea( AreaData * data ) :
+	_data( data )
 {
 
 	QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Preferred);
@@ -35,11 +37,19 @@ FretArea::FretArea( const char * color ) :
 	setSizePolicy(sizePolicy2);
 	setMinimumSize(QSize(250, 0));
 
-	char * css = formatStyleSheet( color );
+	char * css = formatStyleSheet( _data->color );
+
 
 	std::cout << css << "\n";
 
 	setStyleSheet( css );
+
+    QLabel * label = new QLabel(this);
+    label->setText( data->label );
+    label->move( 15, 15 );
+    label->setStyleSheet(
+        "color: #000000; border-left: none;"
+    );
 
 	show();
 
