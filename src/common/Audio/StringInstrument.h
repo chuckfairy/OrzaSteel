@@ -8,6 +8,8 @@
 #include <map>
 #include <vector>
 
+#include "Pedal.h"
+
 
 using std::map;
 using std::vector;
@@ -61,6 +63,8 @@ class StringInstrument {
 
 		float_t getPitch( uint8_t stringNum, uint8_t position );
 
+		float_t getPedalModifier( uint8_t stringNum );
+
 
 		/**
 		 * Set strings and create map
@@ -71,6 +75,13 @@ class StringInstrument {
 		void setString( uint8_t num, float_t freq );
 
 
+		/**
+		 * Pedal
+		 */
+
+		void addPedal( Pedal * pedal );
+
+
 	private:
 
 		/**
@@ -78,6 +89,8 @@ class StringInstrument {
 		 */
 
 		vector<float_t> _strings;
+
+		vector<Pedal*> _pedals;
 
 };
 

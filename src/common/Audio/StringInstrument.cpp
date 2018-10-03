@@ -25,7 +25,7 @@ vector<float_t> StringInstrument::TYPE_COUNTRY_NECK = {
 	196,
 	220,
 	261.63,
-    329.63
+	329.63
 };
 
 //vector<float_t> TYPE_GUITAR_STANDARD;
@@ -116,6 +116,17 @@ vector<float_t> StringInstrument::getPitches( vector<uint8_t> hand ) {
 
 
 /**
+ * Pedal adding
+ */
+
+void StringInstrument::addPedal( Pedal * pedal ) {
+
+	_pedals.push_back( pedal );
+
+};
+
+
+/**
  * get singular pitch
  */
 
@@ -126,7 +137,53 @@ float_t StringInstrument::getPitch( uint8_t num, uint8_t position ) {
 
 	float_t starting = _strings[ num ];
 
-	return (float_t)( starting + ( starting * ( (float_t)position / (float_t)100 ) ) );
+	float_t modifier = getPedalModifier( num );
+
+	return (float_t)( starting + ( starting * ( (float_t)position / (float_t)100 ) ) + modifier );
+
+};
+
+
+/**
+ * Pedal modifier frequency
+ * zero if nothing added
+ */
+
+float_t StringInstrument::getPedalModifier( uint8_t stringNum ) {
+
+	int size = _pedals.size();
+
+	float_t freq = 0.0;
+
+	for( int i = 0; i < size; ++ i ) {
+
+		Pedal * pedal = _pedals[ i ];
+
+		int pedalStrings = pedal->strings.size();
+
+		if( ! pedal->on ) {
+			continue;
+		}
+
+		for( int t = 0; i < pedalStrings; ++ t ) {
+
+			uint8_t pedalString = pedal->strings[ t ];
+
+			if( pedalString > ( _strings.size() - 1 ) ) {
+				continue;
+			}
+
+			float_t stringFreq = _strings[ pedalString ];
+
+			float_t pedalFreq = stringFreq * pow( 2.0, pedal->steps / 12 );
+
+			freq += pedalFreq;
+
+		}
+
+	}
+
+	return freq;
 
 };
 
