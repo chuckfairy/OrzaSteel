@@ -68,6 +68,13 @@ class Module : public BaseModule {
 		void handleKeyEvent( QKeyEvent * event );
 
 
+		/**
+		 * Pedal stuff
+		 */
+
+		void setPedals();
+
+
 	private:
 
 		/**

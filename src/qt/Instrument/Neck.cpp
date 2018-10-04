@@ -24,7 +24,8 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 Neck::Neck() {
 
-    setupBridgeUIHelper();
+	//setupBridgeUIHelper();
+	setupBridgeUIHelperLog();
 
 	_Bar = new Tonebar( this );
 
@@ -65,8 +66,8 @@ void Neck::setupBridgeUIHelper() {
 	float semiTones = 12; //@TODO move further down line
 
 	float widthSoFar = 0.0;
-    float fullWidth = (float) width();
-    float widthSplit = fullWidth / (semiTones - 1.5);
+	float fullWidth = (float) width();
+	float widthSplit = fullWidth / (semiTones - 1.5);
 
 	for( int i = 0; i < semiTones; ++ i ) {
 
@@ -75,9 +76,9 @@ void Neck::setupBridgeUIHelper() {
 		const char * color = STEPS_13[ i ];
 		const char * label = Orza::Numbers::ROMAN_13[ i ];
 
-        AreaData * data = new AreaData();
-        data->color = color;
-        data->label = label ;
+		AreaData * data = new AreaData();
+		data->color = color;
+		data->label = label ;
 
 		FretArea * area = new FretArea( data );
 		area->setParent( this );
@@ -101,39 +102,39 @@ void Neck::setupBridgeUIHelperLog() {
 	float semiTones = 12; //@TODO move further down line
 
 	float widthSoFar = 0.0;
-    float fullWidth = (float) width();
+	float fullWidth = (float) width() + 100;
+	float percent = 0.0;
 
 	for( int i = 0; i < semiTones; ++ i ) {
 
-		//Get division and prepare for base 10
-        float counter = (float)i + 1.0;
-		float_t semiWidth = ( counter / semiTones ) * 20;
-        //semiWidth += .5;
+		float_t semiWidth = pow( 2, ( (semiTones - i) / semiTones) ) - pow(2, ((semiTones - i - 1) / semiTones));
+		//float_t semiWidth = ;
 
-        std::cout << "Width : " << semiWidth << "\n";
+		std::cout << semiWidth << "\n";
 
-        std::cout << "Log : " << log(semiWidth) << "\n";
+		percent += semiWidth;
 
-		semiWidth = ( ( log(semiWidth) / log(20) ) * fullWidth ) - widthSoFar;
+		semiWidth = ( semiWidth * fullWidth );
 
-
-        std::cout << "Width : " << semiWidth << "\n";
+		std::cout << semiWidth << "\n";
 
 
 		const char * color = STEPS_12[ i ];
-        AreaData * data = new AreaData();
-        data->color = color;
+		AreaData * data = new AreaData();
+		data->color = color;
 
 		FretArea * area = new FretArea( data );
 		area->setParent( this );
-		area->setGeometry( widthSoFar, 0, semiWidth, 200 );
+		area->setGeometry( 0, 0, semiWidth, height() * .5 );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
-        area->raise();
+		area->raise();
 
 		widthSoFar += semiWidth;
 
 	}
+
+	std::cout << percent << "% " << fullWidth << "\n";
 
 };
 
@@ -144,11 +145,11 @@ void Neck::setupBridgeUIHelperLog() {
 
 void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
-	std::cout << "Mouse move : " << event->x() << " " << event->y() << "\n";
+	//std::cout << "Mouse move : " << event->x() << " " << event->y() << "\n";
 
 	_positions[ 0 ] = ( (float_t)event->x() / (float_t)width() ) * (float_t)100;
 
-	std::cout << "Position : " << _positions[ 0 ] << " " << width() << "\n";
+	//std::cout << "Position : " << _positions[ 0 ] << " " << width() << "\n";
 
 	HAS_CHANGE = true;
 
