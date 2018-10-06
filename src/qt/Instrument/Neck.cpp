@@ -117,10 +117,12 @@ void Neck::setupBridgeUIHelperLog() {
 
 		std::cout << semiWidth << "\n";
 
+		const char * color = STEPS_13[ i ];
+		const char * label = Orza::Numbers::ROMAN_13[ i ];
 
-		const char * color = STEPS_12[ i ];
 		AreaData * data = new AreaData();
 		data->color = color;
+		data->label = label ;
 
 		FretArea * area = new FretArea( data );
 		area->setParent( this );
@@ -132,8 +134,6 @@ void Neck::setupBridgeUIHelperLog() {
 		widthSoFar += semiWidth;
 
 	}
-
-	std::cout << percent << "% " << fullWidth << "\n";
 
 };
 

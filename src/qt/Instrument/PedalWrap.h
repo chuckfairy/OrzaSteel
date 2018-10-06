@@ -13,8 +13,14 @@
 
 #include <Widget/BaseWidget.h>
 
+#include <QHBoxLayout>
+
+#include "PedalArea.h"
+
 
 using std::vector;
+
+using Orza::Steel::Audio::Pedal;
 
 
 namespace Orza { namespace Steel { namespace Instrument {
@@ -28,12 +34,29 @@ class PedalWrap : public Orza::Steel::Widget::BaseWidget {
 		~PedalWrap() {};
 
 
-		void createDisplay();
+		/**
+		 * Main create of pedals
+		 */
+
+		void createDisplay( vector<Pedal*> );
 
 
 	private:
 
+		/**
+		 * props
+		 */
+
 		vector<PedalArea*> _pedals;
+
+		QHBoxLayout * _layout;
+
+
+		/**
+		 * internals
+		 */
+
+		void setupLayout();
 
 };
 

@@ -79,7 +79,11 @@ class StringInstrument {
 		 * Pedal
 		 */
 
+		void clearPedals();
+
 		void addPedal( Pedal * pedal );
+
+		void addPedals( vector<Pedal*> );
 
 
 	private:

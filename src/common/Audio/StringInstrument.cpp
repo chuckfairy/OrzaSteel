@@ -119,9 +119,25 @@ vector<float_t> StringInstrument::getPitches( vector<uint8_t> hand ) {
  * Pedal adding
  */
 
+void StringInstrument::clearPedals() {
+
+	_pedals.clear();
+
+};
+
 void StringInstrument::addPedal( Pedal * pedal ) {
 
 	_pedals.push_back( pedal );
+
+};
+
+void StringInstrument::addPedals( vector<Pedal*> pedals ) {
+
+	for( int i = 0; i < pedals.size(); ++ i ) {
+
+		addPedal( pedals[ i ] );
+
+	}
 
 };
 
