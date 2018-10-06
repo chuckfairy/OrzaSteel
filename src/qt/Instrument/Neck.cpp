@@ -108,7 +108,6 @@ void Neck::setupBridgeUIHelperLog() {
 	for( int i = 0; i < semiTones; ++ i ) {
 
 		float_t semiWidth = pow( 2, ( (semiTones - i) / semiTones) ) - pow(2, ((semiTones - i - 1) / semiTones));
-		//float_t semiWidth = ;
 
 		std::cout << semiWidth << "\n";
 
