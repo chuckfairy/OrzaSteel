@@ -5,6 +5,8 @@
 
 #include <vector>
 
+#include <Audio/Pedal.h>
+
 #include <QtGui>
 #include <QtCore>
 #include <QWidget>

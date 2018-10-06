@@ -4,7 +4,7 @@
 #include "PedalArea.h"
 
 
-std::vector;
+using std::vector;
 
 
 namespace Orza { namespace Steel { namespace Instrument {

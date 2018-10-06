@@ -16,7 +16,7 @@
 #include "AreaData.h"
 
 
-std::vector;
+using std::vector;
 
 
 namespace Orza { namespace Steel { namespace Instrument {
@@ -26,6 +26,7 @@ class PedalArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatche
 	public:
 
 		PedalArea( AreaData * );
+		~PedalArea() {};
 
 
 
