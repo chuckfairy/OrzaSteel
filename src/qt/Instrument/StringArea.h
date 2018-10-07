@@ -11,6 +11,8 @@
 
 #include <Widget/BaseWidget.h>
 
+#include "AreaData.h"
+
 
 namespace Orza { namespace Steel { namespace Instrument {
 
@@ -35,7 +37,7 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 
 		static const char * STYLE_SHEET_TEMPLATE;
 
-		StringArea( const char * color );
+		StringArea( AreaData * data );
 		~StringArea() {};
 
 
@@ -62,6 +64,8 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 		/**
 		 * Props
 		 */
+
+		AreaData * _data;
 
 		const char * _color;
 

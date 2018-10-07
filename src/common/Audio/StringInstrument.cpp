@@ -151,11 +151,11 @@ float_t StringInstrument::getPitch( uint8_t num, uint8_t position ) {
 	//@TODO check
 	//throw runtime_error( "0-100 only" )
 
-	float_t starting = _strings[ num ];
-
 	float_t modifier = getPedalModifier( num );
 
-	return (float_t)( starting + ( starting * ( (float_t)position / (float_t)100 ) ) + modifier );
+	float_t starting = _strings[ num ] + modifier;
+
+	return (float_t)( starting + ( starting * ( (float_t)position / (float_t)100 ) ) );
 
 };
 
@@ -175,13 +175,13 @@ float_t StringInstrument::getPedalModifier( uint8_t stringNum ) {
 
 		Pedal * pedal = _pedals[ i ];
 
-		int pedalStrings = pedal->strings.size();
-
 		if( ! pedal->on ) {
 			continue;
 		}
 
-		for( int t = 0; i < pedalStrings; ++ t ) {
+		int pedalStrings = pedal->strings.size();
+
+		for( int t = 0; t < pedalStrings; ++ t ) {
 
 			uint8_t pedalString = pedal->strings[ t ];
 

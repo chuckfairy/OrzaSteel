@@ -4,6 +4,7 @@
 #include "StringArea.h"
 
 #include <QStyleOption>
+#include <QLabel>
 
 #include <iostream>
 
@@ -32,8 +33,8 @@ const char * StringArea::STYLE_SHEET_TEMPLATE = "\
  * Construct
  */
 
-StringArea::StringArea( const char * color ) :
-	_color( color )
+StringArea::StringArea( AreaData * data ) :
+	_data( data )
 {
 
 	QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Preferred);
@@ -46,6 +47,12 @@ StringArea::StringArea( const char * color ) :
 
 	setActive( false );
 
+	QLabel * label = new QLabel;
+	label->setText( data->label );
+	label->setParent( this );
+	label->setStyleSheet("color: #000; border: none;");
+	label->move( 10, 10 );
+
 	show();
 
 };
@@ -55,7 +62,7 @@ void StringArea::setActive( bool flag ) {
 
 	const char * color = ( flag )
 		? "000000"
-		: _color;
+		: _data->color;
 
 	char * css = formatStyleSheet( color );
 

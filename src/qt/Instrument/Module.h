@@ -113,7 +113,13 @@ class Module : public BaseModule {
 		NullWave * _nullWave;
 
 
+		/**
+		 * Internals
+		 */
+
 		map<uint8_t, float_t> getHandMap( vector<uint8_t> * bridged );
+
+		void processPedals( char keyPressed, bool active );
 
 
 };

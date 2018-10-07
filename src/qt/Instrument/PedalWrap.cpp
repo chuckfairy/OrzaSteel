@@ -19,6 +19,12 @@ PedalWrap::PedalWrap() {
 	setupLayout();
 	setMouseTracking( true );
 
+	setStyleSheet(
+		"\
+		background: transparent;\
+		"
+	);
+
 };
 
 
@@ -44,7 +50,20 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
 		_layout->addWidget( area );
 
+		_pedals.push_back( area );
+
 	}
+
+};
+
+
+/**
+ * Pedal active usage
+ */
+
+void PedalWrap::setPedalActive( uint8_t index, bool active ) {
+
+	_pedals[ index ]->setActive( active );
 
 };
 

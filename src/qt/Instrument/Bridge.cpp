@@ -3,11 +3,13 @@
  */
 #include <iostream>
 
+#include <Util/Numbers.h>
 #include <Util/Vector.h>
 
 #include <Color/Color.h>
 
 #include "Bridge.h"
+#include "AreaData.h"
 
 #include "Events/StringDownEvent.h"
 #include "Events/StringUpEvent.h"
@@ -144,9 +146,12 @@ void Bridge::handleStringUp( StringArea * area ) {
 
 StringArea * Bridge::createStringArea( uint8_t index ) {
 
-	const char * color = STEPS_6[ index ];
+	AreaData * data = new AreaData;
 
-	StringArea * area = new StringArea( color );
+	data->color = STEPS_6[ index ];
+	data->label = Orza::Numbers::ROMAN_13[ index ];
+
+	StringArea * area = new StringArea( data );
 
 	area->on( StringArea::EVENT_DOWN, _downEvent );
 	area->on( StringArea::EVENT_UP, _upEvent );

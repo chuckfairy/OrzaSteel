@@ -10,9 +10,9 @@ static const char * STEPS_6[6] = {
 	"FF0000",
 	"FA7500",
 	"D4FF00",
-	"A2FF11",
-	"00FAFA",
-	"8E00FA",
+	"00FA53",
+	"0303FA",
+	"470066",
 };
 
 static const char * STEPS_12[12] = {

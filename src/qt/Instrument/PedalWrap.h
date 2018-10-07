@@ -42,6 +42,8 @@ class PedalWrap : public Orza::Steel::Widget::BaseWidget {
 
 		void createDisplay( vector<Pedal*> );
 
+		void setPedalActive( uint8_t index, bool active );
+
 
 	private:
 

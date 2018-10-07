@@ -8,6 +8,7 @@
 #include <QtGui>
 #include <QtCore>
 #include <QWidget>
+#include <QLabel>
 
 #include <Util/Dispatcher.h>
 
@@ -25,15 +26,24 @@ class PedalArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatche
 
 	public:
 
+		static const char * TEMPLATE;
+
 		PedalArea( AreaData * );
 		~PedalArea() {};
+
+
+		/**
+		 * Active setting
+		 */
+
+		void setActive( bool );
 
 
 	private:
 
 		AreaData * _data;
 
-
+		QLabel * _label;
 
 };
 

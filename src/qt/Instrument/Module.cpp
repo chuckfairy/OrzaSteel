@@ -55,7 +55,7 @@ Module::Module( Window * win ) :
 
 	//Pedal wrap setup
 	_pedalWrap->setParent( _neck );
-	_pedalWrap->setGeometry( 50, _neck->height(), 400, 50 );
+	_pedalWrap->setGeometry( 50, _neck->height() + 100, 250, 25 );
 	_pedalWrap->raise();
 
 	Pedal * pedal = new Pedal;
@@ -64,9 +64,12 @@ Module::Module( Window * win ) :
 	pedal->steps = 1;
 	pedal->key = 'm';
 
-	vector<Pedal*> pedals = { pedal };
+	vector<Pedal*> * pedals = new vector<Pedal*>;
+	pedals->push_back( pedal );
 
-	setPedals( &pedals );
+	_instrument->addPedals( *pedals );
+
+	setPedals( pedals );
 
 };
 
@@ -192,7 +195,9 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 			unsigned char charer;
 			defaultValue >> charer;
 
-			std::cout << charer << "\n";
+			bool active = ( event->type() == QEvent::KeyPress );
+
+			processPedals( charer, active );
 			break;
 		}
 	}
@@ -222,6 +227,27 @@ void Module::setPedals( vector<Pedal*> * pedals ) {
 	_pedals = pedals;
 
 	_pedalWrap->createDisplay( *pedals );
+
+};
+
+void Module::processPedals( char keyPressed, bool active ) {
+
+	int size = _pedals->size();
+
+	for( int i = 0; i < size; ++ i ) {
+
+		Pedal * pedal = (*_pedals)[ i ];
+
+		std::cout << keyPressed << " : " << pedal->key << "\n";
+
+		if( pedal->key != keyPressed ) {
+			continue;
+		}
+
+		pedal->on = active;
+		_pedalWrap->setPedalActive( i, active );
+
+	}
 
 };
 
