@@ -13,6 +13,8 @@
 #include <Audio/StringInstrument.h>
 #include <Audio/InstrumentOutput.h>
 
+#include <Audio/Pedal.h>
+
 #include <Module/BaseModule.h>
 
 #include <Audio/Wave/BaseWave.h>
@@ -23,6 +25,8 @@
 
 #include "Bridge.h"
 #include "Neck.h"
+#include "PedalWrap.h"
+#include "PedalWrap.h"
 
 
 using std::map;
@@ -32,6 +36,7 @@ using Orza::Steel::BaseModule;
 using Orza::Steel::Window;
 using Orza::Steel::Audio::StringInstrument;
 using Orza::Steel::Audio::InstrumentOutput;
+using Orza::Steel::Audio::Pedal;
 
 using Orza::Steel::Audio::Wave::BaseWave;
 using Orza::Steel::Audio::Wave::NullWave;
@@ -72,7 +77,7 @@ class Module : public BaseModule {
 		 * Pedal stuff
 		 */
 
-		void setPedals();
+		void setPedals( vector<Pedal*> * );
 
 
 	private:
@@ -84,6 +89,10 @@ class Module : public BaseModule {
 		Bridge * _bridge;
 
 		Neck * _neck;
+
+		PedalWrap * _pedalWrap;
+
+		vector<Pedal*> * _pedals;
 
 
 		/**

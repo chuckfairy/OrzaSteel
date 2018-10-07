@@ -17,6 +17,7 @@ namespace Orza { namespace Steel { namespace Instrument {
 PedalWrap::PedalWrap() {
 
 	setupLayout();
+	setMouseTracking( true );
 
 };
 
@@ -39,6 +40,7 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 		data->label = pedal->label;
 
 		PedalArea * area = new PedalArea( data );
+		area->setMouseTracking( true );
 
 		_layout->addWidget( area );
 

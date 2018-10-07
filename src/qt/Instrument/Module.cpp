@@ -40,6 +40,7 @@ Module::Module( Window * win ) :
 	BaseModule( win ),
 	_bridge( new Bridge ),
 	_neck( new Neck ),
+	_pedalWrap( new PedalWrap ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
 	_wave( new SquareWave ),
@@ -51,6 +52,21 @@ Module::Module( Window * win ) :
 	_window->getUI()->bridge->addWidget( _bridge );
 
 	_window->getUI()->neck->addWidget( _neck );
+
+	//Pedal wrap setup
+	_pedalWrap->setParent( _neck );
+	_pedalWrap->setGeometry( 50, _neck->height(), 400, 50 );
+	_pedalWrap->raise();
+
+	Pedal * pedal = new Pedal;
+	pedal->label = "1st half setup";
+	pedal->strings = { 0 };
+	pedal->steps = 1;
+	pedal->key = 'm';
+
+	vector<Pedal*> pedals = { pedal };
+
+	setPedals( &pedals );
 
 };
 
@@ -152,7 +168,7 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 		case Qt::Key_3:
 		case Qt::Key_4:
 		case Qt::Key_5:
-		case Qt::Key_6:
+		case Qt::Key_6: {
 			stringstream strValue;
 			strValue << event->text().toUtf8().data();
 
@@ -167,6 +183,18 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 				?  _bridge->setStringDown( index )
 				: _bridge->setStringUp( index );
 			break;
+		}
+
+		default: {
+			stringstream defaultValue;
+			defaultValue << event->text().toUtf8().data();
+
+			unsigned char charer;
+			defaultValue >> charer;
+
+			std::cout << charer << "\n";
+			break;
+		}
 	}
 
 };
@@ -181,6 +209,19 @@ void Module::setStrings( vector<float_t> freqs ) {
 	_instrument->setStrings( freqs );
 
 	_bridge->setNumStrings( _instrument->getNumStrings() );
+
+};
+
+
+/**
+ * Pedal stuff
+ */
+
+void Module::setPedals( vector<Pedal*> * pedals ) {
+
+	_pedals = pedals;
+
+	_pedalWrap->createDisplay( *pedals );
 
 };
 

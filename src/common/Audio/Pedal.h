@@ -22,6 +22,8 @@ struct Pedal {
 
 	bool on = false;
 
+	char key; //impl specific
+
 };
 
 } } }
