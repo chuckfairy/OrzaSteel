@@ -20,6 +20,13 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 	public:
 
 		/**
+		 * Template css
+		 */
+
+		static const char * TEMPLATE;
+
+
+		/**
 		 * Style sheet static for CSS
 		 */
 
@@ -29,6 +36,9 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 
 		Tonebar() {};
 		~Tonebar() {};
+
+
+		void setImage( const char * );
 
 
 	protected:

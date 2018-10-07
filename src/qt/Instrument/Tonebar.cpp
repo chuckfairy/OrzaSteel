@@ -7,6 +7,11 @@
 namespace Orza { namespace Steel { namespace Instrument {
 
 
+const char * Tonebar::TEMPLATE = "\
+	border-image:url(\"%s\")  0 0 0 0 stretch stretch;\
+	background: transparent;\
+";
+
 /**
  * Constructor
  */
@@ -30,6 +35,15 @@ Tonebar::Tonebar( QWidget * parent ) :
 	raise();
 
 	show();
+
+};
+
+
+/**
+ * Set image
+ */
+
+void Tonebar::setImage( const char * img ) {
 
 };
 

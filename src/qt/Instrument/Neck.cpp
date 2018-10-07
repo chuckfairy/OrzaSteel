@@ -57,6 +57,7 @@ vector<float_t> Neck::getPositions() {
 
 };
 
+
 /**
  * Helper UI for display frets more or less
  */
