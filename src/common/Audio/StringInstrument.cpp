@@ -1,6 +1,8 @@
 /**
  * String instrument frequency instrument
  */
+#include <iostream>
+
 #include <Util/Vector.h>
 
 #include "StringInstrument.h"
@@ -185,13 +187,15 @@ float_t StringInstrument::getPedalModifier( uint8_t stringNum ) {
 
 			uint8_t pedalString = pedal->strings[ t ];
 
-			if( pedalString > ( _strings.size() - 1 ) ) {
+			if( pedalString != stringNum ) {
 				continue;
 			}
 
 			float_t stringFreq = _strings[ pedalString ];
 
-			float_t pedalFreq = stringFreq * pow( 2.0, pedal->steps / 12 );
+			float_t percent = pow( 2.0, (float)pedal->steps / 12.0 ) - 1;
+
+			float_t pedalFreq = stringFreq * percent;
 
 			freq += pedalFreq;
 

@@ -117,6 +117,8 @@ class Module : public BaseModule {
 		 * Internals
 		 */
 
+		bool HAS_CHANGE = false;
+
 		map<uint8_t, float_t> getHandMap( vector<uint8_t> * bridged );
 
 		void processPedals( char keyPressed, bool active );

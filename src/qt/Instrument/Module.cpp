@@ -58,14 +58,17 @@ Module::Module( Window * win ) :
 	_pedalWrap->setGeometry( 50, _neck->height() + 100, 250, 25 );
 	_pedalWrap->raise();
 
-	Pedal * pedal = new Pedal;
-	pedal->label = "1st half setup";
-	pedal->strings = { 0 };
-	pedal->steps = 1;
-	pedal->key = 'm';
+	//Pedal creation
+	Pedal * pedal = new Pedal( "1 half setup(z)", {0}, 1, 'z' );
+	Pedal * pedal2 = new Pedal( "2 half setup(x)", {1}, 1, 'x' );
+	Pedal * pedal3 = new Pedal( "3 half setup(c)", {2}, 1, 'c' );
+	Pedal * pedal4 = new Pedal( "3 half setup(v)", {3}, 1, 'v' );
 
 	vector<Pedal*> * pedals = new vector<Pedal*>;
 	pedals->push_back( pedal );
+	pedals->push_back( pedal2 );
+	pedals->push_back( pedal3 );
+	pedals->push_back( pedal4 );
 
 	_instrument->addPedals( *pedals );
 
@@ -91,7 +94,7 @@ void Module::process( jack_nframes_t nframes ) {
 
 	//Check wave changes
 
-	if( _bridge->hasChange() || _neck->hasChange() ) {
+	if( _bridge->hasChange() || _neck->hasChange() || HAS_CHANGE ) {
 
 		//Wave setup
 
@@ -102,6 +105,7 @@ void Module::process( jack_nframes_t nframes ) {
 
 		_bridge->setChanged();
 		_neck->setChanged();
+		HAS_CHANGE = false;
 
 	}
 
@@ -198,6 +202,8 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 			bool active = ( event->type() == QEvent::KeyPress );
 
 			processPedals( charer, active );
+
+			HAS_CHANGE = true;
 			break;
 		}
 	}
