@@ -29,7 +29,6 @@ class PedalArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatche
 		~PedalArea() {};
 
 
-
 	private:
 
 		AreaData * _data;
