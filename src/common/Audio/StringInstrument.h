@@ -32,9 +32,18 @@ class StringInstrument {
 
 		static vector<float_t> TYPE_COUNTRY_NECK_L;
 
+		static vector<float_t> NECK_STEEL_STANDARD_10;
+
 		static vector<float_t> TYPE_GUITAR_STANDARD;
 
 		static vector<float_t> TYPE_GUITAR_DROP_D;
+
+
+		/**
+		 * Pedal types
+		 */
+
+		static vector<Pedal*> PEDAL_STANDARD_10;
 
 
 		/**

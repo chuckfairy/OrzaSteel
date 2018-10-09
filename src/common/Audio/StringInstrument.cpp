@@ -30,7 +30,51 @@ vector<float_t> StringInstrument::TYPE_COUNTRY_NECK = {
 	329.63
 };
 
+vector<float_t> StringInstrument::NECK_STEEL_STANDARD_10 = {
+	123.47, //B2
+	146.83, //D3
+	164.81, //E3
+	185.00, //F#3
+	207.65, //G#3
+	246.94, //B3
+	329.63, //E4
+	415.30, //G#4
+	554.37, //D#5
+	739.99 //F#5
+};
+
 //vector<float_t> TYPE_GUITAR_STANDARD;
+
+
+/**
+ * Pedals
+ *
+ * http://steelguitaramerica.com/instruction/tuning/copedentexplained.shtml
+ *
+ * Names of Pedals and Levers:
+ * A - Raises strings 5 and 10 two semitones
+ * B - Raises strings 3 and 6 one semitone
+ * C - Raises strings 4 and 5 two semitones
+ * X - Lowers strings 3 and 6 one semitone
+ * LL- Raises strings 4 and 8 one semitone
+ * LV - Lowers strings 5 and 10 one semitone
+ * LR - Lowers strings 4 and 8 one semitone
+ * RL - Raises strings 1 and 7 one semitone
+ * RR - Lowers strings 2 two semitones and string 9 one semitone
+ */
+
+vector<Pedal*> StringInstrument::PEDAL_STANDARD_10 = {
+	new Pedal( "X pedal", { 3, 4 }, -1, 'x' ),
+	new Pedal( "A pedal", { 4, 9 }, 2, 'a' ),
+	new Pedal( "B pedal", { 2, 5 }, 1, 'b' ),
+	new Pedal( "C pedal", { 3, 4 }, 2, 'c' ),
+	new Pedal( "LL knee(l)", { 3, 7 }, 1, 'l' ),
+	new Pedal( "LV knee(k)", { 4, 9 }, 1, 'k' ),
+	new Pedal( "LR knee(j)", { 3, 7 }, 1, 'j' ),
+	new Pedal( "RL knee(t)", { 0, 6 }, 1, 't' ),
+	new Pedal( "RR knee(r)", { 1 }, 2, 'r' ),
+	new Pedal( "RR knee 2", { 8 }, 1, 'r' ),
+};
 
 
 /**

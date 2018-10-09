@@ -47,7 +47,7 @@ Module::Module( Window * win ) :
 	_nullWave( new NullWave )
 {
 
-	setStrings( StringInstrument::TYPE_COUNTRY_NECK );
+	setStrings( StringInstrument::NECK_STEEL_STANDARD_10 );
 
 	_window->getUI()->bridge->addWidget( _bridge );
 
@@ -55,22 +55,13 @@ Module::Module( Window * win ) :
 
 	//Pedal wrap setup
 	_pedalWrap->setParent( _neck );
-	_pedalWrap->setGeometry( 50, _neck->height() + 100, 250, 25 );
+	_pedalWrap->setGeometry( 50, _neck->height() + 130, 500, 25 );
 	_pedalWrap->raise();
 
-	//Pedal creation
-	Pedal * pedal = new Pedal( "1 half setup(z)", {0}, 1, 'z' );
-	Pedal * pedal2 = new Pedal( "2 half setup(x)", {1}, 1, 'x' );
-	Pedal * pedal3 = new Pedal( "3 half setup(c)", {2}, 1, 'c' );
-	Pedal * pedal4 = new Pedal( "3 half setup(v)", {3}, 1, 'v' );
+	//Pedal setting from standard
+	vector<Pedal*> * pedals = &StringInstrument::PEDAL_STANDARD_10;
 
-	vector<Pedal*> * pedals = new vector<Pedal*>;
-	pedals->push_back( pedal );
-	pedals->push_back( pedal2 );
-	pedals->push_back( pedal3 );
-	pedals->push_back( pedal4 );
-
-	_instrument->addPedals( *pedals );
+	_instrument->addPedals( StringInstrument::PEDAL_STANDARD_10 );
 
 	setPedals( pedals );
 
@@ -170,21 +161,20 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 
 	//@TODO configs
 	switch( event->key() ) {
-		case Qt::Key_1:
-		case Qt::Key_2:
-		case Qt::Key_3:
-		case Qt::Key_4:
-		case Qt::Key_5:
-		case Qt::Key_6: {
+		case Qt::Key_0: case Qt::Key_1: case Qt::Key_2:
+		case Qt::Key_3: case Qt::Key_4: case Qt::Key_5:
+		case Qt::Key_6: case Qt::Key_7: case Qt::Key_8:
+		case Qt::Key_9:
+		{
 			stringstream strValue;
 			strValue << event->text().toUtf8().data();
 
-			unsigned int index;
+			int index;
 			strValue >> index;
 
 			index -= 1;
 
-			if( index == -1 ) { index = 10; }
+			if( index == -1 ) { index = 9; }
 
 			( event->type() == QEvent::KeyPress )
 				?  _bridge->setStringDown( index )
@@ -243,8 +233,6 @@ void Module::processPedals( char keyPressed, bool active ) {
 	for( int i = 0; i < size; ++ i ) {
 
 		Pedal * pedal = (*_pedals)[ i ];
-
-		std::cout << keyPressed << " : " << pedal->key << "\n";
 
 		if( pedal->key != keyPressed ) {
 			continue;
