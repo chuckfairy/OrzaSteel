@@ -61,13 +61,16 @@ vector<float_t> StringInstrument::NECK_STEEL_STANDARD_10 = {
  * LR - Lowers strings 4 and 8 one semitone
  * RL - Raises strings 1 and 7 one semitone
  * RR - Lowers strings 2 two semitones and string 9 one semitone
+ *
+ * 10 is this highest in this chart
+ * 0 would actually line up with 10 here
  */
 
 vector<Pedal*> StringInstrument::PEDAL_STANDARD_10 = {
 	new Pedal( "X pedal", { 3, 4 }, -1, 'x' ),
-	new Pedal( "A pedal", { 4, 9 }, 2, 'a' ),
-	new Pedal( "B pedal", { 2, 5 }, 1, 'b' ),
-	new Pedal( "C pedal", { 3, 4 }, 2, 'c' ),
+	new Pedal( "A pedal", { 5, 0 }, 2, 'a' ),
+	new Pedal( "B pedal", { 7, 4 }, 1, 'b' ),
+	new Pedal( "C pedal", { 5, 6 }, 2, 'c' ),
 	new Pedal( "LL knee(l)", { 3, 7 }, 1, 'l' ),
 	new Pedal( "LV knee(k)", { 4, 9 }, 1, 'k' ),
 	new Pedal( "LR knee(j)", { 3, 7 }, 1, 'j' ),
