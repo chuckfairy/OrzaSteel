@@ -202,6 +202,18 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 
 
 /**
+ * Resize handler
+ */
+
+void Module::handleResize( QResizeEvent * event ) {
+
+	std::cout << _neck->width() << "\n";
+
+};
+
+
+
+/**
  * Set strings func for setting
  */
 

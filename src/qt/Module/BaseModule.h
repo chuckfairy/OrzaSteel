@@ -31,7 +31,9 @@ class BaseModule {
 
 		virtual void process( jack_nframes_t nframe ) {};
 
-        virtual void handleKeyEvent( QKeyEvent * event ) {};
+		virtual void handleKeyEvent( QKeyEvent * event ) {};
+
+		virtual void handleResize( QResizeEvent * event ) {};
 
 
 	protected:

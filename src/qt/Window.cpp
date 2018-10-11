@@ -47,7 +47,7 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 	Icons::setResource( app );
 
-    Orza::PluginSearch::LoadedPlugins::load();
+	Orza::PluginSearch::LoadedPlugins::load();
 
 
 
@@ -82,7 +82,7 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	addModule( mod );
 
 
-    _Settings = new Settings::Layout( _Server );
+	_Settings = new Settings::Layout( _Server );
 
 
 	Util::Event * e = new JackProcess<Window>( this );
@@ -95,30 +95,30 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	_Server->run();
 
 
-    //Sizing
+	//Sizing
 
-    _Settings->setParent( UI.centralWidget );
-    _Settings->setGeometry( 0, 0, width(), height() );
-    _Settings->move(0, 0);
-    _Settings->raise();
-    _Settings->hide();
+	_Settings->setParent( UI.centralWidget );
+	_Settings->setGeometry( 0, 0, width(), height() );
+	_Settings->move(0, 0);
+	_Settings->raise();
+	_Settings->hide();
 
 
-    //Events
+	//Events
 
-    connect(
-        UI.settings_btn,
-        SIGNAL( clicked() ),
-        this,
-        SLOT( toggleSettings() )
-    );
+	connect(
+		UI.settings_btn,
+		SIGNAL( clicked() ),
+		this,
+		SLOT( toggleSettings() )
+	);
 
-    connect(
-        UI.effects_btn,
-        SIGNAL( clicked() ),
-        this,
-        SLOT( toggleSettings() )
-    );
+	connect(
+		UI.effects_btn,
+		SIGNAL( clicked() ),
+		this,
+		SLOT( toggleSettings() )
+	);
 
 };
 
@@ -144,9 +144,9 @@ void Window::process( jack_nframes_t nframes ) {
 
 void Window::toggleSettings() {
 
-    ( _Settings->isVisible() )
-        ? _Settings->hide()
-        : _Settings->show();
+	( _Settings->isVisible() )
+		? _Settings->hide()
+		: _Settings->show();
 
 };
 
@@ -188,6 +188,21 @@ void Window::keyPressEvent( QKeyEvent * event ) {
 void Window::keyReleaseEvent( QKeyEvent * event ) {
 
 	keyPressEvent( event );
+
+};
+
+
+/**
+ * Resize handling
+ */
+
+void Window::resizeEvent( QResizeEvent * event ) {
+
+	for( int i = 0; i < _modules.size(); ++ i ) {
+
+		_modules[ i ]->handleResize( event );
+
+	}
 
 };
 

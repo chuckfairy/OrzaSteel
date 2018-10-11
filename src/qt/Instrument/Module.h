@@ -72,6 +72,8 @@ class Module : public BaseModule {
 
 		void handleKeyEvent( QKeyEvent * event );
 
+		void handleResize( QResizeEvent * event );
+
 
 		/**
 		 * Pedal stuff

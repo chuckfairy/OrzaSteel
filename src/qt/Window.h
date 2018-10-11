@@ -84,25 +84,26 @@ class Window : public QMainWindow {
 		void addModule( BaseModule * );
 
 
-    protected slots:
+	protected slots:
 
-        /**
-         * settings
-         */
+		/**
+		 * settings
+		 */
 
-        void toggleSettings();
+		void toggleSettings();
 
 
-    protected:
+	protected:
 
-        /**
-         * Override send to all mods
-         */
+		/**
+		 * Override send to all mods
+		 */
 
-        void keyPressEvent( QKeyEvent * event );
+		void keyPressEvent( QKeyEvent * event );
 
-        void keyReleaseEvent( QKeyEvent * event );
+		void keyReleaseEvent( QKeyEvent * event );
 
+		void resizeEvent( QResizeEvent *event );
 
 	private:
 
@@ -125,7 +126,7 @@ class Window : public QMainWindow {
 
 		vector<BaseModule*> _modules;
 
-        Settings::Layout * _Settings;
+		Settings::Layout * _Settings;
 
 
 };
