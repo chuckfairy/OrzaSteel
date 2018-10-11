@@ -43,7 +43,7 @@ Module::Module( Window * win ) :
 	_pedalWrap( new PedalWrap ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
-	_wave( new TriangleWave ),
+	_wave( new SquareWave ),
 	_nullWave( new NullWave )
 {
 

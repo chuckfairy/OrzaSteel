@@ -148,7 +148,7 @@ StringArea * Bridge::createStringArea( uint8_t index ) {
 
 	AreaData * data = new AreaData;
 
-	data->color = STEPS_6[ index ];
+	data->color = STEPS_13[ index ];
 	data->label = Orza::Numbers::ROMAN_13[ index ];
 
 	StringArea * area = new StringArea( data );

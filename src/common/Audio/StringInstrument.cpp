@@ -240,11 +240,15 @@ float_t StringInstrument::getPedalModifier( uint8_t stringNum ) {
 
 			float_t stringFreq = _strings[ pedalString ];
 
-			float_t percent = pow( 2.0, (float)pedal->steps / 12.0 ) - 1;
+			float stepsAbs = abs( pedal->steps );
+
+			float_t percent = pow( 2.0, stepsAbs / 12.0 ) - 1;
 
 			float_t pedalFreq = stringFreq * percent;
 
-			freq += pedalFreq;
+			freq += ( pedal->steps > 0 )
+				? pedalFreq
+				: -pedalFreq;
 
 		}
 

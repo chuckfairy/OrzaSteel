@@ -18,7 +18,7 @@ struct Pedal {
 
 	vector<uint8_t> strings;
 
-	uint8_t steps = 0;
+	int8_t steps = 0;
 
 	bool on = false;
 

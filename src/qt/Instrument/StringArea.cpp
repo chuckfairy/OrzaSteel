@@ -50,8 +50,12 @@ StringArea::StringArea( AreaData * data ) :
 	QLabel * label = new QLabel;
 	label->setText( data->label );
 	label->setParent( this );
-	label->setStyleSheet("color: #000; border: none;");
-	label->move( 10, 10 );
+	label->setStyleSheet("\
+		color: #000;\
+		border: none;\
+		background: transparent;\
+	");
+	label->move( 5, 5);
 
 	show();
 
@@ -71,6 +75,7 @@ void StringArea::setActive( bool flag ) {
 	setStyleSheet( css );
 
 };
+
 
 /**
  * Mouse event then push up
