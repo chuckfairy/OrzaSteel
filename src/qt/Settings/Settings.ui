@@ -19,6 +19,13 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Settings</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -45,10 +52,52 @@
        <property name="currentIndex">
         <number>1</number>
        </property>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>Strings</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="tab_strings_layout"/>
+         </item>
+        </layout>
+       </widget>
        <widget class="QWidget" name="tab">
         <attribute name="title">
          <string>Pedals</string>
         </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="tab_pedals_layout"/>
+         </item>
+        </layout>
        </widget>
        <widget class="QWidget" name="tab_effects">
         <attribute name="title">
@@ -71,13 +120,17 @@
           <number>0</number>
          </property>
          <item>
-          <layout class="QVBoxLayout" name="tab_effects_layout"/>
+          <layout class="QVBoxLayout" name="tab_effects_layout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+          </layout>
          </item>
         </layout>
        </widget>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">
-         <string>Settings</string>
+         <string>Advanced</string>
         </attribute>
        </widget>
       </widget>

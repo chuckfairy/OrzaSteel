@@ -15,6 +15,8 @@ find_package(Qt5Qml REQUIRED)
 file(GLOB orzasteel.qt_UIS
     Window.ui
     Settings/Settings.ui
+	Settings/PedalEditor.ui
+	Settings/StringEditor.ui
 )
 
 

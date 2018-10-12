@@ -1,16 +1,15 @@
 /**
- * string editor
+ * Pedal editor
  */
-#include "StringEditor.h"
+#include "PedalEditor.h"
 
 
 namespace Orza { namespace Steel { namespace Settings {
 
-StringEditor::StringEditor() {
+PedalEditor::PedalEditor() {
 
 	_UI.setupUi( this );
 
 };
 
 } } }
-

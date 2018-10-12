@@ -11,6 +11,9 @@
 
 #include <ui_Settings.h>
 
+#include "PedalEditor.h"
+#include "StringEditor.h"
+
 
 using Jack::Server;
 
@@ -20,17 +23,31 @@ namespace Orza { namespace Steel { namespace Settings {
 
 class Layout : public Orza::Steel::Widget::BaseWidget {
 
-    public:
+	public:
 
-        Layout( Server * );
+		Layout( Server * );
 
-    private:
+	private:
 
-        Ui_Settings _UI;
+		/**
+		 * Props
+		 */
 
-        Orza::Widget::Patchbay * _Patchbay;
+		Ui_Settings _UI;
 
-        Server * _Server;
+		Server * _Server;
+
+
+		/**
+		 * Tabs
+		 */
+
+		Orza::Widget::Patchbay * _Patchbay;
+
+		PedalEditor * _PedalEditor;
+
+		StringEditor * _StringEditor;
+
 
 };
 
