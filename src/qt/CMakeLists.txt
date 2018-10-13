@@ -16,7 +16,9 @@ file(GLOB orzasteel.qt_UIS
     Window.ui
     Settings/Settings.ui
 	Settings/PedalEditor.ui
+    Settings/PedalEditArea.ui
 	Settings/StringEditor.ui
+    Settings/StringEditArea.ui
 )
 
 
@@ -42,6 +44,7 @@ include_directories(
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/src"
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/lib-src"
 
+	"${CMAKE_CURRENT_BINARY_DIR}/../../lib-src/liborza/src"
 	"${CMAKE_CURRENT_BINARY_DIR}/../../lib-src/liborza-qt/src"
 
 	${Boost_INCLUDE_DIR}
@@ -72,6 +75,7 @@ file( GLOB orzasteel.qt_moc_files
 	Widget/BackgroundImage.h
 	Instrument/StringArea.h
 	Instrument/Bridge.h
+    Settings/StringEditor.h
 )
 
 

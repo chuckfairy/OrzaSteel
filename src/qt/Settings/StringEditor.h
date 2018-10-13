@@ -3,6 +3,8 @@
  */
 #pragma once
 
+#include <vector>
+
 #include <QtGui>
 #include <QtCore>
 #include <QWidget>
@@ -13,10 +15,17 @@
 
 #include <ui_StringEditor.h>
 
+#include "StringEditArea.h"
+
+
+using std::vector;
+
 
 namespace Orza { namespace Steel { namespace Settings {
 
 class StringEditor : public Orza::Steel::Widget::BaseWidget {
+
+    Q_OBJECT;
 
 	public:
 
@@ -24,9 +33,22 @@ class StringEditor : public Orza::Steel::Widget::BaseWidget {
 		~StringEditor() {};
 
 
+    public slots:
+
+        /**
+         * Events
+         */
+
+        void handleAddClick();
+
+
 	private:
 
 		Ui_StringEditor _UI;
+
+        vector<StringEditArea*> _areas;
+
+        void handleClick();
 
 
 };
