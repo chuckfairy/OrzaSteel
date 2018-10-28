@@ -44,6 +44,7 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	UI.setupUi( this );
 
 	setWindowTitle( "OrzaSteel" );
+    setAttribute( Qt::WA_AcceptTouchEvents, true );
 
 
 	//Icons setup

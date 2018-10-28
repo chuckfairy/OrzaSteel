@@ -39,6 +39,7 @@ Neck::Neck() {
 		//"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
 	//);
 
+    setAttribute( Qt::WA_AcceptTouchEvents, true );
 	setMouseTracking(true);
 	_Bar->setMouseTracking(true);
 

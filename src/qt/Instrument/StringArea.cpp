@@ -42,6 +42,7 @@ StringArea::StringArea( AreaData * data ) :
 	sizePolicy2.setVerticalStretch( 0 );
 	sizePolicy2.setHeightForWidth( sizePolicy().hasHeightForWidth() );
 
+    setAttribute( Qt::WA_AcceptTouchEvents, true );
 	setSizePolicy(sizePolicy2);
 	setMinimumSize(QSize(250, 0));
 
