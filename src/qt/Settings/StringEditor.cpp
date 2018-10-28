@@ -30,4 +30,24 @@ void StringEditor::handleAddClick() {
 
 };
 
+
+/**
+ * Build from
+ */
+
+void StringEditor::buildFrom( vector<float> strings ) {
+
+    for( int i = 0; i < strings.size(); ++ i ) {
+
+        StringEditArea * area = new StringEditArea();
+        _UI.strings_content->addWidget( area );
+
+        area->setStringNote( strings[ i ] );
+
+        _areas.push_back( area );
+
+    }
+
+};
+
 } } }

@@ -24,6 +24,15 @@ class StringEditArea : public Orza::Steel::Widget::BaseWidget {
 		~StringEditArea() {};
 
 
+        /**
+         * Values
+         */
+
+        int getStringNote();
+
+        void setStringNote( float );
+
+
 	private:
 
 		Ui_StringEditArea _UI;

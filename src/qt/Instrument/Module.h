@@ -82,6 +82,17 @@ class Module : public BaseModule {
 		void setPedals( vector<Pedal*> * );
 
 
+        /**
+         * Insrument
+         */
+
+        StringInstrument * getInstrument() {
+
+            return _instrument;
+
+        };
+
+
 	private:
 
 		/**

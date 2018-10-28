@@ -1,6 +1,8 @@
 /**
  * string editor
  */
+#include <Midi/Note.h>
+
 #include <Widget/MidiNoteDropdown.h>
 
 #include "StringEditArea.h"
@@ -16,5 +18,26 @@ StringEditArea::StringEditArea() {
 
 };
 
-} } }
 
+/**
+ * Value based
+ */
+
+int StringEditArea::getStringNote() {
+
+    return _UI.comboBox->currentIndex() + Orza::Midi::NOTE_MAX ;
+
+};
+
+void StringEditArea::setStringNote( float id ) {
+
+    char buffer[64];
+    int ret = snprintf(buffer, sizeof buffer, "%f", id);
+
+    _UI.note_input->setText( buffer );
+
+    //_UI.comboBox->setCurrentIndex( id - Orza::Midi::NOTE_MAX );
+
+}
+
+} } }

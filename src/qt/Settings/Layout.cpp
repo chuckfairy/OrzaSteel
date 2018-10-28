@@ -1,8 +1,15 @@
 /**
  * Layout
  */
+#include <Window.h>
+
+#include <Instrument/Module.h>
 
 #include "Layout.h"
+
+
+using Orza::Steel::Instrument::Module;
+
 
 namespace Orza { namespace Steel { namespace Settings {
 
@@ -10,9 +17,10 @@ namespace Orza { namespace Steel { namespace Settings {
  * Construct
  */
 
-Layout::Layout( Server * server ) :
-	_Server( server ),
-	_Patchbay( new Orza::Widget::Patchbay( server ) ),
+Layout::Layout( Window * win ) :
+    _win( win ),
+	_Server( win->getServer() ),
+	_Patchbay( new Orza::Widget::Patchbay( win->getServer() ) ),
 	_PedalEditor( new PedalEditor() ),
 	_StringEditor( new StringEditor() )
 {
@@ -34,6 +42,12 @@ Layout::Layout( Server * server ) :
 
 	_UI.tab_pedals_layout->addWidget( _PedalEditor );
 	_UI.tab_strings_layout->addWidget( _StringEditor );
+
+    Module * insta = (Module*) _win->getModules()[0];
+
+    _StringEditor->buildFrom( *(insta->getInstrument()->getStrings()) );
+
+    _PedalEditor->buildFrom( *(insta->getInstrument()->getPedals()) );
 
 };
 

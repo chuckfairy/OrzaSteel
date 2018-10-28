@@ -32,6 +32,8 @@ class StringEditor : public Orza::Steel::Widget::BaseWidget {
 		StringEditor();
 		~StringEditor() {};
 
+        void buildFrom( vector<float> );
+
 
     public slots:
 

@@ -76,6 +76,7 @@ file( GLOB orzasteel.qt_moc_files
 	Instrument/StringArea.h
 	Instrument/Bridge.h
     Settings/StringEditor.h
+    Settings/PedalEditor.h
 )
 
 

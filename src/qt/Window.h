@@ -13,8 +13,6 @@
 
 #include "ui_Window.h"
 
-#include "Settings/Layout.h"
-
 
 using std::vector;
 
@@ -26,6 +24,12 @@ namespace Orza { namespace Steel {
  */
 
 class BaseModule;
+
+namespace Settings {
+
+class Layout;
+
+}
 
 
 /**
@@ -78,10 +82,16 @@ class Window : public QMainWindow {
 
 
 		/**
-		 * add module
+		 * module funcs
 		 */
 
 		void addModule( BaseModule * );
+
+        vector<BaseModule*> getModules() {
+
+            return _modules;
+
+        };
 
 
 	protected slots:
@@ -104,6 +114,7 @@ class Window : public QMainWindow {
 		void keyReleaseEvent( QKeyEvent * event );
 
 		void resizeEvent( QResizeEvent *event );
+
 
 	private:
 

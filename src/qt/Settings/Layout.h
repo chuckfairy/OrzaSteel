@@ -18,14 +18,50 @@
 using Jack::Server;
 
 
+/**
+ * Forwarding
+ */
+
+namespace Orza { namespace Steel {
+
+class Window;
+
+} }
+
+
 namespace Orza { namespace Steel { namespace Settings {
 
+
+using Orza::Steel::Window;
+
+
+/**
+ * Main class
+ */
 
 class Layout : public Orza::Steel::Widget::BaseWidget {
 
 	public:
 
-		Layout( Server * );
+		Layout( Window * );
+
+
+        /**
+         * getters
+         */
+
+        PedalEditor * getPedalEditor() {
+
+            return _PedalEditor;
+
+        };
+
+        StringEditor * getStringEditor() {
+
+            return _StringEditor;
+
+        };
+
 
 	private:
 
@@ -34,6 +70,8 @@ class Layout : public Orza::Steel::Widget::BaseWidget {
 		 */
 
 		Ui_Settings _UI;
+
+		Window * _win;
 
 		Server * _Server;
 

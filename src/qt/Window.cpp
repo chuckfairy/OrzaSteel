@@ -18,6 +18,8 @@
 #include "Resource/Icons.h"
 #include "Instrument/Module.h"
 
+#include "Settings/Layout.h"
+
 
 using std::vector;
 
@@ -43,13 +45,12 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 	setWindowTitle( "OrzaSteel" );
 
+
 	//Icons setup
 
 	Icons::setResource( app );
 
 	Orza::PluginSearch::LoadedPlugins::load();
-
-
 
 
 	//Icon
@@ -82,7 +83,7 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 	addModule( mod );
 
 
-	_Settings = new Settings::Layout( _Server );
+	_Settings = new Settings::Layout( this );
 
 
 	Util::Event * e = new JackProcess<Window>( this );
