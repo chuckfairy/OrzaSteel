@@ -55,7 +55,7 @@ Module::Module( Window * win ) :
 
 	//Pedal wrap setup
 	_pedalWrap->setParent( _neck );
-	_pedalWrap->setGeometry( 50, _neck->height() + 130, 500, 25 );
+	_pedalWrap->setGeometry( 50, _neck->height() + 150, 500, 25 );
 	_pedalWrap->raise();
 
 	//Pedal setting from standard
@@ -206,6 +206,8 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
  */
 
 void Module::handleResize( QResizeEvent * event ) {
+
+    //_neck->handleResize();
 
 	std::cout << _neck->width() << "\n";
 

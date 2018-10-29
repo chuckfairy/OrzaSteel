@@ -12,6 +12,7 @@
 #include <QVBoxLayout>
 
 #include "Tonebar.h"
+#include "FretArea.h"
 
 
 using std::vector;
@@ -67,6 +68,8 @@ class Neck : public QWidget {
 
 		};
 
+        void handleResize();
+
 
 	protected:
 
@@ -75,6 +78,8 @@ class Neck : public QWidget {
 		 */
 
 		void mouseMoveEvent( QMouseEvent * event );
+
+		void resizeEvent( QResizeEvent *event );
 
 
 	private:
@@ -88,6 +93,8 @@ class Neck : public QWidget {
 		QVBoxLayout * _layout;
 
 		bool HAS_CHANGE = false;
+
+        vector<FretArea*> _areas;
 
 
 		/**
@@ -106,6 +113,8 @@ class Neck : public QWidget {
         void setupBridgeUIHelper();
 
         void setupBridgeUIHelperLog();
+
+        void clearArea();
 
 };
 

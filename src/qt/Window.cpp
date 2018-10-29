@@ -200,6 +200,8 @@ void Window::keyReleaseEvent( QKeyEvent * event ) {
 
 void Window::resizeEvent( QResizeEvent * event ) {
 
+    QMainWindow::resizeEvent(event);
+
 	for( int i = 0; i < _modules.size(); ++ i ) {
 
 		_modules[ i ]->handleResize( event );

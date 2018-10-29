@@ -6,8 +6,6 @@
 #include <Color/Color.h>
 #include <Util/Numbers.h>
 
-#include "FretArea.h"
-
 #include "Neck.h"
 #include "AreaData.h"
 
@@ -24,10 +22,9 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 Neck::Neck() {
 
-	//setupBridgeUIHelper();
-	setupBridgeUIHelperLog();
-
 	_Bar = new Tonebar( this );
+
+    handleResize();
 
 	_positions.push_back( 0.0 );
 
@@ -60,6 +57,27 @@ vector<float_t> Neck::getPositions() {
 
 
 /**
+ * Resize handler
+ */
+
+void Neck::handleResize() {
+
+	setupBridgeUIHelperLog();
+
+    _Bar->raise();
+
+};
+
+
+void Neck::resizeEvent( QResizeEvent *event ) {
+
+    handleResize();
+    QWidget::resizeEvent(event);
+
+};
+
+
+/**
  * Helper UI for display frets more or less
  */
 
@@ -84,7 +102,7 @@ void Neck::setupBridgeUIHelper() {
 
 		FretArea * area = new FretArea( data );
 		area->setParent( this );
-		area->setGeometry( 0, 0, semiWidth, 200 );
+		area->setGeometry( 0, 0, semiWidth, height() - 50 );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
 
@@ -101,11 +119,14 @@ void Neck::setupBridgeUIHelper() {
 
 void Neck::setupBridgeUIHelperLog() {
 
+    clearArea();
+
 	float semiTones = 12; //@TODO move further down line
 
 	float widthSoFar = 0.0;
-	float fullWidth = (float) width() + 100;
+	float fullWidth = (float) width();
 	float percent = 0.0;
+    float heightChild = height() - 50;
 
 	for( int i = 0; i < semiTones; ++ i ) {
 
@@ -128,10 +149,11 @@ void Neck::setupBridgeUIHelperLog() {
 
 		FretArea * area = new FretArea( data );
 		area->setParent( this );
-		area->setGeometry( 0, 0, semiWidth, height() * .5 );
+		area->setGeometry( 0, 0, semiWidth, heightChild );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
 		area->raise();
+        _areas.push_back( area );
 
 		widthSoFar += semiWidth;
 
@@ -155,6 +177,24 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 	HAS_CHANGE = true;
 
 	_Bar->move( event->x() - ( _Bar->width() / 2 ), 0 );
+
+};
+
+/**
+ * Clear old string area
+ */
+
+void Neck::clearArea() {
+
+    int al = _areas.size();
+    for( int i = 0; i < al; ++ i ) {
+
+        _areas[i]->setParent(0);
+        delete _areas[i];
+
+    }
+
+	_areas.clear();
 
 };
 
