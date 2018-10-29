@@ -1,6 +1,8 @@
 /**
  * String area clicking impl
  */
+#include <iostream>
+
 #include "StringArea.h"
 
 #include <QStyleOption>
@@ -75,6 +77,10 @@ void StringArea::setActive( bool flag ) {
 
 	setStyleSheet( css );
 
+	_isMouseDown = flag;
+
+	dispatch( flag ? EVENT_DOWN : EVENT_UP, (void*) this );
+
 };
 
 
@@ -84,17 +90,38 @@ void StringArea::setActive( bool flag ) {
 
 void StringArea::mousePressEvent( QMouseEvent * event ) {
 
-	_isMouseDown = true;
-
-	dispatch( EVENT_DOWN, (void*) this );
+    setActive( true );
 
 };
 
 void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
 
-	_isMouseDown = false;
+    setActive( false );
 
-	dispatch( EVENT_UP, (void*) this );
+};
+
+
+/**
+ * All event override
+ * mainly for touch
+ */
+
+bool StringArea::event( QEvent *event ) {
+
+    switch (event->type()) {
+        case QEvent::TouchBegin:
+            setActive( true );
+            break;
+
+        case QEvent::TouchEnd:
+            setActive( false );
+            break;
+
+        default:
+            return QWidget::event( event );
+    }
+
+    return true;
 
 };
 
