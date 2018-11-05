@@ -73,8 +73,6 @@ void StringArea::setActive( bool flag ) {
 
 	char * css = formatStyleSheet( color );
 
-	std::cout << css << "\n";
-
 	setStyleSheet( css );
 
 	_isMouseDown = flag;

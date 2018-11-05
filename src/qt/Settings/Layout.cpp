@@ -21,7 +21,7 @@ Layout::Layout( Window * win ) :
     _win( win ),
 	_Server( win->getServer() ),
 	_Patchbay( new Orza::Widget::Patchbay( win->getServer() ) ),
-	_PedalEditor( new PedalEditor() ),
+	_PedalEditor( new PedalEditor( win ) ),
 	_StringEditor( new StringEditor( win ) )
 {
 

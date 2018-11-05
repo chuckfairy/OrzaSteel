@@ -34,7 +34,7 @@ PedalWrap::PedalWrap() {
 
 void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
-	_pedals.clear();
+	clearArea();
 
 	int pl = pedals.size();
 
@@ -43,7 +43,7 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 		Pedal * pedal = pedals[ i ];
 
 		AreaData * data = new AreaData();
-		data->label = pedal->label;
+		data->label = pedal->label.c_str();
 
 		PedalArea * area = new PedalArea( data );
 		area->setMouseTracking( true );
@@ -81,5 +81,30 @@ void PedalWrap::setupLayout() {
 	setLayout( _layout );
 
 };
+
+
+/**
+ * Clear section and areas
+ */
+
+void PedalWrap::clearArea() {
+
+	_pedals.clear();
+
+	QLayoutItem * item;
+
+	while( ( item = _layout->takeAt( 0 ) ) ) {
+
+		if( item->widget() ) {
+
+			delete item->widget();
+
+		}
+
+		delete item;
+
+	}
+
+}
 
 } } }

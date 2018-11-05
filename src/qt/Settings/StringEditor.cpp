@@ -74,13 +74,14 @@ void StringEditor::buildFrom( vector<float> strings ) {
 
 void StringEditor::updateInstrument() {
 
+    std::cout << "Updating instrument from editor\n";
+
     vector<float_t> strings;
 
     vector<StringEditArea*> _areas = _nodes.getAll<StringEditArea>();
 
     for( int i = 0; i < _areas.size(); ++ i ) {
 
-        std::cout << i << "\n";
         strings.push_back( _areas[i]->getStringNote() );
 
     }
@@ -91,8 +92,20 @@ void StringEditor::updateInstrument() {
 
 };
 
+
+/**
+ * Update handlers
+ */
+
 void StringEditor::afterRemove() {
+
     updateInstrument();
+};
+
+void StringEditor::handleNodeUpdate( TreeNode * node ) {
+
+    updateInstrument();
+
 };
 
 
@@ -103,6 +116,10 @@ void StringEditor::afterRemove() {
 void StringEditor::addNode( TreeNode * area ) {
 
     TreeNode::addNode( area );
+
+    Util::Event * e = new UpdateEvent<StringEditor, TreeNode>( this );
+
+    area->on( StringEditArea::NODE_UPDATE_EVENT, e );
 
     updateInstrument();
 

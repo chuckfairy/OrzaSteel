@@ -28,6 +28,8 @@ class StringEditArea : public TreeNode {
 
 	public:
 
+        static const char * NODE_UPDATE_EVENT;
+
 		StringEditArea();
 		~StringEditArea() {};
 
@@ -39,6 +41,11 @@ class StringEditArea : public TreeNode {
         float getStringNote();
 
         void setStringNote( float );
+
+
+    public slots:
+
+        void sendUpdate();
 
 
 	private:

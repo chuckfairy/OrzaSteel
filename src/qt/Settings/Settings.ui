@@ -73,7 +73,14 @@
           <number>0</number>
          </property>
          <item>
-          <layout class="QVBoxLayout" name="tab_strings_layout"/>
+          <layout class="QVBoxLayout" name="tab_strings_layout">
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -95,7 +102,14 @@
           <number>0</number>
          </property>
          <item>
-          <layout class="QVBoxLayout" name="tab_pedals_layout"/>
+          <layout class="QVBoxLayout" name="tab_pedals_layout">
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+          </layout>
          </item>
         </layout>
        </widget>

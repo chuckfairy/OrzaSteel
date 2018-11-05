@@ -62,6 +62,8 @@ class PedalWrap : public Orza::Steel::Widget::BaseWidget {
 
 		void setupLayout();
 
+        void clearArea();
+
 };
 
 } } }

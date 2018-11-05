@@ -78,6 +78,7 @@ file( GLOB orzasteel.qt_moc_files
     Settings/StringEditor.h
     Settings/StringEditArea.h
     Settings/PedalEditor.h
+    Settings/PedalEditArea.h
 )
 
 

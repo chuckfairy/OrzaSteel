@@ -8,9 +8,44 @@
 
 namespace Orza { namespace Steel { namespace Settings {
 
+/**
+ * Events
+ */
+
+const char * PedalEditArea::NODE_UPDATE_EVENT = "UP";
+
+
+/**
+ * Construct
+ */
+
+
 PedalEditArea::PedalEditArea() {
 
 	_UI.setupUi( this );
+
+	setDeleteButton( _UI.delete_btn );
+
+	connect(
+		_UI.label_edit,
+		SIGNAL( textChanged(const QString &) ),
+		this,
+		SLOT( sendUpdate() )
+	);
+
+	connect(
+		_UI.modifier_dropdown,
+		SIGNAL( currentIndexChanged(int) ),
+		this,
+		SLOT( sendUpdate() )
+	);
+
+	connect(
+		_UI.string_dropdown,
+		SIGNAL( currentIndexChanged(int) ),
+		this,
+		SLOT( sendUpdate() )
+	);
 
 
     //@TODO string updater
@@ -73,6 +108,32 @@ void PedalEditArea::setModifier( int mod ) {
 void PedalEditArea::setStrings( vector<uint8_t> strings ) {
 
     _UI.string_dropdown->setCurrentIndex( strings[ 0 ] );
+
+};
+
+
+/**
+ * Getters
+ */
+
+Pedal * PedalEditArea::getAsPedal() {
+
+    _ped.label = _UI.label_edit->text().toStdString();
+    _ped.steps = _UI.modifier_dropdown->currentText().toInt();
+    _ped.strings = { (uint8_t) _UI.string_dropdown->currentText().toInt() };
+
+    return &_ped;
+
+};
+
+
+/**
+ * Send update
+ */
+
+void PedalEditArea::sendUpdate() {
+
+    dispatch( PedalEditArea::NODE_UPDATE_EVENT, this );
 
 };
 

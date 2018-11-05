@@ -33,7 +33,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="remove_btn">
+      <widget class="QPushButton" name="delete_btn">
        <property name="text">
         <string>Remove</string>
        </property>

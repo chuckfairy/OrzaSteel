@@ -4,9 +4,11 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 #include <vector>
 
 
+using std::string;
 using std::vector;
 
 
@@ -14,7 +16,7 @@ namespace Orza { namespace Steel { namespace Audio {
 
 struct Pedal {
 
-	const char * label;
+	string label;
 
 	vector<uint8_t> strings;
 
@@ -25,10 +27,10 @@ struct Pedal {
 	char key; //impl specific
 
 	Pedal(
-		const char * label_,
-		vector<uint8_t> strings_,
-		uint8_t steps_,
-		char key_
+		const char * label_ = "",
+		vector<uint8_t> strings_ = {},
+		uint8_t steps_ = 0,
+		char key_ = '0'
 	) {
 		label = label_;
 		strings = strings_;

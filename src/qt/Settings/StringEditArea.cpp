@@ -7,8 +7,21 @@
 
 #include "StringEditArea.h"
 
+#include "Events/UpdateEvent.h"
+
 
 namespace Orza { namespace Steel { namespace Settings {
+
+/**
+ * Events
+ */
+
+const char * StringEditArea::NODE_UPDATE_EVENT = "UP";
+
+
+/**
+ * Construct
+ */
 
 StringEditArea::StringEditArea() {
 
@@ -17,6 +30,16 @@ StringEditArea::StringEditArea() {
 	//setViewButton( _UI.view_btn, _UI.body );
 
 	setDeleteButton( _UI.delete_btn );
+
+
+    _UI.note_input->setText( "0" );
+
+	connect(
+		_UI.note_input,
+		SIGNAL( textChanged(const QString &) ),
+		this,
+		SLOT( sendUpdate() )
+	);
 
     Orza::Widget::MidiNoteDropdown::buildOn( _UI.comboBox );
 
@@ -45,5 +68,11 @@ void StringEditArea::setStringNote( float id ) {
     //_UI.comboBox->setCurrentIndex( id - Orza::Midi::NOTE_MAX );
 
 }
+
+void StringEditArea::sendUpdate() {
+
+    dispatch( StringEditArea::NODE_UPDATE_EVENT, this );
+
+};
 
 } } }

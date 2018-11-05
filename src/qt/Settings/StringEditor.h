@@ -19,6 +19,8 @@
 
 #include <Widget/TreeNode.h>
 
+#include "Events/UpdateEvent.h"
+
 
 using std::vector;
 
@@ -60,6 +62,8 @@ class StringEditor : public TreeNode {
         void remove( TreeNode * );
 
         void addNode( TreeNode * );
+
+        void handleNodeUpdate( TreeNode * );
 
 
     public slots:
