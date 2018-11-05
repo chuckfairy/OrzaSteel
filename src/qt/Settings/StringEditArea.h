@@ -13,10 +13,18 @@
 
 #include <ui_StringEditArea.h>
 
+#include <Widget/TreeNode.h>
+
+
+using Orza::Widget::TreeNode;
+
 
 namespace Orza { namespace Steel { namespace Settings {
 
-class StringEditArea : public Orza::Steel::Widget::BaseWidget {
+
+class StringEditArea : public TreeNode {
+
+    Q_OBJECT;
 
 	public:
 
@@ -28,7 +36,7 @@ class StringEditArea : public Orza::Steel::Widget::BaseWidget {
          * Values
          */
 
-        int getStringNote();
+        float getStringNote();
 
         void setStringNote( float );
 

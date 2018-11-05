@@ -17,22 +17,49 @@
 
 #include "StringEditArea.h"
 
+#include <Widget/TreeNode.h>
+
 
 using std::vector;
+
+using Orza::Widget::TreeNode;
+
+
+/**
+ * Forwarding
+ */
+
+namespace Orza { namespace Steel {
+
+class Window;
+
+} }
+
+
+using Orza::Steel::Window;
 
 
 namespace Orza { namespace Steel { namespace Settings {
 
-class StringEditor : public Orza::Steel::Widget::BaseWidget {
+class StringEditor : public TreeNode {
 
     Q_OBJECT;
 
 	public:
 
-		StringEditor();
+		StringEditor( Window * );
 		~StringEditor() {};
 
         void buildFrom( vector<float> );
+
+
+        /**
+         * Handlers
+         */
+
+        void remove( TreeNode * );
+
+        void addNode( TreeNode * );
 
 
     public slots:
@@ -44,13 +71,23 @@ class StringEditor : public Orza::Steel::Widget::BaseWidget {
         void handleAddClick();
 
 
+    protected:
+
+        void afterRemove();
+
+
 	private:
 
 		Ui_StringEditor _UI;
 
-        vector<StringEditArea*> _areas;
+		Window * _win;
 
-        void handleClick();
+
+        /**
+         * Internal
+         */
+
+        void updateInstrument();
 
 
 };

@@ -14,6 +14,10 @@ StringEditArea::StringEditArea() {
 
 	_UI.setupUi( this );
 
+	//setViewButton( _UI.view_btn, _UI.body );
+
+	setDeleteButton( _UI.delete_btn );
+
     Orza::Widget::MidiNoteDropdown::buildOn( _UI.comboBox );
 
 };
@@ -23,9 +27,11 @@ StringEditArea::StringEditArea() {
  * Value based
  */
 
-int StringEditArea::getStringNote() {
+float StringEditArea::getStringNote() {
 
-    return _UI.comboBox->currentIndex() + Orza::Midi::NOTE_MAX ;
+    //return _UI.comboBox->currentIndex() + Orza::Midi::NOTE_MIN;
+
+    return _UI.note_input->text().toDouble();
 
 };
 
