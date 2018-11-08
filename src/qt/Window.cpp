@@ -208,6 +208,8 @@ void Window::resizeEvent( QResizeEvent * event ) {
 
 	}
 
+    _Settings->setGeometry( 0, 0, width(), height() );
+
 };
 
 

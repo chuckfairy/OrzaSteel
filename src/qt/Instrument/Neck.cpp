@@ -119,7 +119,7 @@ void Neck::setupBridgeUIHelper() {
 
 void Neck::setupBridgeUIHelperLog() {
 
-    clearArea();
+    //clearArea();
 
 	float semiTones = 12; //@TODO move further down line
 
@@ -127,6 +127,21 @@ void Neck::setupBridgeUIHelperLog() {
 	float fullWidth = (float) width();
 	float percent = 0.0;
     float heightChild = height() - 50;
+
+    if( _areas.size() == 0 ) {
+        for( int i = 0; i < semiTones; ++ i ) {
+            const char * color = STEPS_13[ i ];
+            const char * label = Orza::Numbers::ROMAN_13[ i ];
+
+            AreaData * data = new AreaData();
+            data->color = color;
+            data->label = label ;
+
+            FretArea * area = new FretArea( data );
+            area->setParent( this );
+            _areas.push_back(area);
+        }
+    }
 
 	for( int i = 0; i < semiTones; ++ i ) {
 
@@ -140,20 +155,12 @@ void Neck::setupBridgeUIHelperLog() {
 
 		std::cout << semiWidth << "\n";
 
-		const char * color = STEPS_13[ i ];
-		const char * label = Orza::Numbers::ROMAN_13[ i ];
+		FretArea * area = _areas[i];
 
-		AreaData * data = new AreaData();
-		data->color = color;
-		data->label = label ;
-
-		FretArea * area = new FretArea( data );
-		area->setParent( this );
 		area->setGeometry( 0, 0, semiWidth, heightChild );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
 		area->raise();
-        _areas.push_back( area );
 
 		widthSoFar += semiWidth;
 

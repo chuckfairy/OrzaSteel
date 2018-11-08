@@ -39,21 +39,7 @@
        <number>0</number>
       </property>
       <item>
-       <layout class="QHBoxLayout" name="neck">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QWidget" name="widget" native="true">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <layout class="QVBoxLayout" name="neck"/>
       </item>
       <item>
        <layout class="QVBoxLayout" name="bridge">

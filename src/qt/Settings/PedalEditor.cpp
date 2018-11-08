@@ -59,6 +59,7 @@ void PedalEditor::buildFrom( vector<Pedal*> pedals ) {
         area->setLabel( pedal->label.c_str() );
         area->setModifier( pedal->steps );
         area->setStrings( pedal->strings );
+        area->setControlKey( pedal->key );
 
         addNode( area );
 

@@ -21,6 +21,7 @@ class BaseWidget : public QFrame {
 		BaseWidget() {};
 		~BaseWidget() {};
 
+
 		/**
 		 * CSS painting
 		 */
@@ -35,7 +36,7 @@ class BaseWidget : public QFrame {
             //_painter->setOpacity( 0.5 );
 			style()->drawPrimitive(QStyle::PE_Widget, &opt, _painter, this);
 
-			QWidget::paintEvent(event);
+			//QWidget::paintEvent(event);
 
 		};
 

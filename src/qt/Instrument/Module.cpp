@@ -54,8 +54,8 @@ Module::Module( Window * win ) :
 	_window->getUI()->neck->addWidget( _neck );
 
 	//Pedal wrap setup
-	_pedalWrap->setParent( _neck );
-	_pedalWrap->setGeometry( 50, _neck->height() + 150, 500, 25 );
+	_window->getUI()->neck->addWidget( _pedalWrap );
+	//_pedalWrap->resize(500, 25 );
 	_pedalWrap->raise();
 
 	//Pedal setting from standard

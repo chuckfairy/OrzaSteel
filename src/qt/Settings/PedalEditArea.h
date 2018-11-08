@@ -52,6 +52,8 @@ class PedalEditArea : public TreeNode {
 
         void setStrings( vector<uint8_t> );
 
+        void setControlKey( char );
+
 
         /**
          * Getters
@@ -70,6 +72,9 @@ class PedalEditArea : public TreeNode {
         Pedal _ped;
 
 		Ui_PedalEditArea _UI;
+
+
+        void setupKeySelect();
 
 
 };
