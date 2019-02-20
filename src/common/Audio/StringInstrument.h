@@ -62,9 +62,9 @@ class StringInstrument {
 
 		const vector<float_t> * getStrings() {
 
-            return &_strings;
+			return &_strings;
 
-        };
+		};
 
 
 		/**
@@ -79,17 +79,17 @@ class StringInstrument {
 		float_t getPitch( uint8_t stringNum, uint8_t position );
 
 
-        /**
-         * Pedal based
-         */
+		/**
+		 * Pedal based
+		 */
 
 		float_t getPedalModifier( uint8_t stringNum );
 
 		const vector<Pedal*> * getPedals() {
 
-            return &_pedals;
+			return &_pedals;
 
-        };
+		};
 
 
 

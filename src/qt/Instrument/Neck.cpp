@@ -147,13 +147,9 @@ void Neck::setupBridgeUIHelperLog() {
 
 		float_t semiWidth = pow( 2, ( (semiTones - i) / semiTones) ) - pow(2, ((semiTones - i - 1) / semiTones));
 
-		std::cout << semiWidth << "\n";
-
 		percent += semiWidth;
 
 		semiWidth = ( semiWidth * fullWidth );
-
-		std::cout << semiWidth << "\n";
 
 		FretArea * area = _areas[i];
 

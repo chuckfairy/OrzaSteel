@@ -28,42 +28,42 @@ using Orza::Steel::Audio::Pedal;
 namespace Orza { namespace Steel { namespace Instrument {
 
 
-class PedalWrap : public Orza::Steel::Widget::BaseWidget {
+	class PedalWrap : public Orza::Steel::Widget::BaseWidget {
 
-	public:
+		public:
 
-		PedalWrap();
-		~PedalWrap() {};
-
-
-		/**
-		 * Main create of pedals
-		 */
-
-		void createDisplay( vector<Pedal*> );
-
-		void setPedalActive( uint8_t index, bool active );
+			PedalWrap();
+			~PedalWrap() {};
 
 
-	private:
+			/**
+			 * Main create of pedals
+			 */
 
-		/**
-		 * props
-		 */
+			void createDisplay( vector<Pedal*> );
 
-		vector<PedalArea*> _pedals;
-
-		QHBoxLayout * _layout;
+			void setPedalActive( uint8_t index, bool active );
 
 
-		/**
-		 * internals
-		 */
+		private:
 
-		void setupLayout();
+			/**
+			 * props
+			 */
 
-        void clearArea();
+			vector<PedalArea*> _pedals;
 
-};
+			QHBoxLayout * _layout;
+
+
+			/**
+			 * internals
+			 */
+
+			void setupLayout();
+
+			void clearArea();
+
+	};
 
 } } }

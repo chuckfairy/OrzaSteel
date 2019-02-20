@@ -52,31 +52,31 @@ class PedalEditor : public TreeNode {
 		~PedalEditor() {};
 
 
-        /**
-         * API
-         */
+		/**
+		 * API
+		 */
 
-        void buildFrom( vector<Pedal*> );
+		void buildFrom( vector<Pedal*> );
 
-        void remove( TreeNode * );
+		void remove( TreeNode * );
 
-        void addNode( TreeNode * );
+		void addNode( TreeNode * );
 
-        void handleNodeUpdate( TreeNode * );
-
-
-    public slots:
-
-        /**
-         * Events
-         */
-
-        void handleAddClick();
+		void handleNodeUpdate( TreeNode * );
 
 
-    protected:
+	public slots:
 
-        void afterRemove();
+		/**
+		 * Events
+		 */
+
+		void handleAddClick();
+
+
+	protected:
+
+		void afterRemove();
 
 
 	private:
@@ -85,14 +85,16 @@ class PedalEditor : public TreeNode {
 
 		Window * _win;
 
-        vector<PedalEditArea*> _areas;
+		vector<PedalEditArea*> _areas;
+
+		bool _building = false;
 
 
-        /**
-         * Internal
-         */
+		/**
+		 * Internal
+		 */
 
-        void updateInstrument();
+		void updateInstrument();
 
 
 };

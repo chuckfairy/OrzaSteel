@@ -40,16 +40,14 @@ FretArea::FretArea( AreaData * data ) :
 	char * css = formatStyleSheet( _data->color );
 
 
-	std::cout << css << "\n";
-
 	setStyleSheet( css );
 
-    QLabel * label = new QLabel(this);
-    label->setText( data->label );
-    label->move( 15, 15 );
-    label->setStyleSheet(
-        "color: #000000; border-left: none;"
-    );
+	QLabel * label = new QLabel(this);
+	label->setText( data->label );
+	label->move( 15, 15 );
+	label->setStyleSheet(
+		"color: #000000; border-left: none;"
+	);
 
 	show();
 
@@ -63,9 +61,9 @@ FretArea::FretArea( AreaData * data ) :
 char * FretArea::formatStyleSheet( const char * color ) {
 
 	char * css = (char*) malloc(
-		( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
-		* sizeof( const char * )
-	);
+			( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
+			* sizeof( const char * )
+			);
 
 	sprintf( css, STYLE_SHEET_TEMPLATE, color );
 

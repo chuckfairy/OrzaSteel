@@ -36,11 +36,11 @@ PedalEditor::PedalEditor( Window * window ) :
 
 void PedalEditor::handleAddClick() {
 
-    PedalEditArea * area = new PedalEditArea();
+	PedalEditArea * area = new PedalEditArea();
 
-    _UI.pedal_content->addWidget( area );
+	_UI.pedal_content->addWidget( area );
 
-    addNode( area );
+	addNode( area );
 
 };
 
@@ -50,20 +50,24 @@ void PedalEditor::handleAddClick() {
 
 void PedalEditor::buildFrom( vector<Pedal*> pedals ) {
 
-    for( int i = 0; i < pedals.size(); ++ i ) {
+	_building = true;
 
-        Pedal * pedal = pedals[ i ];
-        PedalEditArea * area = new PedalEditArea();
-        _UI.pedal_content->addWidget( area );
+	for( int i = 0; i < pedals.size(); ++ i ) {
 
-        area->setLabel( pedal->label.c_str() );
-        area->setModifier( pedal->steps );
-        area->setStrings( pedal->strings );
-        area->setControlKey( pedal->key );
+		Pedal * pedal = pedals[ i ];
+		PedalEditArea * area = new PedalEditArea();
+		_UI.pedal_content->addWidget( area );
 
-        addNode( area );
+		area->setLabel( pedal->label.c_str() );
+		area->setModifier( pedal->steps );
+		area->setStrings( pedal->strings );
+		area->setControlKey( pedal->key );
 
-    }
+		addNode( area );
+
+	}
+
+	_building = false;
 
 };
 
@@ -74,21 +78,25 @@ void PedalEditor::buildFrom( vector<Pedal*> pedals ) {
 
 void PedalEditor::updateInstrument() {
 
-    std::cout << "Updating instrument from editor\n";
+	if( _building ) {
+		return;
+	}
 
-    vector<Pedal*> pedals;
+	std::cout << "Updating instrument from editor\n";
 
-    vector<PedalEditArea*> _areas = _nodes.getAll<PedalEditArea>();
+	vector<Pedal*> pedals;
 
-    for( int i = 0; i < _areas.size(); ++ i ) {
+	vector<PedalEditArea*> _areas = _nodes.getAll<PedalEditArea>();
 
-        pedals.push_back( _areas[i]->getAsPedal() );
+	for( int i = 0; i < _areas.size(); ++ i ) {
 
-    }
+		pedals.push_back( _areas[i]->getAsPedal() );
 
-    Module * insta = (Module*) _win->getModules()[0];
+	}
 
-    insta->setPedals( &pedals );
+	Module * insta = (Module*) _win->getModules()[0];
+
+	insta->setPedals( &pedals );
 
 };
 
@@ -99,12 +107,12 @@ void PedalEditor::updateInstrument() {
 
 void PedalEditor::afterRemove() {
 
-    updateInstrument();
+	updateInstrument();
 };
 
 void PedalEditor::handleNodeUpdate( TreeNode * node ) {
 
-    updateInstrument();
+	updateInstrument();
 
 };
 
@@ -115,23 +123,23 @@ void PedalEditor::handleNodeUpdate( TreeNode * node ) {
 
 void PedalEditor::addNode( TreeNode * area ) {
 
-    TreeNode::addNode( area );
+	TreeNode::addNode( area );
 
-    Util::Event * e = new UpdateEvent<PedalEditor, TreeNode>( this );
+	Util::Event * e = new UpdateEvent<PedalEditor, TreeNode>( this );
 
-    area->on( PedalEditArea::NODE_UPDATE_EVENT, e );
+	area->on( PedalEditArea::NODE_UPDATE_EVENT, e );
 
-    updateInstrument();
+	updateInstrument();
 
 };
 
 void PedalEditor::remove( TreeNode * area ) {
 
-    _UI.pedal_content->removeWidget( (PedalEditArea *)area );
+	_UI.pedal_content->removeWidget( (PedalEditArea *)area );
 
-    TreeNode::remove( (PedalEditArea *)area );
+	TreeNode::remove( (PedalEditArea *)area );
 
-    updateInstrument();
+	updateInstrument();
 
 };
 

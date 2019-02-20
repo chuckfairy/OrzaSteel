@@ -45,53 +45,55 @@ namespace Orza { namespace Steel { namespace Settings {
 
 class StringEditor : public TreeNode {
 
-    Q_OBJECT;
+	Q_OBJECT;
 
 	public:
 
 		StringEditor( Window * );
 		~StringEditor() {};
 
-        void buildFrom( vector<float> );
+		void buildFrom( vector<float> );
 
 
-        /**
-         * Handlers
-         */
+		/**
+		 * Handlers
+		 */
 
-        void remove( TreeNode * );
+		void remove( TreeNode * );
 
-        void addNode( TreeNode * );
+		void addNode( TreeNode * );
 
-        void handleNodeUpdate( TreeNode * );
-
-
-    public slots:
-
-        /**
-         * Events
-         */
-
-        void handleAddClick();
+		void handleNodeUpdate( TreeNode * );
 
 
-    protected:
+	public slots:
 
-        void afterRemove();
+		/**
+		 * Events
+		 */
+
+		void handleAddClick();
+
+
+	protected:
+
+		void afterRemove();
 
 
 	private:
+
+		bool _building = false;
 
 		Ui_StringEditor _UI;
 
 		Window * _win;
 
 
-        /**
-         * Internal
-         */
+		/**
+		 * Internal
+		 */
 
-        void updateInstrument();
+		void updateInstrument();
 
 
 };

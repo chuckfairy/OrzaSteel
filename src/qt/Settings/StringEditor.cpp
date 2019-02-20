@@ -37,13 +37,13 @@ StringEditor::StringEditor( Window * window ) :
 
 void StringEditor::handleAddClick() {
 
-    StringEditArea * area = new StringEditArea();
+	StringEditArea * area = new StringEditArea();
 
-    _UI.strings_content->addWidget( area );
+	_UI.strings_content->addWidget( area );
 
-    addNode( area );
+	addNode( area );
 
-    updateInstrument();
+	updateInstrument();
 
 };
 
@@ -54,16 +54,20 @@ void StringEditor::handleAddClick() {
 
 void StringEditor::buildFrom( vector<float> strings ) {
 
-    for( int i = 0; i < strings.size(); ++ i ) {
+	_building = true;
 
-        StringEditArea * area = new StringEditArea();
-        _UI.strings_content->addWidget( area );
+	for( int i = 0; i < strings.size(); ++ i ) {
 
-        area->setStringNote( strings[ i ] );
+		StringEditArea * area = new StringEditArea();
+		_UI.strings_content->addWidget( area );
 
-        addNode( area );
+		area->setStringNote( strings[ i ] );
 
-    }
+		addNode( area );
+
+	}
+
+	_building = false;
 
 };
 
@@ -74,21 +78,25 @@ void StringEditor::buildFrom( vector<float> strings ) {
 
 void StringEditor::updateInstrument() {
 
-    std::cout << "Updating instrument from editor\n";
+	if( _building ) {
+		return;
+	}
 
-    vector<float_t> strings;
+	std::cout << "Updating instrument from editor\n";
 
-    vector<StringEditArea*> _areas = _nodes.getAll<StringEditArea>();
+	vector<float_t> strings;
 
-    for( int i = 0; i < _areas.size(); ++ i ) {
+	vector<StringEditArea*> _areas = _nodes.getAll<StringEditArea>();
 
-        strings.push_back( _areas[i]->getStringNote() );
+	for( int i = 0; i < _areas.size(); ++ i ) {
 
-    }
+		strings.push_back( _areas[i]->getStringNote() );
 
-    Module * insta = (Module*) _win->getModules()[0];
+	}
 
-    insta->setStrings( strings );
+	Module * insta = (Module*) _win->getModules()[0];
+
+	insta->setStrings( strings );
 
 };
 
@@ -99,12 +107,12 @@ void StringEditor::updateInstrument() {
 
 void StringEditor::afterRemove() {
 
-    updateInstrument();
+	updateInstrument();
 };
 
 void StringEditor::handleNodeUpdate( TreeNode * node ) {
 
-    updateInstrument();
+	updateInstrument();
 
 };
 
@@ -115,23 +123,23 @@ void StringEditor::handleNodeUpdate( TreeNode * node ) {
 
 void StringEditor::addNode( TreeNode * area ) {
 
-    TreeNode::addNode( area );
+	TreeNode::addNode( area );
 
-    Util::Event * e = new UpdateEvent<StringEditor, TreeNode>( this );
+	Util::Event * e = new UpdateEvent<StringEditor, TreeNode>( this );
 
-    area->on( StringEditArea::NODE_UPDATE_EVENT, e );
+	area->on( StringEditArea::NODE_UPDATE_EVENT, e );
 
-    updateInstrument();
+	updateInstrument();
 
 };
 
 void StringEditor::remove( TreeNode * area ) {
 
-    _UI.strings_content->removeWidget( (StringEditArea *)area );
+	_UI.strings_content->removeWidget( (StringEditArea *)area );
 
-    TreeNode::remove( (StringEditArea *)area );
+	TreeNode::remove( (StringEditArea *)area );
 
-    updateInstrument();
+	updateInstrument();
 
 };
 

@@ -1,6 +1,8 @@
 /**
  * String area clicking impl
  */
+#include <stdexcept>
+
 #include "PedalWrap.h"
 
 #include "AreaData.h"

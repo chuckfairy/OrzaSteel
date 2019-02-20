@@ -55,7 +55,7 @@ void PedalArea::setActive( bool flag ) {
 		: "CCC";
 
 	char * css = (char*) malloc(
-		( sizeof( color ) + sizeof( TEMPLATE ) )
+		( sizeof( color ) + sizeof( TEMPLATE ) + 20 )
 		* sizeof( const char * )
 	);
 
