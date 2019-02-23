@@ -131,6 +131,8 @@ Window::Window( QApplication * app, QWidget * parent, Qt::WindowFlags flags ) :
 
 void Window::process( jack_nframes_t nframes ) {
 
+	std::cout << "PROCESSING \n";
+
 	for( int i = 0; i < _modules.size(); ++ i ) {
 
 		_modules[ i ]->process( nframes );

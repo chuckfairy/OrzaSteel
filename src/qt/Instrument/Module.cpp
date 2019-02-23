@@ -43,7 +43,7 @@ Module::Module( Window * win ) :
 	_pedalWrap( new PedalWrap ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
-	_wave( new SquareWave ),
+	_wave( new SineWave ),
 	_nullWave( new NullWave )
 {
 
@@ -104,6 +104,8 @@ void Module::process( jack_nframes_t nframes ) {
 	BaseWave * waveUse = ( freqs.size() == 0 )
 		? _nullWave
 		: _wave;
+
+	std::cout << "NUM FREQS " << freqs.size() << "\n";
 
 	float_t volume = (float_t)_window->getUI()->volume_slider->value();
 	volume = volume / 100;
