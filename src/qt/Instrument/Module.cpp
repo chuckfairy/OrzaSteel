@@ -43,8 +43,9 @@ Module::Module( Window * win ) :
 	_pedalWrap( new PedalWrap ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
-	_wave( new SquareWave ),
-	_nullWave( new NullWave )
+	_wave( new SineWave ),
+	_nullWave( new NullWave ),
+	_stereoInterface( new PortInterface( win->getServer()->getJackClient() ) )
 {
 
 	setStrings( StringInstrument::NECK_STEEL_STANDARD_10 );
@@ -62,6 +63,9 @@ Module::Module( Window * win ) :
 	static vector<Pedal*> * pedals = &StringInstrument::PEDAL_STANDARD_10;
 
 	setPedals( pedals );
+
+	_window->getServer()->getPatchbay()->getEffects()
+		->connectInputTo( _stereoInterface->getOutputNameLeft() );
 
 };
 
@@ -112,7 +116,7 @@ void Module::process( jack_nframes_t nframes ) {
 	//Output
 
 	_outputter->writeOutputWave(
-		_window->getServer()->getPatchbay()->getEffects()->getInputPortLeft(),
+		_stereoInterface->getOutputPortLeft(),
 		waveUse,
 		nframes,
 		volume

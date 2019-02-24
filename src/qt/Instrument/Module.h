@@ -26,7 +26,7 @@
 #include "Bridge.h"
 #include "Neck.h"
 #include "PedalWrap.h"
-#include "PedalWrap.h"
+#include "PortInterface.h"
 
 
 using std::map;
@@ -111,6 +111,8 @@ class Module : public BaseModule {
 		/**
 		 * Audio
 		 */
+
+		PortInterface * _stereoInterface;
 
 		StringInstrument * _instrument;
 
