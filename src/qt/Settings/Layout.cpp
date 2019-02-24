@@ -23,6 +23,7 @@ Layout::Layout( Window * win ) :
 	_Patchbay( new Orza::Widget::Patchbay( win->getServer() ) ),
 	_PedalEditor( new PedalEditor( win ) ),
 	_StringEditor( new StringEditor( win ) )
+	//_generalLayout( new  Orza::Settings::Layout
 {
 
 	_UI.setupUi( this );

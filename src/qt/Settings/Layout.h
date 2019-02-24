@@ -3,6 +3,8 @@
  */
 #pragma once
 
+#include <liborza-qt/src/Settings/Layout.h>
+
 #include <Widget/BaseWidget.h>
 
 #include <Widget/Patchbay.h>
@@ -46,21 +48,21 @@ class Layout : public Orza::Steel::Widget::BaseWidget {
 		Layout( Window * );
 
 
-        /**
-         * getters
-         */
+		/**
+		 * getters
+		 */
 
-        PedalEditor * getPedalEditor() {
+		PedalEditor * getPedalEditor() {
 
-            return _PedalEditor;
+			return _PedalEditor;
 
-        };
+		};
 
-        StringEditor * getStringEditor() {
+		StringEditor * getStringEditor() {
 
-            return _StringEditor;
+			return _StringEditor;
 
-        };
+		};
 
 
 	private:
@@ -74,6 +76,8 @@ class Layout : public Orza::Steel::Widget::BaseWidget {
 		Window * _win;
 
 		Server * _Server;
+
+		Orza::Settings::Layout * _generalLayout;
 
 
 		/**

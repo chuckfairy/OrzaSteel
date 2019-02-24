@@ -64,6 +64,7 @@ Module::Module( Window * win ) :
 
 	setPedals( pedals );
 
+	//connect output to input of effects
 	_window->getServer()->getPatchbay()->getEffects()
 		->connectInputTo( _stereoInterface->getOutputNameLeft() );
 

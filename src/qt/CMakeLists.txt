@@ -41,6 +41,7 @@ include_directories(
 	"${ORZASTEEL_ROOT_PATH}/lib-src"
 
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
+	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/lib-src"
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/src"
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/lib-src"
 
