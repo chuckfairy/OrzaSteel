@@ -3,6 +3,8 @@
  */
 #pragma once
 
+#include <liborza-qt/src/Settings/Layout.h>
+
 #include <Widget/BaseWidget.h>
 
 #include <Widget/Patchbay.h>
@@ -74,6 +76,8 @@ class Layout : public Orza::Steel::Widget::BaseWidget {
 		Window * _win;
 
 		Server * _Server;
+
+		Orza::Settings::Layout * _generalSettings;
 
 
 		/**

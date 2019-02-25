@@ -4,8 +4,6 @@
  */
 #pragma once
 
-#include <jack/jack.h>
-
 #include <Jack/StereoHostInterface.h>
 
 

@@ -22,7 +22,8 @@ Layout::Layout( Window * win ) :
 	_Server( win->getServer() ),
 	_Patchbay( new Orza::Widget::Patchbay( win->getServer() ) ),
 	_PedalEditor( new PedalEditor( win ) ),
-	_StringEditor( new StringEditor( win ) )
+	_StringEditor( new StringEditor( win ) ),
+	_generalSettings( new Orza::Settings::Layout( win->getServer() ) )
 {
 
 	_UI.setupUi( this );
@@ -42,6 +43,8 @@ Layout::Layout( Window * win ) :
 
 	_UI.tab_pedals_layout->addWidget( _PedalEditor );
 	_UI.tab_strings_layout->addWidget( _StringEditor );
+
+	_UI.tab_general_layout->addWidget( _generalSettings );
 
     Module * insta = (Module*) _win->getModules()[0];
 
