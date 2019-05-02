@@ -39,7 +39,14 @@
        <number>0</number>
       </property>
       <item>
-       <layout class="QVBoxLayout" name="neck"/>
+       <layout class="QVBoxLayout" name="neck_wrap">
+        <item>
+         <layout class="QVBoxLayout" name="neck"/>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="pedals"/>
+        </item>
+       </layout>
       </item>
       <item>
        <layout class="QVBoxLayout" name="bridge">

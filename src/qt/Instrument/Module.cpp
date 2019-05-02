@@ -55,9 +55,10 @@ Module::Module( Window * win ) :
 	_window->getUI()->neck->addWidget( _neck );
 
 	//Pedal wrap setup
-	_window->getUI()->neck->addWidget( _pedalWrap );
+	_window->getUI()->pedals->addWidget( _pedalWrap );
+	_pedalWrap->show();
 	//_pedalWrap->resize(500, 25 );
-	_pedalWrap->raise();
+	//_pedalWrap->raise();
 
 	//Pedal setting from standard
 	static vector<Pedal*> * pedals = &StringInstrument::PEDAL_STANDARD_10;

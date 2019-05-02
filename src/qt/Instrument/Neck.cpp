@@ -102,7 +102,7 @@ void Neck::setupBridgeUIHelper() {
 
 		FretArea * area = new FretArea( data );
 		area->setParent( this );
-		area->setGeometry( 0, 0, semiWidth, height() - 50 );
+		area->setGeometry( 0, 0, semiWidth, height() / 2 );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
 
@@ -126,22 +126,22 @@ void Neck::setupBridgeUIHelperLog() {
 	float widthSoFar = 0.0;
 	float fullWidth = (float) width();
 	float percent = 0.0;
-    float heightChild = height() - 50;
+	float heightChild = height() - 10;
 
-    if( _areas.size() == 0 ) {
-        for( int i = 0; i < semiTones; ++ i ) {
-            const char * color = STEPS_13[ i ];
-            const char * label = Orza::Numbers::ROMAN_13[ i ];
+	if( _areas.size() == 0 ) {
+		for( int i = 0; i < semiTones; ++ i ) {
+			const char * color = STEPS_13[ i ];
+			const char * label = Orza::Numbers::ROMAN_13[ i ];
 
-            AreaData * data = new AreaData();
-            data->color = color;
-            data->label = label ;
+			AreaData * data = new AreaData();
+			data->color = color;
+			data->label = label ;
 
-            FretArea * area = new FretArea( data );
-            area->setParent( this );
-            _areas.push_back(area);
-        }
-    }
+			FretArea * area = new FretArea( data );
+			area->setParent( this );
+			_areas.push_back(area);
+		}
+	}
 
 	for( int i = 0; i < semiTones; ++ i ) {
 
@@ -189,13 +189,13 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
 void Neck::clearArea() {
 
-    int al = _areas.size();
-    for( int i = 0; i < al; ++ i ) {
+	int al = _areas.size();
+	for( int i = 0; i < al; ++ i ) {
 
-        _areas[i]->setParent(0);
-        delete _areas[i];
+		_areas[i]->setParent(0);
+		delete _areas[i];
 
-    }
+	}
 
 	_areas.clear();
 

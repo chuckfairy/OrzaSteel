@@ -37,6 +37,8 @@ PedalArea::PedalArea( AreaData * data ) :
 
 	setActive( false );
 
+	//setGeometry(0, 0, 300, 100);
+
 	QSizePolicy sizePolicy( QSizePolicy::Minimum, QSizePolicy::Minimum );
 
 	setSizePolicy( sizePolicy );

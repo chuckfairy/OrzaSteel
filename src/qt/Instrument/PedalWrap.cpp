@@ -23,7 +23,6 @@ PedalWrap::PedalWrap() {
 
 	setStyleSheet(
 		"\
-		background: transparent;\
 		"
 	);
 
@@ -36,11 +35,13 @@ PedalWrap::PedalWrap() {
 
 void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
-	clearArea();
+	//clearArea();
 
 	int pl = pedals.size();
 
 	for( int i = 0; i < pl; ++ i ) {
+
+		std::cout << "PEDAL \n";
 
 		Pedal * pedal = pedals[ i ];
 
@@ -51,6 +52,9 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 		area->setMouseTracking( true );
 
 		_layout->addWidget( area );
+
+		//@TODO figure out why we need
+		_layout->addWidget( new QLabel("|") );
 
 		_pedals.push_back( area );
 

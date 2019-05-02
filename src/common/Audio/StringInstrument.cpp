@@ -67,10 +67,10 @@ vector<float_t> StringInstrument::NECK_STEEL_STANDARD_10 = {
  */
 
 vector<Pedal*> StringInstrument::PEDAL_STANDARD_10 = {
-	new Pedal( "X pedal", { 3, 4 }, -1, 'x' ),
-	new Pedal( "A pedal", { 5, 0 }, 2, 'a' ),
-	new Pedal( "B pedal", { 7, 4 }, 1, 'b' ),
-	new Pedal( "C pedal", { 5, 6 }, 2, 'c' ),
+	new Pedal( "X", { 3, 4 }, -1, 'x' ),
+	new Pedal( "A", { 5, 0 }, 2, 'a' ),
+	new Pedal( "B", { 7, 4 }, 1, 'b' ),
+	new Pedal( "C", { 5, 6 }, 2, 'c' ),
 	new Pedal( "LL knee(l)", { 3, 7 }, 1, 'l' ),
 	new Pedal( "LV knee(k)", { 4, 9 }, 1, 'k' ),
 	new Pedal( "LR knee(j)", { 3, 7 }, 1, 'j' ),
