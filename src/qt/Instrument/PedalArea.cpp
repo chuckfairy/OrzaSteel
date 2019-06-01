@@ -54,7 +54,7 @@ void PedalArea::setActive( bool flag ) {
 
 	const char * color = ( flag )
 		? "AAA"
-		: "CCC";
+		: "DDD";
 
 	char * css = (char*) malloc(
 		( sizeof( color ) + sizeof( TEMPLATE ) + 20 )

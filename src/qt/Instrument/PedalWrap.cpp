@@ -54,7 +54,7 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 		_layout->addWidget( area );
 
 		//@TODO figure out why we need
-		_layout->addWidget( new QLabel("|") );
+		_layout->addWidget( new QLabel() );
 
 		_pedals.push_back( area );
 

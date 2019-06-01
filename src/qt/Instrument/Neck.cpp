@@ -143,13 +143,16 @@ void Neck::setupBridgeUIHelperLog() {
 		}
 	}
 
+	float widthSplit = fullWidth / (semiTones);
+
 	for( int i = 0; i < semiTones; ++ i ) {
 
 		float_t semiWidth = pow( 2, ( (semiTones - i) / semiTones) ) - pow(2, ((semiTones - i - 1) / semiTones));
+		semiWidth = widthSplit;
 
 		percent += semiWidth;
 
-		semiWidth = ( semiWidth * fullWidth );
+		//semiWidth = ( semiWidth * fullWidth );
 
 		FretArea * area = _areas[i];
 

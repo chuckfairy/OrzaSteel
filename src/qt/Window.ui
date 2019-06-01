@@ -44,7 +44,7 @@
          <layout class="QVBoxLayout" name="neck"/>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="pedals"/>
+         <layout class="QHBoxLayout" name="pedals"/>
         </item>
        </layout>
       </item>
@@ -68,6 +68,9 @@
          <widget class="QLabel" name="app_title">
           <property name="text">
            <string>OrzaSteel</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
          </widget>
         </item>
