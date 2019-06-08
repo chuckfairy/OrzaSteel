@@ -32,6 +32,10 @@ Tonebar::Tonebar( QWidget * parent ) :
 
 	setGeometry( 10, 0, 75, 200 );
 
+	if(_showLine) {
+		createLine();
+	}
+
 	raise();
 
 	show();
@@ -44,6 +48,17 @@ Tonebar::Tonebar( QWidget * parent ) :
  */
 
 void Tonebar::setImage( const char * img ) {
+
+};
+
+
+/**
+ * Create line helper
+ */
+
+void Tonebar::createLine() {
+
+
 
 };
 

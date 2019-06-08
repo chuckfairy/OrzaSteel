@@ -47,6 +47,11 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		 * Mouse event watching for string control events
 		 */
 
+	private:
+
+		bool _showLine = true;
+
+		void createLine();
 
 };
 
