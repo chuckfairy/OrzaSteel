@@ -88,13 +88,13 @@ void StringArea::setActive( bool flag ) {
 
 void StringArea::mousePressEvent( QMouseEvent * event ) {
 
-    setActive( true );
+	setActive( true );
 
 };
 
 void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
 
-    setActive( false );
+	setActive( false );
 
 };
 
@@ -106,29 +106,29 @@ void StringArea::mouseReleaseEvent( QMouseEvent * event ) {
 
 bool StringArea::event( QEvent *event ) {
 
-    switch (event->type()) {
-        case QEvent::TouchBegin:
-            setActive( true );
-            break;
+	switch (event->type()) {
+		case QEvent::TouchBegin:
+			setActive( true );
+			break;
 
-        case QEvent::TouchEnd:
-            setActive( false );
-            break;
+		case QEvent::TouchEnd:
+			setActive( false );
+			break;
 
-        default:
-            return QWidget::event( event );
-    }
+		default:
+			return QWidget::event( event );
+	}
 
-    return true;
+	return true;
 
 };
 
 char * StringArea::formatStyleSheet( const char * color ) {
 
 	char * css = (char*) malloc(
-		( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
-		* sizeof( const char * )
-	);
+			( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
+			* sizeof( const char * )
+			);
 
 	sprintf( css, STYLE_SHEET_TEMPLATE, color );
 

@@ -4,6 +4,8 @@
 #include <QtGui>
 #include <QWidget>
 
+namespace Orza { namespace Steel { namespace Widget {
+
 class BackgroundImage : public QWidget {
 
 	Q_OBJECT;
@@ -25,3 +27,5 @@ class BackgroundImage : public QWidget {
 		void paintEvent(QPaintEvent *p2);
 
 };
+
+} } };

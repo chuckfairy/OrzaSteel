@@ -4,9 +4,12 @@
  * construct
  */
 
+namespace Orza { namespace Steel { namespace Widget {
+
 BackgroundImage::BackgroundImage( const char * src ) :
 	_src( src )
 {
+	setAttribute(Qt::WA_TransparentForMouseEvents);
 };
 
 void BackgroundImage::paintEvent(QPaintEvent *p2)
@@ -18,3 +21,5 @@ void BackgroundImage::paintEvent(QPaintEvent *p2)
 	paint.drawPixmap(0, 0, pixmap.scaled( size() ) );
 	QWidget::paintEvent(p2);
 };
+
+} } };

@@ -7,20 +7,47 @@
 #include <QtCore>
 #include <QWidget>
 #include <QStyleOption>
+#include <QColor>
 
 
 namespace Orza { namespace Steel { namespace Widget {
 
 class Line : public QWidget {
+
 	public:
-		explicit Line(QWidget *parent = nullptr) : QWidget(parent) {
-			setAttribute(Qt::WA_NoSystemBackground);
+
+		/**
+		 * Construct and basic helpers
+		 */
+		Line() {
 			setAttribute(Qt::WA_TransparentForMouseEvents);
 		}
-	protected:
-		void paintEvent(QPaintEvent *) override {
-			QPainter(this).fillRect(rect(), {80, 80, 255, 128});
+
+		Line(QColor color) :
+			_color(color)
+		{
+			setAttribute(Qt::WA_TransparentForMouseEvents);
 		}
+
+		void setColor(QColor color) {
+			_color = color;
+		}
+
+
+	protected:
+		/**
+		 * Main paint
+		 */
+		void paintEvent(QPaintEvent *) override {
+			//Setup painter
+			QPainter painter(this);
+			painter.fillRect(rect(), _color);
+			painter.setRenderHint(QPainter::Antialiasing);
+		}
+
+	private:
+		QColor _color = Qt::red;
+
 };
 
 }}};

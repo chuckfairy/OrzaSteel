@@ -35,7 +35,7 @@ PedalWrap::PedalWrap() {
 
 void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
-	//clearArea();
+	clearArea();
 
 	int pl = pedals.size();
 

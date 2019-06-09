@@ -14,23 +14,23 @@ namespace Orza { namespace Steel { namespace Settings {
 template <class Interface, class Cast>
 class UpdateEvent : public Util::Event {
 
-    public:
+	public:
 
-        explicit UpdateEvent( Interface * i ) : _Host( i ) {
+		explicit UpdateEvent( Interface * i ) : _Host( i ) {
 
-        };
-
-
-        void run( void * data ) {
-
-            _Host->handleNodeUpdate( (Cast*) data );
-
-        };
+		};
 
 
-    private:
+		void run( void * data ) {
 
-        Interface * _Host;
+			_Host->handleNodeUpdate( (Cast*) data );
+
+		};
+
+
+	private:
+
+		Interface * _Host;
 
 };
 
