@@ -20,13 +20,13 @@ class Line : public QWidget {
 		 * Construct and basic helpers
 		 */
 		Line() {
-			setAttribute(Qt::WA_TransparentForMouseEvents);
+			setupLineSettings();
 		}
 
 		Line(QColor color) :
 			_color(color)
 		{
-			setAttribute(Qt::WA_TransparentForMouseEvents);
+			setupLineSettings();
 		}
 
 		void setColor(QColor color) {
@@ -47,6 +47,10 @@ class Line : public QWidget {
 
 	private:
 		QColor _color = Qt::red;
+
+		void setupLineSettings() {
+			setAttribute(Qt::WA_TransparentForMouseEvents);
+		}
 
 };
 

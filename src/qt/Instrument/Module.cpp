@@ -61,7 +61,7 @@ Module::Module( Window * win ) :
 	//_pedalWrap->raise();
 
 	//Pedal setting from standard
-	static vector<Pedal*> * pedals = &StringInstrument::PEDAL_STANDARD_10;
+	vector<Pedal*> * pedals = &StringInstrument::PEDAL_STANDARD_10;
 
 	setPedals( pedals );
 
@@ -237,6 +237,7 @@ void Module::setStrings( vector<float_t> freqs ) {
 
 void Module::setPedals( vector<Pedal*> * pedals ) {
 
+	_instrument->clearPedals();
 	_instrument->addPedals( StringInstrument::PEDAL_STANDARD_10 );
 
 	_pedalWrap->createDisplay( *pedals );
