@@ -9,9 +9,11 @@
 #include <vector>
 
 #include <Util/Vector.h>
+#include <Audio/Envelope.h>
 
 
 using std::vector;
+using Orza::Audio::Envelope;
 
 
 namespace Orza { namespace Steel { namespace Audio { namespace Wave {
@@ -98,6 +100,10 @@ class BaseWave {
 		uint32_t _rate;
 
 		vector<float_t> _ramps;
+
+		Envelope * _env;
+
+		Envelope * _envs;
 
 };
 

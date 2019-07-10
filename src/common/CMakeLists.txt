@@ -24,6 +24,7 @@ target_link_libraries( orzasteel-common )
 
 target_include_directories( orzasteel-common PUBLIC
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza/src"
+	"${ORZASTEEL_ROOT_PATH}/src/common"
 )
 
 set_target_properties(orzasteel-common PROPERTIES LINKER_LANGUAGE CXX)

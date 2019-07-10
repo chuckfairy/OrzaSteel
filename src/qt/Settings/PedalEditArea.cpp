@@ -62,46 +62,46 @@ PedalEditArea::PedalEditArea() {
 	);
 
 
-    setupKeySelect();
+	setupKeySelect();
 
 
-    //@TODO string updater
-    _UI.modifier_dropdown->addItem( "-12" );
-    _UI.modifier_dropdown->addItem( "-11" );
-    _UI.modifier_dropdown->addItem( "-10" );
-    _UI.modifier_dropdown->addItem( "-9" );
-    _UI.modifier_dropdown->addItem( "-8" );
-    _UI.modifier_dropdown->addItem( "-7" );
-    _UI.modifier_dropdown->addItem( "-6" );
-    _UI.modifier_dropdown->addItem( "-5" );
-    _UI.modifier_dropdown->addItem( "-4" );
-    _UI.modifier_dropdown->addItem( "-3" );
-    _UI.modifier_dropdown->addItem( "-2" );
-    _UI.modifier_dropdown->addItem( "-1" );
-    _UI.modifier_dropdown->addItem( "0" );
-    _UI.modifier_dropdown->addItem( "1" );
-    _UI.modifier_dropdown->addItem( "2" );
-    _UI.modifier_dropdown->addItem( "3" );
-    _UI.modifier_dropdown->addItem( "4" );
-    _UI.modifier_dropdown->addItem( "5" );
-    _UI.modifier_dropdown->addItem( "6" );
-    _UI.modifier_dropdown->addItem( "7" );
-    _UI.modifier_dropdown->addItem( "8" );
-    _UI.modifier_dropdown->addItem( "9" );
-    _UI.modifier_dropdown->addItem( "10" );
-    _UI.modifier_dropdown->addItem( "11" );
-    _UI.modifier_dropdown->addItem( "12" );
+	//@TODO string updater
+	_UI.modifier_dropdown->addItem( "-12" );
+	_UI.modifier_dropdown->addItem( "-11" );
+	_UI.modifier_dropdown->addItem( "-10" );
+	_UI.modifier_dropdown->addItem( "-9" );
+	_UI.modifier_dropdown->addItem( "-8" );
+	_UI.modifier_dropdown->addItem( "-7" );
+	_UI.modifier_dropdown->addItem( "-6" );
+	_UI.modifier_dropdown->addItem( "-5" );
+	_UI.modifier_dropdown->addItem( "-4" );
+	_UI.modifier_dropdown->addItem( "-3" );
+	_UI.modifier_dropdown->addItem( "-2" );
+	_UI.modifier_dropdown->addItem( "-1" );
+	_UI.modifier_dropdown->addItem( "0" );
+	_UI.modifier_dropdown->addItem( "1" );
+	_UI.modifier_dropdown->addItem( "2" );
+	_UI.modifier_dropdown->addItem( "3" );
+	_UI.modifier_dropdown->addItem( "4" );
+	_UI.modifier_dropdown->addItem( "5" );
+	_UI.modifier_dropdown->addItem( "6" );
+	_UI.modifier_dropdown->addItem( "7" );
+	_UI.modifier_dropdown->addItem( "8" );
+	_UI.modifier_dropdown->addItem( "9" );
+	_UI.modifier_dropdown->addItem( "10" );
+	_UI.modifier_dropdown->addItem( "11" );
+	_UI.modifier_dropdown->addItem( "12" );
 
-    _UI.string_dropdown->addItem( "1" );
-    _UI.string_dropdown->addItem( "2" );
-    _UI.string_dropdown->addItem( "3" );
-    _UI.string_dropdown->addItem( "4" );
-    _UI.string_dropdown->addItem( "5" );
-    _UI.string_dropdown->addItem( "6" );
-    _UI.string_dropdown->addItem( "7" );
-    _UI.string_dropdown->addItem( "8" );
-    _UI.string_dropdown->addItem( "9" );
-    _UI.string_dropdown->addItem( "10" );
+	_UI.string_dropdown->addItem( "1" );
+	_UI.string_dropdown->addItem( "2" );
+	_UI.string_dropdown->addItem( "3" );
+	_UI.string_dropdown->addItem( "4" );
+	_UI.string_dropdown->addItem( "5" );
+	_UI.string_dropdown->addItem( "6" );
+	_UI.string_dropdown->addItem( "7" );
+	_UI.string_dropdown->addItem( "8" );
+	_UI.string_dropdown->addItem( "9" );
+	_UI.string_dropdown->addItem( "10" );
 
 };
 
@@ -112,19 +112,19 @@ PedalEditArea::PedalEditArea() {
 
 void PedalEditArea::setLabel( const char * label ) {
 
-    _UI.label_edit->setText( label );
+	_UI.label_edit->setText( label );
 
 };
 
 void PedalEditArea::setModifier( int mod ) {
 
-    _UI.modifier_dropdown->setCurrentIndex( mod + 12 );
+	_UI.modifier_dropdown->setCurrentIndex( mod + 12 );
 
 };
 
 void PedalEditArea::setStrings( vector<uint8_t> strings ) {
 
-    _UI.string_dropdown->setCurrentIndex( strings[ 0 ] );
+	_UI.string_dropdown->setCurrentIndex( strings[ 0 ] );
 
 };
 
@@ -135,12 +135,12 @@ void PedalEditArea::setStrings( vector<uint8_t> strings ) {
 
 Pedal * PedalEditArea::getAsPedal() {
 
-    _ped.label = _UI.label_edit->text().toStdString();
-    _ped.steps = _UI.modifier_dropdown->currentText().toInt();
-    _ped.strings = { (uint8_t) _UI.string_dropdown->currentText().toInt() };
-    _ped.key = _UI.label_edit->text().toStdString().c_str()[0];
+	_ped.label = _UI.label_edit->text().toStdString();
+	_ped.steps = _UI.modifier_dropdown->currentText().toInt();
+	_ped.strings = { (uint8_t) _UI.string_dropdown->currentText().toInt() };
+	_ped.key = _UI.label_edit->text().toStdString().c_str()[0];
 
-    return &_ped;
+	return &_ped;
 
 };
 
@@ -151,7 +151,7 @@ Pedal * PedalEditArea::getAsPedal() {
 
 void PedalEditArea::sendUpdate() {
 
-    dispatch( PedalEditArea::NODE_UPDATE_EVENT, this );
+	dispatch( PedalEditArea::NODE_UPDATE_EVENT, this );
 
 };
 
@@ -162,28 +162,28 @@ void PedalEditArea::sendUpdate() {
 
 void PedalEditArea::setupKeySelect() {
 
-    for(int i = 0; i < 26; ++ i) {
+	for(int i = 0; i < 26; ++ i) {
 
-        char key = Orza::Letters::ALPHABET[i];
-        string sym(1, key);
-        _UI.control_dropdown->addItem( sym.c_str() );
+		char key = Orza::Letters::ALPHABET[i];
+		string sym(1, key);
+		_UI.control_dropdown->addItem( sym.c_str() );
 
-    }
+	}
 
 };
 
 void PedalEditArea::setControlKey( char key ) {
 
-    int index = 0;
+	int index = 0;
 
-    for(int i = 0; i < 26; ++ i) {
+	for(int i = 0; i < 26; ++ i) {
 
-        if(key == Orza::Letters::ALPHABET[i]) {
-            index = i;
-        }
-    }
+		if(key == Orza::Letters::ALPHABET[i]) {
+			index = i;
+		}
+	}
 
-    _UI.control_dropdown->setCurrentIndex(index);
+	_UI.control_dropdown->setCurrentIndex(index);
 
 };
 

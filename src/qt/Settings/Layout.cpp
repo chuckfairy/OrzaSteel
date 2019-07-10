@@ -46,11 +46,11 @@ Layout::Layout( Window * win ) :
 
 	_UI.tab_general_layout->addWidget( _generalSettings );
 
-    Module * insta = (Module*) _win->getModules()[0];
+	Module * insta = (Module*) _win->getModules()[0];
 
-    _StringEditor->buildFrom( *(insta->getInstrument()->getStrings()) );
+	_StringEditor->buildFrom( *(insta->getInstrument()->getStrings()) );
 
-    _PedalEditor->buildFrom( *(insta->getInstrument()->getPedals()) );
+	_PedalEditor->buildFrom( *(insta->getInstrument()->getPedals()) );
 
 };
 

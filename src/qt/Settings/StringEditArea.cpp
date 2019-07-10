@@ -31,8 +31,7 @@ StringEditArea::StringEditArea() {
 
 	setDeleteButton( _UI.delete_btn );
 
-
-    _UI.note_input->setText( "0" );
+	_UI.note_input->setText( "0" );
 
 	connect(
 		_UI.note_input,
@@ -41,7 +40,7 @@ StringEditArea::StringEditArea() {
 		SLOT( sendUpdate() )
 	);
 
-    Orza::Widget::MidiNoteDropdown::buildOn( _UI.comboBox );
+	Orza::Widget::MidiNoteDropdown::buildOn( _UI.comboBox );
 
 };
 

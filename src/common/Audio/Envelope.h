@@ -27,7 +27,7 @@ struct Envelope {
 
     float_t attack = 1.0;
 
-    float_t sustain = 0.0;
+    float_t sustain = 1.0;
 
     uint32_t state = 0;
 
@@ -62,5 +62,7 @@ struct Envelope {
     };
 
 };
+
+const Envelope DefaultEnvelope();
 
 } }

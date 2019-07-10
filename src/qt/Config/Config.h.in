@@ -7,6 +7,8 @@ namespace Orza { namespace Steel { namespace Config {
 
 static const char * DEFAULT_NUM_STRINGS = "${OZRASTEEL_NUM_STRINGS}";
 
+static const bool SHOW_INSTRUMENT_UI = true; //${OZRASTEEL_SHOW_INSTRUMENT_UI};
+
 //@TODO
 //static const char * DEFAULT_STRINGS = "${OZRASTEEL_STRINGS}";
 
