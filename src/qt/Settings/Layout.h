@@ -16,6 +16,8 @@
 #include "PedalEditor.h"
 #include "StringEditor.h"
 
+#include <MidiControl/Control.h>
+
 
 using Jack::Server;
 
@@ -89,6 +91,8 @@ class Layout : public Orza::Steel::Widget::BaseWidget {
 		PedalEditor * _PedalEditor;
 
 		StringEditor * _StringEditor;
+
+		MidiControl::Control * _ControlEditor;
 
 
 };
