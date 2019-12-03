@@ -24,29 +24,30 @@ namespace Orza { namespace Steel { namespace Settings {
 
 class StringEditArea : public TreeNode {
 
-    Q_OBJECT;
+	Q_OBJECT;
 
 	public:
 
-        static const char * NODE_UPDATE_EVENT;
+		static const char * NODE_UPDATE_EVENT;
 
 		StringEditArea();
 		~StringEditArea() {};
 
 
-        /**
-         * Values
-         */
+		/**
+		 * Values
+		 */
 
-        float getStringNote();
+		float getStringNote();
 
-        void setStringNote( float );
+		void setStringNote( float );
 
 
-    public slots:
+	public slots:
 
-        void sendUpdate();
+		void sendUpdate();
 
+		void noteSelectChange( int );
 
 	private:
 
