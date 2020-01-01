@@ -25,6 +25,7 @@
 
 #include "Bridge.h"
 #include "Neck.h"
+#include "NoteDisplay.h"
 #include "PedalWrap.h"
 #include "PortInterface.h"
 
@@ -103,9 +104,12 @@ class Module : public BaseModule {
 
 		Neck * _neck;
 
+
 		PedalWrap * _pedalWrap;
 
 		vector<Pedal*> * _pedals;
+
+		NoteDisplay * _noteDisplay;
 
 
 		/**

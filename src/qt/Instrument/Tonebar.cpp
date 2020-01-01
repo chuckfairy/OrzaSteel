@@ -3,6 +3,8 @@
  */
 #include "Tonebar.h"
 
+#include <QGraphicsOpacityEffect>
+
 #include <Widget/Line.h>
 #include <Widget/BackgroundImage.h>
 
@@ -42,6 +44,11 @@ Tonebar::Tonebar( QWidget * parent ) :
 	img->setGeometry( 0, 0, 75, 200 );
 	img->setParent(this);
 
+	//opacity
+	QGraphicsOpacityEffect * op = new QGraphicsOpacityEffect();
+	op->setOpacity(1); //0 to 1 will cause the fade effect to kick in
+	img->setGraphicsEffect(op);
+	img->setAutoFillBackground(true);
 
 	if(_showLine) {
 		createLine();

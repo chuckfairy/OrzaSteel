@@ -45,9 +45,9 @@ StringEditArea::StringEditArea() {
 	//Combo box
 	connect(
 		_UI.note_select,
-		SIGNAL( currentIndexChanged(int) ),
+		SIGNAL( currentIndexChanged( int ) ),
 		this,
-		SLOT( noteSelectChange(int) )
+		SLOT( noteSelectChange( int ) )
 	);
 
 	Orza::Widget::MidiNoteDropdown::buildOn( _UI.note_select );

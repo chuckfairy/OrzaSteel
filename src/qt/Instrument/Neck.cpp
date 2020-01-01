@@ -2,6 +2,7 @@
  * Neck impl
  */
 #include <cmath>
+#include <algorithm>
 
 #include <Color/Color.h>
 #include <Util/Numbers.h>
@@ -24,7 +25,7 @@ Neck::Neck() {
 
 	_Bar = new Tonebar( this );
 
-    handleResize();
+	handleResize();
 
 	_positions.push_back( 0.0 );
 
@@ -36,7 +37,7 @@ Neck::Neck() {
 		//"border-image:url(\":/necks/basic-wood.png\") 0 0 0 0 stretch stretch;"
 	//);
 
-    setAttribute( Qt::WA_AcceptTouchEvents, true );
+	setAttribute( Qt::WA_AcceptTouchEvents, true );
 	setMouseTracking(true);
 	_Bar->setMouseTracking(true);
 
@@ -64,15 +65,15 @@ void Neck::handleResize() {
 
 	setupBridgeUIHelperLog();
 
-    _Bar->raise();
+	_Bar->raise();
 
 };
 
 
 void Neck::resizeEvent( QResizeEvent *event ) {
 
-    handleResize();
-    QWidget::resizeEvent(event);
+	handleResize();
+	QWidget::resizeEvent(event);
 
 };
 
@@ -119,7 +120,7 @@ void Neck::setupBridgeUIHelper() {
 
 void Neck::setupBridgeUIHelperLog() {
 
-    //clearArea();
+	//clearArea();
 
 	float semiTones = 12; //@TODO move further down line
 
@@ -176,7 +177,13 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
 	//std::cout << "Mouse move : " << event->x() << " " << event->y() << "\n";
 
-	_positions[ 0 ] = ( (float_t)event->x() / (float_t)width() ) * (float_t)100;
+	//@TODO this is linear to log conversion
+	//but move depending on neck setup
+	float_t neckPercentage =  (float_t)event->x() / (float_t)width();
+
+	_positions[0] = neckPercentage * (float_t)100;
+	_positions[0] = std::min(_positions[0], (float_t)100.0);
+	_positions[0] = std::max(_positions[0], (float_t)0.0);
 
 	//std::cout << "Position : " << _positions[ 0 ] << " " << width() << "\n";
 

@@ -14,13 +14,18 @@ class BackgroundImage : public QWidget {
 
 		BackgroundImage(QWidget *parent = 0) {};
 
-		BackgroundImage( const char * src );
+		BackgroundImage( const char * src, float opacity = 1.0 );
 
 		~BackgroundImage() {};
+
+		void setOpacity( float opacity ) {
+			_opacity = opacity;
+		};
 
 	private:
 
 		const char * _src;
+		float _opacity;
 
 	protected:
 

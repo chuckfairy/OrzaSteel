@@ -68,6 +68,11 @@ Module::Module( Window * win ) :
 	_window->getServer()->getPatchbay()->getEffects()
 		->connectInputTo( _stereoInterface->getOutputNameLeft() );
 
+	//note display setup
+	_noteDisplay = new NoteDisplay(
+		_window->getUI()->current_note_label
+	);
+
 };
 
 
@@ -91,14 +96,16 @@ void Module::process( jack_nframes_t nframes ) {
 	if( _bridge->hasChange() || _neck->hasChange() || HAS_CHANGE ) {
 
 		//Wave setup
-
 		_wave->setWave(
 			freqs,
 			_window->getServer()->getSampleRate()
 		);
 
+		//Updates for ui
 		_bridge->setChanged();
 		_neck->setChanged();
+		_noteDisplay->update(freqs);
+
 		HAS_CHANGE = false;
 
 	}

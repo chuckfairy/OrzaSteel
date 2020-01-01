@@ -204,7 +204,8 @@ float_t StringInstrument::getPitch( uint8_t num, uint8_t position ) {
 
 	float_t starting = _strings[ num ] + modifier;
 
-	return (float_t)( starting + ( starting * ( (float_t)position / (float_t)100 ) ) );
+	float_t logDistance = pow(2.0, (float_t)position / (float_t)100 );
+	return (float_t)( starting * logDistance );
 
 };
 
