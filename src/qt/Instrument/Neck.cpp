@@ -122,17 +122,21 @@ void Neck::setupBridgeUIHelperLog() {
 
 	//clearArea();
 
-	float semiTones = 12; //@TODO move further down line
+	int toneNumbers = _semiTones * _octaves;
 
 	float widthSoFar = 0.0;
 	float fullWidth = (float) width();
 	float percent = 0.0;
 	float heightChild = height() - 10;
 
+	float widthSplit = fullWidth / (toneNumbers);
+
 	if( _areas.size() == 0 ) {
-		for( int i = 0; i < semiTones; ++ i ) {
-			const char * color = STEPS_13[ i ];
-			const char * label = Orza::Numbers::ROMAN_13[ i ];
+		for( int i = 0; i < toneNumbers; ++ i ) {
+			int labelIndex = i - (_semiTones * floor(i / _semiTones));
+
+			const char * color = STEPS_13[ labelIndex ];
+			const char * label = Orza::Numbers::ROMAN_13[ labelIndex ];
 
 			AreaData * data = new AreaData();
 			data->color = color;
@@ -144,16 +148,15 @@ void Neck::setupBridgeUIHelperLog() {
 		}
 	}
 
-	float widthSplit = fullWidth / (semiTones);
+	for( int i = 0; i < toneNumbers; ++ i ) {
 
-	for( int i = 0; i < semiTones; ++ i ) {
+		//@TODO actual log to move to
+		//different calc private functions
+		//float_t semiWidth = pow( 2, ( (toneNumbers - i) / toneNumbers) ) - pow(2, ((toneNumbers - i - 1) / toneNumbers));
 
-		float_t semiWidth = pow( 2, ( (semiTones - i) / semiTones) ) - pow(2, ((semiTones - i - 1) / semiTones));
-		semiWidth = widthSplit;
+		float_t semiWidth = widthSplit;
 
 		percent += semiWidth;
-
-		//semiWidth = ( semiWidth * fullWidth );
 
 		FretArea * area = _areas[i];
 
@@ -180,9 +183,10 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 	//@TODO this is linear to log conversion
 	//but move depending on neck setup
 	float_t neckPercentage =  (float_t)event->x() / (float_t)width();
+	neckPercentage *= _octaves;
 
 	_positions[0] = neckPercentage * (float_t)100;
-	_positions[0] = std::min(_positions[0], (float_t)100.0);
+	_positions[0] = std::min(_positions[0], (float_t)(100.0 * _octaves));
 	_positions[0] = std::max(_positions[0], (float_t)0.0);
 
 	//std::cout << "Position : " << _positions[ 0 ] << " " << width() << "\n";

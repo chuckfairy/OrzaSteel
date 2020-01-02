@@ -68,7 +68,7 @@ class Neck : public QWidget {
 
 		};
 
-        void handleResize();
+		void handleResize();
 
 
 	protected:
@@ -94,7 +94,10 @@ class Neck : public QWidget {
 
 		bool HAS_CHANGE = false;
 
-        vector<FretArea*> _areas;
+		vector<FretArea*> _areas;
+
+		int _semiTones = 12;
+		int _octaves = 2;
 
 
 		/**
@@ -110,11 +113,11 @@ class Neck : public QWidget {
 
 		void createBridgeArea( uint8_t );
 
-        void setupBridgeUIHelper();
+		void setupBridgeUIHelper();
 
-        void setupBridgeUIHelperLog();
+		void setupBridgeUIHelperLog();
 
-        void clearArea();
+		void clearArea();
 
 };
 

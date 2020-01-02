@@ -44,7 +44,7 @@ FretArea::FretArea( AreaData * data ) :
 
 	QLabel * label = new QLabel(this);
 	label->setText( data->label );
-	label->move( 15, 15 );
+	label->move( 5, 15 );
 	label->setStyleSheet(
 		"color: #000000; border-left: none;"
 	);

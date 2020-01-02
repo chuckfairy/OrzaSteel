@@ -58,7 +58,7 @@ StringArea::StringArea( AreaData * data ) :
 		border: none;\
 		background: transparent;\
 	");
-	label->move( 5, 5);
+	label->move(5, 5);
 
 	show();
 
