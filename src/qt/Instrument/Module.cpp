@@ -271,4 +271,10 @@ void Module::processPedals( char keyPressed, bool active ) {
 
 };
 
+void Module::setOctaves( int octaves ) {
+
+	_neck->setOctaves( octaves );
+
+};
+
 } } }

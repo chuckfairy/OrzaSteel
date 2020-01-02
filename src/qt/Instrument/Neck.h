@@ -71,6 +71,15 @@ class Neck : public QWidget {
 		void handleResize();
 
 
+		/**
+		 * Settings
+		 */
+
+		void setOctaves( int );
+
+		//void setSemiTones( int ); //@TODO
+
+
 	protected:
 
 		/**
@@ -114,8 +123,6 @@ class Neck : public QWidget {
 		void createBridgeArea( uint8_t );
 
 		void setupBridgeUIHelper();
-
-		void setupBridgeUIHelperLog();
 
 		void clearArea();
 

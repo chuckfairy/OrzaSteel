@@ -63,7 +63,7 @@ vector<float_t> Neck::getPositions() {
 
 void Neck::handleResize() {
 
-	setupBridgeUIHelperLog();
+	setupBridgeUIHelper();
 
 	_Bar->raise();
 
@@ -84,43 +84,7 @@ void Neck::resizeEvent( QResizeEvent *event ) {
 
 void Neck::setupBridgeUIHelper() {
 
-	float semiTones = 12; //@TODO move further down line
-
-	float widthSoFar = 0.0;
-	float fullWidth = (float) width();
-	float widthSplit = fullWidth / (semiTones - 1.5);
-
-	for( int i = 0; i < semiTones; ++ i ) {
-
-		float semiWidth = widthSplit;
-
-		const char * color = STEPS_13[ i ];
-		const char * label = Orza::Numbers::ROMAN_13[ i ];
-
-		AreaData * data = new AreaData();
-		data->color = color;
-		data->label = label ;
-
-		FretArea * area = new FretArea( data );
-		area->setParent( this );
-		area->setGeometry( 0, 0, semiWidth, height() / 2 );
-		area->move( widthSoFar, 0 );
-		area->setMouseTracking( true );
-
-		widthSoFar += semiWidth;
-
-	}
-
-};
-
-
-/**
- * Helper UI for display frets more or less
- */
-
-void Neck::setupBridgeUIHelperLog() {
-
-	//clearArea();
+	clearArea();
 
 	int toneNumbers = _semiTones * _octaves;
 
@@ -131,24 +95,18 @@ void Neck::setupBridgeUIHelperLog() {
 
 	float widthSplit = fullWidth / (toneNumbers);
 
-	if( _areas.size() == 0 ) {
-		for( int i = 0; i < toneNumbers; ++ i ) {
-			int labelIndex = i - (_semiTones * floor(i / _semiTones));
-
-			const char * color = STEPS_13[ labelIndex ];
-			const char * label = Orza::Numbers::ROMAN_13[ labelIndex ];
-
-			AreaData * data = new AreaData();
-			data->color = color;
-			data->label = label ;
-
-			FretArea * area = new FretArea( data );
-			area->setParent( this );
-			_areas.push_back(area);
-		}
-	}
-
 	for( int i = 0; i < toneNumbers; ++ i ) {
+		int labelIndex = i - (_semiTones * floor(i / _semiTones));
+
+		const char * color = STEPS_13[ labelIndex ];
+		const char * label = Orza::Numbers::ROMAN_13[ labelIndex ];
+
+		AreaData * data = new AreaData();
+		data->color = color;
+		data->label = label;
+
+		FretArea * area = new FretArea( data );
+		area->setParent( this );
 
 		//@TODO actual log to move to
 		//different calc private functions
@@ -158,12 +116,14 @@ void Neck::setupBridgeUIHelperLog() {
 
 		percent += semiWidth;
 
-		FretArea * area = _areas[i];
+		std::cout << "SEMID WITH AND STUFF " << semiWidth << " " << height() << " \n\n\n";
 
 		area->setGeometry( 0, 0, semiWidth, heightChild );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
 		area->raise();
+
+		_areas.push_back(area);
 
 		widthSoFar += semiWidth;
 
@@ -197,21 +157,38 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
 };
 
+void Neck::setOctaves( int octaves ) {
+
+	std::cout << "OCATVES " << octaves << "\n\n\n";
+	_octaves = octaves;
+
+	clearArea();
+
+	setupBridgeUIHelper();
+
+	_Bar->raise();
+
+};
+
 /**
  * Clear old string area
  */
 
 void Neck::clearArea() {
 
+	//qDeleteAll(children());
+
 	int al = _areas.size();
 	for( int i = 0; i < al; ++ i ) {
 
 		_areas[i]->setParent(0);
-		delete _areas[i];
+		_areas[i]->setGeometry(0,0,0,0);
+		//delete _areas[i];
 
 	}
 
 	_areas.clear();
+
 
 };
 

@@ -32,6 +32,13 @@ StringEditor::StringEditor( Window * window ) :
 		SLOT( handleAddClick() )
 	);
 
+	connect(
+		_UI.octave_input,
+		SIGNAL( currentIndexChanged( int ) ),
+		this,
+		SLOT( updateOctaves( int ) )
+	);
+
 };
 
 
@@ -115,6 +122,19 @@ void StringEditor::handleNodeUpdate( TreeNode * node ) {
 	updateInstrument();
 
 };
+
+/**
+ * Updates octaves for insrument
+ */
+void StringEditor::updateOctaves( int index ) {
+
+	//@TODO move
+	Module * insta = (Module*) _win->getModules()[0];
+
+	int octaves = _UI.octave_input->currentText().toInt();
+	insta->setOctaves(octaves);
+
+}
 
 
 /**

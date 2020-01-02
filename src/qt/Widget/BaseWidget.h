@@ -26,7 +26,7 @@ class BaseWidget : public QFrame {
 		 * CSS painting
 		 */
 
-		void paintEvent( QPaintEvent * event ) {
+		void paintEvent2( QPaintEvent * event ) {
 
 			setAttribute(Qt::WA_TranslucentBackground);
 
