@@ -88,7 +88,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Or&amp;zaSteel</string>
+           <string>OrzaSteel</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -162,7 +162,7 @@
           <item>
            <widget class="QLabel" name="effect_1_label">
             <property name="text">
-             <string>Effect &amp;1</string>
+             <string>Effect 1</string>
             </property>
            </widget>
           </item>
@@ -176,7 +176,7 @@
           <item>
            <widget class="QLabel" name="effect_1_label_2">
             <property name="text">
-             <string>Effect &amp;2</string>
+             <string>Effect 2</string>
             </property>
            </widget>
           </item>
@@ -190,7 +190,7 @@
           <item>
            <widget class="QLabel" name="effect_1_label_3">
             <property name="text">
-             <string>Effect &amp;3</string>
+             <string>Effect 3</string>
             </property>
            </widget>
           </item>
@@ -204,7 +204,7 @@
           <item>
            <widget class="QLabel" name="effect_1_label_4">
             <property name="text">
-             <string>Effect &amp;4</string>
+             <string>Effect 4</string>
             </property>
            </widget>
           </item>
@@ -234,7 +234,7 @@
       <item>
        <widget class="QLabel" name="volume_label">
         <property name="text">
-         <string>&amp;Volume</string>
+         <string>Volume</string>
         </property>
        </widget>
       </item>

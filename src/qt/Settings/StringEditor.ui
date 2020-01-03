@@ -29,6 +29,12 @@
        </property>
        <item>
         <widget class="QLabel" name="octave_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Octaves</string>
          </property>
@@ -36,6 +42,12 @@
        </item>
        <item>
         <widget class="QComboBox" name="octave_input">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <item>
           <property name="text">
            <string>1</string>
@@ -64,6 +76,12 @@
       <layout class="QHBoxLayout" name="semitone_layout">
        <item>
         <widget class="QLabel" name="semitone_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Semi Tones</string>
          </property>
