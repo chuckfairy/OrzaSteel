@@ -84,6 +84,14 @@ void Neck::resizeEvent( QResizeEvent *event ) {
 
 void Neck::setupBridgeUIHelper() {
 
+	static bool running = false;
+
+	if(running) {
+		return;
+	}
+
+	running = true;
+
 	clearArea();
 
 	int toneNumbers = _semiTones * _octaves;
@@ -98,36 +106,31 @@ void Neck::setupBridgeUIHelper() {
 	for( int i = 0; i < toneNumbers; ++ i ) {
 		int labelIndex = i - (_semiTones * floor(i / _semiTones));
 
-		const char * color = STEPS_13[ labelIndex ];
-		const char * label = Orza::Numbers::ROMAN_13[ labelIndex ];
-
-		AreaData * data = new AreaData();
-		data->color = color;
-		data->label = label;
-
-		FretArea * area = new FretArea( data );
-		area->setParent( this );
 
 		//@TODO actual log to move to
 		//different calc private functions
 		//float_t semiWidth = pow( 2, ( (toneNumbers - i) / toneNumbers) ) - pow(2, ((toneNumbers - i - 1) / toneNumbers));
+		FretArea * area = _areas[i];
 
 		float_t semiWidth = widthSplit;
 
 		percent += semiWidth;
 
-		std::cout << "SEMID WITH AND STUFF " << semiWidth << " " << height() << " \n\n\n";
+		//std::cout << "SEMID WITH AND STUFF " << semiWidth << " " << color << " " << widthSoFar << " \n\n\n";
 
 		area->setGeometry( 0, 0, semiWidth, heightChild );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
 		area->raise();
+		area->show();
 
 		_areas.push_back(area);
 
 		widthSoFar += semiWidth;
 
 	}
+
+	running = false;
 
 };
 
@@ -162,8 +165,6 @@ void Neck::setOctaves( int octaves ) {
 	std::cout << "OCATVES " << octaves << "\n\n\n";
 	_octaves = octaves;
 
-	clearArea();
-
 	setupBridgeUIHelper();
 
 	_Bar->raise();
@@ -176,19 +177,31 @@ void Neck::setOctaves( int octaves ) {
 
 void Neck::clearArea() {
 
-	//qDeleteAll(children());
+	if(_areas.size() == 0) {
+		//Max number of areas ever
+		int toneNumbers = 12 * 4;
+
+		for(int i = 0; i < toneNumbers; ++i) {
+			int labelIndex = i - (_semiTones * floor(i / _semiTones));
+
+			const char * color = STEPS_13[ labelIndex ];
+			const char * label = Orza::Numbers::ROMAN_13[ labelIndex ];
+
+			AreaData * data = new AreaData();
+			data->color = color;
+			data->label = label;
+
+			FretArea * area = new FretArea( data );
+			area->setParent( this );
+
+			_areas.push_back(area);
+		}
+	}
 
 	int al = _areas.size();
 	for( int i = 0; i < al; ++ i ) {
-
-		_areas[i]->setParent(0);
-		_areas[i]->setGeometry(0,0,0,0);
-		//delete _areas[i];
-
+		_areas[i]->hide();
 	}
-
-	_areas.clear();
-
 
 };
 
