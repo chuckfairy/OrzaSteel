@@ -1,10 +1,39 @@
-# Meta Synth [Jack](http://jackaudio.org/) App
+# Pedal Steel Guitar Synthesizer
+
+This is a sound application to mimic playing a [pedal steel guitar](https://en.wikipedia.org/wiki/Pedal_steel_guitar). It uses my sound library [liborza](https://github.com/chuckfairy/liborza) and currently supports [JACK](https://jackaudio.org/) as an audio server.
 
 ![Main View](https://raw.githubusercontent.com/chuckfairy/OrzaSteel/master/screenshots/orzasteel_20200226.png)
+
+# Features
+
+- Change string notes and number of strings
+- Change semitones
+- Change number of octaves
+- Effects rack supporting [LV2](https://lv2plug.in/) audio plugins.
+- Basic square, saw, and sine wave outputs.
+
+
+# What's to come?
+
+- Manipulation of any audio signal as a note on the guitar
+- Custom tonebar image
+- Custom colors or image for frets
+- Midi input integration to allow to control from another controller
+
+
+# Usage
+
+- 1-9 string notes
+- mouse to move tonebar / raise or lower pitch
+- Set characters in pedal editor, but the default is a,b,c and various others for the knee levers modeled after this website https://www.steelguitar.com/tunings.html
 
 
 # Install
 
+
+```shell
+./tools/install.sh # will load needed packages
+```
 
 ## Mac specific
 
