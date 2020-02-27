@@ -1,6 +1,6 @@
 # Meta Synth [Jack](http://jackaudio.org/) App
 
-![Main View](https://raw.githubusercontent.com/chuckfairy/OrzaSteel/master/screenshots/orzasteel_20180925.png)
+![Main View](https://raw.githubusercontent.com/chuckfairy/OrzaSteel/master/screenshots/orzasteel_20200226.png)
 
 
 # Install
