@@ -65,8 +65,11 @@ Module::Module( Window * win ) :
 
 	setPedals( pedals );
 
-	_window->getServer()->getPatchbay()->getEffects()
-		->connectInputTo( _stereoInterface->getOutputNameLeft() );
+	//Change input
+	Jack::PatchbayEffects * effects = (Jack::PatchbayEffects*) _window->getServer()
+		->getPatchbay()->getEffects();
+
+	effects->connectInputTo( _stereoInterface->getOutputNameLeft() );
 
 	//note display setup
 	_noteDisplay = new NoteDisplay(

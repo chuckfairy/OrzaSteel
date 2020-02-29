@@ -3,8 +3,8 @@
  */
 #pragma once
 
-namespace Orza { namespace Config {
+namespace Orza { namespace Steel { namespace Config {
 
 const char * VERSION = "${ORZASTEEL_VERSION}";
 
-}; };
+}; }; };
