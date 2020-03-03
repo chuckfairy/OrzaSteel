@@ -61,6 +61,8 @@ void StringEditor::handleAddClick() {
 
 void StringEditor::buildFrom( vector<float> strings ) {
 
+	clearArea();
+
 	_building = true;
 
 	for( int i = 0; i < strings.size(); ++ i ) {
@@ -132,6 +134,7 @@ void StringEditor::updateOctaves( int index ) {
 	Module * insta = (Module*) _win->getModules()[0];
 
 	int octaves = _UI.octave_input->currentText().toInt();
+
 	insta->setOctaves(octaves);
 
 }
@@ -162,5 +165,14 @@ void StringEditor::remove( TreeNode * area ) {
 	updateInstrument();
 
 };
+
+
+void StringEditor::clearArea() {
+
+	for (int i = 0; i < _nodes.size(); ++i) {
+		remove(_nodes.getByIndex(i));
+	}
+
+}
 
 } } }

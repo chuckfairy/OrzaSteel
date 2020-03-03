@@ -98,6 +98,8 @@ class StringEditor : public TreeNode {
 
 		void updateInstrument();
 
+		void clearArea();
+
 
 };
 

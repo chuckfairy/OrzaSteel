@@ -113,6 +113,27 @@ class StringInstrument {
 		void addPedals( vector<Pedal*> );
 
 
+		/**
+		 * Length and sound
+		 */
+
+		int getOctaves() {
+			return _octaves;
+		}
+
+		void setOctaves(int octaves) {
+			_octaves = octaves;
+		}
+
+		int getSemitones() {
+			return _semitones;
+		}
+
+		void getSemitones(int semitones) {
+			_semitones = semitones;
+		}
+
+
 	private:
 
 		/**
@@ -122,6 +143,9 @@ class StringInstrument {
 		vector<float_t> _strings;
 
 		vector<Pedal*> _pedals;
+
+		int _octaves = 1;
+		int _semitones = 12;
 
 };
 
