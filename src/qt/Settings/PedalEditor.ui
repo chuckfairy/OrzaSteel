@@ -46,7 +46,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QScrollArea" name="pedals">
+        <widget class="QScrollArea" name="control_scroll_area">
          <property name="widgetResizable">
           <bool>true</bool>
          </property>
@@ -56,7 +56,7 @@
             <x>0</x>
             <y>0</y>
             <width>501</width>
-            <height>334</height>
+            <height>336</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
@@ -77,6 +77,9 @@
            </property>
            <item>
             <layout class="QVBoxLayout" name="pedal_content">
+             <property name="spacing">
+              <number>10</number>
+             </property>
              <property name="topMargin">
               <number>0</number>
              </property>

@@ -61,9 +61,9 @@ FretArea::FretArea( AreaData * data ) :
 char * FretArea::formatStyleSheet( const char * color ) {
 
 	char * css = (char*) malloc(
-			( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
-			* sizeof( const char * )
-			);
+		( sizeof( color ) + sizeof( STYLE_SHEET_TEMPLATE ) )
+		* sizeof( const char * )
+	);
 
 	sprintf( css, STYLE_SHEET_TEMPLATE, color );
 

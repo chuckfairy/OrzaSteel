@@ -8,6 +8,7 @@ This is a sound application to mimic playing a [pedal steel guitar](https://en.w
 
 - Change string notes and number of strings
 - Change semitones
+- Change pedals and what they modify
 - Change number of octaves
 - Effects rack supporting [LV2](https://lv2plug.in/) audio plugins.
 - Basic square, saw, and sine wave outputs.

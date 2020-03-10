@@ -78,6 +78,8 @@ void StringEditor::buildFrom( vector<float> strings ) {
 
 	_building = false;
 
+	updateInstrument();
+
 };
 
 
@@ -169,8 +171,9 @@ void StringEditor::remove( TreeNode * area ) {
 
 void StringEditor::clearArea() {
 
-	for (int i = 0; i < _nodes.size(); ++i) {
-		remove(_nodes.getByIndex(i));
+	int size = _nodes.size();
+	for (int i = 0; i < size; ++i) {
+		remove(_nodes.getByIndex(0));
 	}
 
 }

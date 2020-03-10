@@ -40,7 +40,7 @@ class StringEditArea : public TreeNode {
 
 		float getStringNote();
 
-		void setStringNote( float );
+		void setStringNote( float, bool updateSelect = true );
 
 
 	public slots:

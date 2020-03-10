@@ -38,6 +38,7 @@ void InstrumentPresetLoader::load( json j ) {
 			std::cout << "STRING " << stringF << "\n";
 		}
 
+		_instrument->setStrings(strings);
 		_stringEditor->buildFrom(strings);
 	}
 

@@ -1,4 +1,4 @@
-QT += core gui webkit
+QT += core gui webkit charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,5 +15,6 @@ FORMS    += src/qt/Window.ui\
     src/qt/Settings/PedalEditor.ui \
     src/qt/Settings/StringEditor.ui \
     src/qt/Settings/StringEditArea.ui \
-    src/qt/Settings/PedalEditArea.ui
+    src/qt/Settings/PedalEditArea.ui \
+    src/qt/Settings/EnvelopeEditor.ui
 

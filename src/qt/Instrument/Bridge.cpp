@@ -44,15 +44,12 @@ void Bridge::setNumStrings( uint8_t numStrings ) {
 
 	clearArea();
 
+	std::cout << "NUM STRINSDGOINSDGO " << numStrings << "\n";
+
 	while( numStrings ) {
 
 		-- numStrings;
-
-		StringArea * area = createStringArea( numStrings );
-
-		_layout->addWidget( area );
-
-		_areas.push_back( area );
+		_areas[ numStrings ]->show();
 
 	}
 
@@ -65,20 +62,36 @@ void Bridge::setNumStrings( uint8_t numStrings ) {
 
 void Bridge::clearArea() {
 
-	_areas.clear();
-
 	QLayoutItem * item;
 
-	while( ( item = _layout->takeAt( 0 ) ) ) {
+	if( _areas.size() == 0 ) {
 
-		if( item->widget() ) {
+		int maxStrings = 50; //@TODO
+		int maxColor = 12; //@TODO
+		int stringNum = 0;
 
-			delete item->widget();
+		while( maxStrings ) {
+
+			-- maxStrings;
+
+			StringArea * area = createStringArea( stringNum );
+
+			_layout->addWidget( area );
+
+			_areas.push_back( area );
+
+			++stringNum;
+			if( stringNum >= maxColor) {
+				stringNum = 0;
+			}
 
 		}
 
-		delete item;
+	}
 
+	int al = _areas.size();
+	for( int i = 0; i < al; ++ i ) {
+		_areas[i]->hide();
 	}
 
 };
