@@ -58,7 +58,7 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 
 		void mouseReleaseEvent( QMouseEvent * );
 
-        bool event( QEvent *event );
+		bool event( QEvent *event );
 
 
 	private:

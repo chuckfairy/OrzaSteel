@@ -13,12 +13,12 @@ find_package(Qt5Qml REQUIRED)
 
 
 file(GLOB orzasteel.qt_UIS
-    Window.ui
-    Settings/Settings.ui
+	Window.ui
+	Settings/Settings.ui
 	Settings/PedalEditor.ui
-    Settings/PedalEditArea.ui
+	Settings/PedalEditArea.ui
 	Settings/StringEditor.ui
-    Settings/StringEditArea.ui
+	Settings/StringEditArea.ui
 )
 
 
@@ -60,7 +60,7 @@ file(
 	"${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.cpp"
 	Resource/*.cpp
 	Instrument/*.cpp
-    Settings/*.cpp
+	Settings/*.cpp
 	Widget/BackgroundImage.cpp
 	Window.cpp
 	main.cpp
@@ -76,18 +76,18 @@ file( GLOB orzasteel.qt_moc_files
 	Widget/BackgroundImage.h
 	Instrument/StringArea.h
 	Instrument/Bridge.h
-    Settings/StringEditor.h
-    Settings/StringEditArea.h
-    Settings/PedalEditor.h
-    Settings/PedalEditArea.h
+	Settings/StringEditor.h
+	Settings/StringEditArea.h
+	Settings/PedalEditor.h
+	Settings/PedalEditArea.h
 )
 
 
 # CMake config apps
 
 file(GLOB orzasteel.qt_SRC
-    ${orzasteel.qt_SRC}
-    **/**/moc_*.cpp
+	${orzasteel.qt_SRC}
+	**/**/moc_*.cpp
 )
 
 qt5_wrap_ui(orzasteel.qt_UIS ${orzasteel.qt_UIS} )
@@ -105,26 +105,26 @@ configure_file(Config/Config.h.in Config/Config.h)
 add_executable(orzasteel.qt ${orzasteel.qt_SRC} ${RESOURCES} ${MY_MOCED_FILES} ${orzasteel.qt_UIS} )
 
 target_link_libraries( orzasteel.qt
-    PUBLIC
-    dl
+	PUBLIC
+	dl
 	jack
 	liborza-common-jack
 	liborza-qt
 	liborza-common-plugin
 	orzasteel-common
-    Qt5::Widgets
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Qml
-    ${Boost_LIBRARIES}
+	Qt5::Widgets
+	Qt5::Core
+	Qt5::Gui
+	Qt5::Qml
+	${Boost_LIBRARIES}
 )
 
 install( TARGETS
-   orzasteel.qt
+	orzasteel.qt
 
-   RUNTIME DESTINATION bin
-   LIBRARY DESTINATION lib
-   ARCHIVE DESTINATION lib
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
 )
 
 #Desktop file
