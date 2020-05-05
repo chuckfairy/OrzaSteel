@@ -13,11 +13,14 @@ using Orza::Steel::Audio::Pedal;
 namespace Orza { namespace Steel { namespace Settings {
 
 
-InstrumentPresetLoader::InstrumentPresetLoader( Jack::Server * server, StringInstrument * s,
+InstrumentPresetLoader::InstrumentPresetLoader(
+	Jack::Server * server,
+	StringInstrument * s,
 	StringEditor * stringEditor,
-	PedalEditor * pedalEditor
+	PedalEditor * pedalEditor,
+	Orza::Widget::Patchbay * patchbay
 ) :
-	Orza::Layouts::PresetLoader( server ),
+	Orza::Layouts::PresetLoader( server, patchbay ),
 	_instrument( s ),
 	_stringEditor( stringEditor ),
 	_pedalEditor( pedalEditor )

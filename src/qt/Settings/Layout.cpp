@@ -64,8 +64,10 @@ Layout::Layout( Window * win ) :
 		_Server,
 		instrument,
 		_StringEditor,
-		_PedalEditor
+		_PedalEditor,
+		_Patchbay
 	);
+
 	_generalSettings = new Orza::Settings::Layout( win->getServer(), writer, loader);
 
 	_UI.tab_general_layout->addWidget( _generalSettings );

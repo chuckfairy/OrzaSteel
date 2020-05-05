@@ -24,9 +24,11 @@ class InstrumentPresetLoader : public Orza::Layouts::PresetLoader {
 
 	public:
 
+		//@TODO not as many args
 		InstrumentPresetLoader( Jack::Server * , StringInstrument * ,
 			StringEditor *,
-			PedalEditor *
+			PedalEditor *,
+			Orza::Widget::Patchbay *
 		);
 
 
