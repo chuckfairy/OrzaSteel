@@ -43,6 +43,7 @@ Module::Module( Window * win ) :
 	_pedalWrap( new PedalWrap ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
+	_midiReader( new MidiReader( win->getServer() ) ),
 	_wave( new SineWave ),
 	_nullWave( new NullWave ),
 	_stereoInterface( new PortInterface( win->getServer()->getJackClient() ) )

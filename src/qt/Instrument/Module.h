@@ -28,6 +28,7 @@
 #include "NoteDisplay.h"
 #include "PedalWrap.h"
 #include "PortInterface.h"
+#include "MidiReader.h"
 
 
 using std::map;
@@ -147,6 +148,12 @@ class Module : public BaseModule {
 
 		void processPedals( char keyPressed, bool active );
 
+
+		/**
+		 * Midi
+		 */
+
+		MidiReader * _midiReader;
 
 };
 
