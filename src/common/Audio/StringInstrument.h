@@ -134,6 +134,23 @@ class StringInstrument {
 		}
 
 
+		/**
+		 * Velocity
+		 */
+
+		void setVelocity(int index, float velocity) {
+			_velocity[index] = velocity;
+		};
+
+		vector<float_t> getVelocity() {
+			return _velocity;
+		};
+
+		float_t getVelocity(int index) {
+			return _velocity[index];
+		};
+
+
 	private:
 
 		/**
@@ -143,6 +160,8 @@ class StringInstrument {
 		vector<float_t> _strings;
 
 		vector<Pedal*> _pedals;
+
+		vector<float_t> _velocity;
 
 		int _octaves = 1;
 		int _semitones = 12;

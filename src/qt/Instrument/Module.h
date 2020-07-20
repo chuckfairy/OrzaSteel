@@ -50,7 +50,7 @@ namespace Orza { namespace Steel { namespace Instrument {
  * Main
  */
 
-class Module : public BaseModule {
+class Module : public BaseModule, public QWidget {
 
 	public:
 
@@ -98,6 +98,11 @@ class Module : public BaseModule {
 		 * Update octaves on neck
 		 */
 		void setOctaves( int );
+
+
+	public slots:
+
+		void handleVolumeChanged();
 
 
 	private:

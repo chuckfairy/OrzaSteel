@@ -77,6 +77,16 @@ Module::Module( Window * win ) :
 		_window->getUI()->current_note_label
 	);
 
+	//Velocity setup
+	//@TODO only uses 1 velocity for all strings
+	connect(
+		_window->getUI()->volume_slider,
+		SIGNAL( valueChanged() ),
+		this,
+		SLOT( handleVolumeChanged() )
+	);
+
+	_instrument->setVelocity(0, 1.0f);
 };
 
 
@@ -121,9 +131,6 @@ void Module::process( jack_nframes_t nframes ) {
 		? _nullWave
 		: _wave;
 
-	float_t volume = (float_t)_window->getUI()->volume_slider->value();
-	volume = volume / 100;
-
 
 	//Output
 
@@ -131,7 +138,7 @@ void Module::process( jack_nframes_t nframes ) {
 		_stereoInterface->getOutputPortLeft(),
 		waveUse,
 		nframes,
-		volume
+		_instrument->getVelocity()[0]
 	);
 
 	//_outputter->writeOutputWave(
@@ -279,6 +286,14 @@ void Module::setOctaves( int octaves ) {
 
 	_instrument->setOctaves(octaves);
 	_neck->setOctaves( octaves );
+
+};
+
+void Module::handleVolumeChanged() {
+
+	float_t volume = (float_t)_window->getUI()->volume_slider->value();
+	volume = volume / 100;
+	_instrument->setVelocity(0, volume);
 
 };
 

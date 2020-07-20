@@ -12,6 +12,9 @@
  * Tonebar
  * Midi Control Port 14
  *
+ * Volume
+ * Midi Control Port 15
+ *
  */
 #pragma once
 
@@ -29,10 +32,15 @@
 #include <Midi/Events.h>
 #include <Midi/Events/EventMessage.h>
 
+#include <Audio/StringInstrument.h>
+
 #include <Jack/Midi.h>
 
 using std::map;
 using std::vector;
+
+using Orza::Steel::Audio::StringInstrument;
+
 
 namespace Orza { namespace Steel { namespace Instrument {
 
@@ -48,9 +56,9 @@ class MidiReader {
 
 		void resetChanges();
 
-		vector<uint8_t> getPitches();
-		vector<int, bool> getPedals();
-		float getTonebar();
+		void changeInstrument(StringInstrument *);
+
+		void setFromInstrument(StringInstrument *);
 
 	private:
 
@@ -62,20 +70,30 @@ class MidiReader {
 
 		Midi::EventMessage<MidiReader> * _Event;
 
+		//Values
+		float _pitch = 0.0f;
+		float _volume = 1.0f;
+
 		//Midi number Defaults
 		int stringMidiStart = 22;
 		int stringMidiCount = 24;
 
-		int pedalMidiStart = 46;
+		int pedalMidiStart = 47;
 		int pedalMidiCount = 24;
 
 		//Internal maps
-		map<int, bool> stringMap;
-		map<int, bool> pedalMap;
+		map<int, int> stringMap;
+		map<int, int> pedalMap;
 
 		map<int, bool> _strings;
 		map<int, bool> _pedals;
 
+
+		//Control mapping
+		int pitchControlNumber = 14;
+		int volumeControlNumber = 15;
+
+		//Interal helpers
 		void setMaps();
 
 		//Midi handling
