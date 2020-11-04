@@ -36,10 +36,12 @@
 
 #include <Jack/Midi.h>
 
+
 using std::map;
 using std::vector;
 
 using Orza::Steel::Audio::StringInstrument;
+using Audio::Port;
 
 
 namespace Orza { namespace Steel { namespace Instrument {
@@ -52,13 +54,19 @@ class MidiReader {
 
 		void onMidiMessage( Orza::Midi::Event * event );
 
-		bool hasChanges();
-
-		void resetChanges();
-
 		void changeInstrument(StringInstrument *);
 
 		void setFromInstrument(StringInstrument *);
+
+		bool hasChanges();
+
+		void changesChecked();
+
+		map<int, bool> getStrings();
+		map<int, bool> getPedals();
+
+		void connectPort(Port*);
+
 
 	private:
 
@@ -75,10 +83,10 @@ class MidiReader {
 		float _volume = 1.0f;
 
 		//Midi number Defaults
-		int stringMidiStart = 22;
+		int stringMidiStart = 24;
 		int stringMidiCount = 24;
 
-		int pedalMidiStart = 47;
+		int pedalMidiStart = 49;
 		int pedalMidiCount = 24;
 
 		//Internal maps

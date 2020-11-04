@@ -161,7 +161,7 @@ class StringInstrument {
 
 		vector<Pedal*> _pedals;
 
-		vector<float_t> _velocity;
+		vector<float_t> _velocity = {1.0f};
 
 		int _octaves = 1;
 		int _semitones = 12;

@@ -91,9 +91,7 @@ void StringEditArea::noteSelectChange( int index ) {
 
 	int note = _UI.note_select->currentIndex() + Orza::Midi::NOTE_MIN;
 
-	std::cout << "Note " << note << "\n";
 	float_t frequency = Orza::Midi::Frequency::getFromNote(note);
-	std::cout << "Freq " << frequency << "\n";
 
 	setStringNote( frequency, false );
 

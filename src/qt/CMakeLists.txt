@@ -60,6 +60,7 @@ file(
 	"${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.cpp"
 	Resource/*.cpp
 	Instrument/*.cpp
+	Midi/*.cpp
 	Settings/*.cpp
 	Widget/BackgroundImage.cpp
 	Window.cpp

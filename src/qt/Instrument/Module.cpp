@@ -43,10 +43,10 @@ Module::Module( Window * win ) :
 	_pedalWrap( new PedalWrap ),
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
-	_midiReader( new MidiReader( win->getServer() ) ),
 	_wave( new SineWave ),
 	_nullWave( new NullWave ),
-	_stereoInterface( new PortInterface( win->getServer()->getJackClient() ) )
+	_stereoInterface( new PortInterface( win->getServer()->getJackClient() ) ),
+	_midiReader( new MidiReader( win->getServer() ) )
 {
 
 	setStrings( StringInstrument::NECK_STEEL_STANDARD_10 );
@@ -87,6 +87,9 @@ Module::Module( Window * win ) :
 	);
 
 	_instrument->setVelocity(0, 1.0f);
+
+	midiSetup();
+
 };
 
 
@@ -96,6 +99,21 @@ Module::Module( Window * win ) :
 
 void Module::process( jack_nframes_t nframes ) {
 
+	//Check wave changes
+	if( _midiReader->hasChanges() ) {
+		map<int, bool> strings = _midiReader->getStrings();
+
+		map<int, bool>::const_iterator it;
+
+		for ( it = strings.begin(); it != strings.end(); ++ it ) {
+			std::cout << "Strings from Midi " << it->first << " " << it->second << "\n";
+			setStringState( it->first, it->second );
+		}
+
+		_midiReader->changesChecked();
+	}
+
+
 	//Get frequencies
 
 	vector<uint8_t> * hand = _bridge->getHand();
@@ -104,8 +122,6 @@ void Module::process( jack_nframes_t nframes ) {
 
 	vector<float_t> freqs = _instrument->getPitches( handMap );
 
-
-	//Check wave changes
 
 	if( _bridge->hasChange() || _neck->hasChange() || HAS_CHANGE ) {
 
@@ -141,6 +157,7 @@ void Module::process( jack_nframes_t nframes ) {
 		_instrument->getVelocity()[0]
 	);
 
+	//@TODO stereo?
 	//_outputter->writeOutputWave(
 		//_window->getServer()->getPatchbay()->getEffects()->getInputPortRight(),
 		//waveUse,
@@ -197,9 +214,7 @@ void Module::handleKeyEvent( QKeyEvent * event ) {
 
 			if( index == -1 ) { index = 9; }
 
-			( event->type() == QEvent::KeyPress )
-				?  _bridge->setStringDown( index )
-				: _bridge->setStringUp( index );
+			setStringState(index, ( event->type() == QEvent::KeyPress ));
 			break;
 		}
 
@@ -248,6 +263,14 @@ void Module::setStrings( vector<float_t> freqs ) {
 
 };
 
+void Module::setStringState(int index, bool state) {
+
+	(state)
+		?  _bridge->setStringDown( index )
+		: _bridge->setStringUp( index );
+
+};
+
 
 /**
  * Pedal stuff
@@ -282,6 +305,20 @@ void Module::processPedals( char keyPressed, bool active ) {
 
 };
 
+void Module::setPedalState(int index, bool state) {
+
+	const vector<Pedal*> * _pedals = _instrument->getPedals();
+	int size = _pedals->size();
+
+	if(index > size) {
+		std::cout << "Invalid pedal index " << index << "\n";
+		return;
+	}
+
+	_pedals->at(index)->on = state;
+	_pedalWrap->setPedalActive( index, state );
+}
+
 void Module::setOctaves( int octaves ) {
 
 	_instrument->setOctaves(octaves);
@@ -294,6 +331,21 @@ void Module::handleVolumeChanged() {
 	float_t volume = (float_t)_window->getUI()->volume_slider->value();
 	volume = volume / 100;
 	_instrument->setVelocity(0, volume);
+
+};
+
+void Module:: midiSetup() {
+
+	::Audio::MidiHost * midiHost = _window->getServer()
+		->getMidiHost();
+
+	vector<::Audio::Port*> ports = midiHost->getMidiPorts();
+
+	for(int i = 0; i < ports.size(); ++i) {
+
+		_midiReader->connectPort(ports[i]);
+
+	}
 
 };
 

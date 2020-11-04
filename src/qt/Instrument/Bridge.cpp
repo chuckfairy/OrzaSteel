@@ -44,7 +44,7 @@ void Bridge::setNumStrings( uint8_t numStrings ) {
 
 	clearArea();
 
-	std::cout << "NUM STRINSDGOINSDGO " << numStrings << "\n";
+	numberActive = numStrings;
 
 	while( numStrings ) {
 
@@ -103,17 +103,22 @@ void Bridge::clearArea() {
 
 void Bridge::setStringDown( uint8_t index ) {
 
+	if ( numberActive < index ) {
+		std::cout << "Index not found on bridge " << ((int)index) << "\n";
+		return;
+	}
+
 	if ( ! Util::Vector::has<uint8_t>( &_hand, index ) ) {
+
+		std::cout << "String Down : " << unsigned(index) << "\n";
 
 		_hand.push_back( index );
 
-		_areas[ index ]->setActive( true );
+		emit _areas[ index ]->emitActive( true );
 
 		HAS_CHANGE = true;
 
 	}
-
-	std::cout << "String Down : " << unsigned(index) << "\n";
 
 };
 
@@ -121,15 +126,16 @@ void Bridge::setStringUp( uint8_t index ) {
 
 	if ( Util::Vector::has<uint8_t>( &_hand, index ) ) {
 
+		std::cout << "String Up : " << unsigned(index) << "\n";
+
 		Util::Vector::remove<uint8_t>( &_hand, index );
 
-		_areas[ index ]->setActive( false );
+		//_areas[ index ]->setActive( false );
+		emit _areas[ index ]->emitActive( false );
 
 		HAS_CHANGE = true;
 
 	}
-
-	std::cout << "String Up : " << unsigned(index) << "\n";
 
 };
 

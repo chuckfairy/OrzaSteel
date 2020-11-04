@@ -41,11 +41,22 @@ class StringArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatch
 		~StringArea() {};
 
 
+	public slots:
+
+
 		/**
 		 * Mostly color indication
 		 */
 
 		void setActive( bool );
+
+	signals:
+
+		/**
+		 * Mostly color indication
+		 */
+
+		void emitActive( bool );
 
 
 	protected:

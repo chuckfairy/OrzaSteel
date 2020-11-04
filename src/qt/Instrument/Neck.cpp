@@ -116,8 +116,6 @@ void Neck::setupBridgeUIHelper() {
 
 		percent += semiWidth;
 
-		//std::cout << "SEMID WITH AND STUFF " << semiWidth << " " << color << " " << widthSoFar << " \n\n\n";
-
 		area->setGeometry( 0, 0, semiWidth, heightChild );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
@@ -141,8 +139,6 @@ void Neck::setupBridgeUIHelper() {
 
 void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
-	//std::cout << "Mouse move : " << event->x() << " " << event->y() << "\n";
-
 	//@TODO this is linear to log conversion
 	//but move depending on neck setup
 	float_t neckPercentage =  (float_t)event->x() / (float_t)width();
@@ -151,8 +147,6 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 	_positions[0] = neckPercentage * (float_t)100;
 	_positions[0] = std::min(_positions[0], (float_t)(100.0 * _octaves));
 	_positions[0] = std::max(_positions[0], (float_t)0.0);
-
-	//std::cout << "Position : " << _positions[ 0 ] << " " << width() << "\n";
 
 	HAS_CHANGE = true;
 

@@ -100,6 +100,8 @@ class Bridge : public QWidget {
 
 		bool HAS_CHANGE = false;
 
+		uint8_t numberActive;
+
 
 		/**
 		 * Events

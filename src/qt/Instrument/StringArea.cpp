@@ -60,6 +60,13 @@ StringArea::StringArea( AreaData * data ) :
 	");
 	label->move(5, 5);
 
+	connect(
+		this,
+		SIGNAL( emitActive(bool) ),
+		this,
+		SLOT( setActive(bool) )
+	);
+
 	show();
 
 };

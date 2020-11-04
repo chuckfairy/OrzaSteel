@@ -28,7 +28,7 @@
 #include "NoteDisplay.h"
 #include "PedalWrap.h"
 #include "PortInterface.h"
-#include "MidiReader.h"
+#include <Midi/MidiReader.h>
 
 
 using std::map;
@@ -65,6 +65,10 @@ class Module : public BaseModule, public QWidget {
 
 		void setStrings( vector<float_t> );
 
+		void setStringState(int index, bool state = false);
+
+		void setPedalState(int index, bool state = false);
+
 
 		/**
 		 * Main jack stuff
@@ -93,6 +97,7 @@ class Module : public BaseModule, public QWidget {
 			return _instrument;
 
 		};
+
 
 		/**
 		 * Update octaves on neck
@@ -133,6 +138,8 @@ class Module : public BaseModule, public QWidget {
 
 		InstrumentOutput * _outputter;
 
+		MidiReader * _midiReader;
+
 
 		/**
 		 * Wave for output
@@ -153,12 +160,7 @@ class Module : public BaseModule, public QWidget {
 
 		void processPedals( char keyPressed, bool active );
 
-
-		/**
-		 * Midi
-		 */
-
-		MidiReader * _midiReader;
+		void midiSetup();
 
 };
 
