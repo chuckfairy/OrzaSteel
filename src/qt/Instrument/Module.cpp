@@ -81,9 +81,18 @@ Module::Module( Window * win ) :
 	//@TODO only uses 1 velocity for all strings
 	connect(
 		_window->getUI()->volume_slider,
-		SIGNAL( valueChanged() ),
+		SIGNAL( sliderMoved(int) ),
 		this,
 		SLOT( handleVolumeChanged() )
+	);
+
+
+	//Volume slider connection
+	connect(
+		this,
+		SIGNAL( emitVolumeChange(float) ),
+		this,
+		SLOT( setVolumeValue(float) )
 	);
 
 	_instrument->setVelocity(0, 1.0f);
@@ -101,6 +110,7 @@ void Module::process( jack_nframes_t nframes ) {
 
 	//Check wave changes
 	if( _midiReader->hasChanges() ) {
+		//Midi Notes
 		map<int, bool> strings = _midiReader->getStrings();
 
 		map<int, bool>::const_iterator it;
@@ -109,6 +119,11 @@ void Module::process( jack_nframes_t nframes ) {
 			std::cout << "Strings from Midi " << it->first << " " << it->second << "\n";
 			setStringState( it->first, it->second );
 		}
+
+		//Volume
+		emit emitVolumeChange(_midiReader->getVolume());
+
+		setNeckPitch(_midiReader->getPitch());
 
 		_midiReader->changesChecked();
 	}
@@ -186,6 +201,7 @@ map<uint8_t, float_t> Module::getHandMap( vector<uint8_t> * bridged ) {
 	return out;
 
 };
+
 
 
 /**
@@ -348,5 +364,21 @@ void Module:: midiSetup() {
 	}
 
 };
+
+void Module::setVolumeValue(float value) {
+
+	_window->getUI()->volume_slider->setValue( value * 100 );
+
+	handleVolumeChanged();
+
+};
+
+void Module::setNeckPitch(float_t val) {
+
+	emit _neck->emitNeckPosition(val);
+
+};
+
+
 
 } } }

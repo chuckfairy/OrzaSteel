@@ -50,7 +50,9 @@ namespace Orza { namespace Steel { namespace Instrument {
  * Main
  */
 
-class Module : public BaseModule, public QWidget {
+class Module : public QWidget, public BaseModule {
+
+	Q_OBJECT;
 
 	public:
 
@@ -68,6 +70,8 @@ class Module : public BaseModule, public QWidget {
 		void setStringState(int index, bool state = false);
 
 		void setPedalState(int index, bool state = false);
+
+		void setNeckPitch(float_t);
 
 
 		/**
@@ -108,6 +112,8 @@ class Module : public BaseModule, public QWidget {
 	public slots:
 
 		void handleVolumeChanged();
+
+		void setVolumeValue(float);
 
 
 	private:
@@ -161,6 +167,10 @@ class Module : public BaseModule, public QWidget {
 		void processPedals( char keyPressed, bool active );
 
 		void midiSetup();
+
+	signals:
+
+		void emitVolumeChange(float);
 
 };
 

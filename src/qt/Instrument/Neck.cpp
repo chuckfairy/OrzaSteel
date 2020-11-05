@@ -41,6 +41,13 @@ Neck::Neck() {
 	setMouseTracking(true);
 	_Bar->setMouseTracking(true);
 
+	connect(
+		this,
+		SIGNAL( emitNeckPosition(float) ),
+		this,
+		SLOT( setPositions(float) )
+	);
+
 	show();
 
 };
@@ -142,7 +149,15 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 	//@TODO this is linear to log conversion
 	//but move depending on neck setup
 	float_t neckPercentage =  (float_t)event->x() / (float_t)width();
-	neckPercentage *= _octaves;
+
+	setPositions(neckPercentage);
+
+};
+
+
+void Neck::setPositions( float value ) {
+
+	float_t neckPercentage = value * _octaves;
 
 	_positions[0] = neckPercentage * (float_t)100;
 	_positions[0] = std::min(_positions[0], (float_t)(100.0 * _octaves));
@@ -150,9 +165,10 @@ void Neck::mouseMoveEvent( QMouseEvent * event ) {
 
 	HAS_CHANGE = true;
 
-	_Bar->move( event->x() - ( _Bar->width() / 2 ), 0 );
+	_Bar->move( ( value * width() ) - ( _Bar->width() / 2 ), 0 );
 
-};
+}
+
 
 void Neck::setOctaves( int octaves ) {
 

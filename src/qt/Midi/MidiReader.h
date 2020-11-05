@@ -65,6 +65,9 @@ class MidiReader {
 		map<int, bool> getStrings();
 		map<int, bool> getPedals();
 
+		float getVolume();
+		float getPitch();
+
 		void connectPort(Port*);
 
 

@@ -60,6 +60,7 @@ StringArea::StringArea( AreaData * data ) :
 	");
 	label->move(5, 5);
 
+	//To ensure setActive will occur on Qt5 thread
 	connect(
 		this,
 		SIGNAL( emitActive(bool) ),

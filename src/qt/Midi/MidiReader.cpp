@@ -48,7 +48,7 @@ void MidiReader::setFromInstrument(StringInstrument * instrument) {
  */
 void MidiReader::onMidiMessage( Orza::Midi::Event * event ) {
 
-	std::cout << "Received Midi Event\n";
+	//std::cout << "Received Midi Event\n";
 
 	switch(event->type) {
 		case Midi::EVENT_NOTE_ON:
@@ -84,8 +84,6 @@ void MidiReader::setMaps() {
 			? i - stringMidiStart
 			: -1;
 
-		std::cout << "String Map " << i << " " << stringMap[i] << "\n";
-
 		pedalMap[i] = (pedalMidiStart >= i && i < pedalMidiLength)
 			? i - pedalMidiStart
 			: -1;
@@ -95,7 +93,6 @@ void MidiReader::setMaps() {
 
 
 void MidiReader::setNoteValues(Orza::Midi::Event * event) {
-	std::cout << "Midi Note Recieved " << event->pitch << "\n";
 
 	//Is a string press
 	if(stringMap[event->pitch] != -1) {
@@ -103,23 +100,18 @@ void MidiReader::setNoteValues(Orza::Midi::Event * event) {
 			<< (event->type == Midi::EVENT_NOTE_ON) << "\n";
 
 		_strings[stringMap[event->pitch]] = (event->type == Midi::EVENT_NOTE_ON);
-		//_instrumentModule->setStringState(
-			//stringMap[event->pitch],
-			//(event->type == Midi::EVENT_NOTE_ON)
-		//);
 
 		_hasChanges = true;
 	}
 
 	//Is a pedal press
 	if(pedalMap[event->pitch] != -1) {
+		std::cout << "Pedal Note Has Event " << pedalMap[event->pitch] << " "
+			<< (event->type == Midi::EVENT_NOTE_ON) << "\n";
+
 		_pedals[pedalMap[event->pitch]] = (event->type == Midi::EVENT_NOTE_ON);
 
 		_hasChanges = true;
-		//_instrumentModule->setPedalState(
-			//pedalMap[event->pitch],
-			//(event->type == Midi::EVENT_NOTE_ON)
-		//);
 	}
 
 };
@@ -128,13 +120,28 @@ void MidiReader::setNoteValues(Orza::Midi::Event * event) {
 void MidiReader::setControlValues(Orza::Midi::Event * event) {
 
 	if(event->controlNumber == pitchControlNumber) {
-		_pitch = (float)event->controlValue / 127.0f;
+		float newPitch = (float)event->controlValue / 127.0f;
+
+		if(newPitch == _pitch) {
+			return;
+		}
+
+		_pitch = newPitch;
+		std::cout << "Pitch Has Event " << _pitch << "\n";
+		_hasChanges = true;
 	}
 
 	else if(event->controlNumber == volumeControlNumber) {
-		//case volumeControlNumber:
-			//_volume = event->value / 127;
-			//break;
+		float newVolume = ((float)event->controlValue) / 127.0f;
+
+		if(newVolume == _volume) {
+			return;
+		}
+
+		_volume = newVolume;
+
+		std::cout << "Volume Has Event " << _volume<< "\n";
+		_hasChanges = true;
 	}
 
 };
@@ -164,6 +171,20 @@ map<int, bool> MidiReader::getPedals() {
 
 	return _pedals;
 };
+
+
+float MidiReader::getVolume() {
+
+	return _volume;
+
+}
+
+float MidiReader::getPitch() {
+
+	return _pitch;
+
+};
+
 
 
 void MidiReader::connectPort(Port* output) {

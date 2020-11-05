@@ -23,16 +23,13 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class Neck : public QWidget {
 
+	Q_OBJECT;
+
 	public:
 
 		Neck();
 		~Neck() {};
 
-		/**
-		 * setter for positions creation
-		 */
-
-		void setPositions( uint8_t );
 
 		/**
 		 * Get positions from bridge setup
@@ -80,6 +77,15 @@ class Neck : public QWidget {
 		//void setSemiTones( int ); //@TODO
 
 
+	public slots:
+
+		/**
+		 * setter for positions creation
+		 */
+
+		void setPositions( float );
+
+
 	protected:
 
 		/**
@@ -89,6 +95,15 @@ class Neck : public QWidget {
 		void mouseMoveEvent( QMouseEvent * event );
 
 		void resizeEvent( QResizeEvent *event );
+
+
+	signals:
+
+		/**
+		 * To change position on the right thread
+		 */
+		void emitNeckPosition( float );
+
 
 
 	private:
