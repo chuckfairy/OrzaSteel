@@ -26,6 +26,14 @@ PedalWrap::PedalWrap() {
 		"
 	);
 
+	//Thread safe
+	connect(
+		this,
+		SIGNAL( emitPedalActive( int, bool ) ),
+		this,
+		SLOT( setPedalActive( int, bool ) )
+	);
+
 };
 
 
@@ -65,7 +73,7 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
  * Pedal active usage
  */
 
-void PedalWrap::setPedalActive( uint8_t index, bool active ) {
+void PedalWrap::setPedalActive( int index, bool active ) {
 
 	_pedals[ index ]->setActive( active );
 

@@ -79,6 +79,8 @@ file( GLOB orzasteel.qt_moc_files
 	Instrument/Bridge.h
 	Instrument/Neck.h
 	Instrument/Module.h
+	Instrument/PedalWrap.h
+	Instrument/PedalArea.h
 	Settings/StringEditor.h
 	Settings/StringEditArea.h
 	Settings/PedalEditor.h

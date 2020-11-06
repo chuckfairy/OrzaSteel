@@ -116,8 +116,16 @@ void Module::process( jack_nframes_t nframes ) {
 		map<int, bool>::const_iterator it;
 
 		for ( it = strings.begin(); it != strings.end(); ++ it ) {
-			std::cout << "Strings from Midi " << it->first << " " << it->second << "\n";
 			setStringState( it->first, it->second );
+		}
+
+		//Pedal midi
+		map<int, bool> pedals = _midiReader->getPedals();
+
+		map<int, bool>::const_iterator pt;
+
+		for ( pt = pedals.begin(); pt != pedals.end(); ++ pt ) {
+			setPedalState( pt->first, pt->second );
 		}
 
 		//Volume
@@ -326,13 +334,13 @@ void Module::setPedalState(int index, bool state) {
 	const vector<Pedal*> * _pedals = _instrument->getPedals();
 	int size = _pedals->size();
 
-	if(index > size) {
+	if(index >= size) {
 		std::cout << "Invalid pedal index " << index << "\n";
 		return;
 	}
 
 	_pedals->at(index)->on = state;
-	_pedalWrap->setPedalActive( index, state );
+	emit _pedalWrap->emitPedalActive( index, state );
 }
 
 void Module::setOctaves( int octaves ) {

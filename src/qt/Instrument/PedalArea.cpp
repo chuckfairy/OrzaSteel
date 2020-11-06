@@ -43,6 +43,14 @@ PedalArea::PedalArea( AreaData * data ) :
 
 	setSizePolicy( sizePolicy );
 
+	//To ensure setActive will occur on Qt5 thread
+	connect(
+		this,
+		SIGNAL( emitActive(bool) ),
+		this,
+		SLOT( setActive(bool) )
+	);
+
 };
 
 

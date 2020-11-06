@@ -24,6 +24,8 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class PedalArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher {
 
+	Q_OBJECT;
+
 	public:
 
 		static const char * TEMPLATE;
@@ -32,11 +34,22 @@ class PedalArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatche
 		~PedalArea() {};
 
 
+	public slots:
+
 		/**
 		 * Active setting
 		 */
 
 		void setActive( bool );
+
+
+	signals:
+
+		/**
+		 * Mostly color indication
+		 */
+
+		void emitActive( bool );
 
 
 	private:

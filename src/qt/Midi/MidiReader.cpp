@@ -77,14 +77,14 @@ void MidiReader::setMaps() {
 
 	int cnt = sizeof(Orza::Midi::NOTE_NAMES) / sizeof(Orza::Midi::NOTE_NAMES[0]);
 	int stringMidiLength = stringMidiStart + stringMidiCount;
-	int pedalMidiLength = pedalMidiStart + pedalMidiLength;
+	int pedalMidiLength = pedalMidiStart + pedalMidiCount;
 
 	for(int i = 0; i < cnt; ++i) {
 		stringMap[i] = (i >= stringMidiStart && i < stringMidiLength)
 			? i - stringMidiStart
 			: -1;
 
-		pedalMap[i] = (pedalMidiStart >= i && i < pedalMidiLength)
+		pedalMap[i] = (i >= pedalMidiStart && i < pedalMidiLength)
 			? i - pedalMidiStart
 			: -1;
 	}

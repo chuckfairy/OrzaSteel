@@ -87,10 +87,10 @@ class MidiReader {
 
 		//Midi number Defaults
 		int stringMidiStart = 24;
-		int stringMidiCount = 24;
+		int stringMidiCount = 23;
 
-		int pedalMidiStart = 49;
-		int pedalMidiCount = 24;
+		int pedalMidiStart = 48;
+		int pedalMidiCount = 23;
 
 		//Internal maps
 		map<int, int> stringMap;

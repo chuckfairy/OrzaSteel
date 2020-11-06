@@ -30,6 +30,8 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class PedalWrap : public Orza::Steel::Widget::BaseWidget {
 
+	Q_OBJECT;
+
 	public:
 
 		PedalWrap();
@@ -42,7 +44,15 @@ class PedalWrap : public Orza::Steel::Widget::BaseWidget {
 
 		void createDisplay( vector<Pedal*> );
 
-		void setPedalActive( uint8_t index, bool active );
+
+	public slots:
+
+		void setPedalActive( int index, bool active );
+
+
+	signals:
+
+		void emitPedalActive( int index, bool active );
 
 
 	private:
