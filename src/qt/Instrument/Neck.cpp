@@ -113,10 +113,6 @@ void Neck::setupBridgeUIHelper() {
 	for( int i = 0; i < toneNumbers; ++ i ) {
 		int labelIndex = i - (_semiTones * floor(i / _semiTones));
 
-
-		//@TODO actual log to move to
-		//different calc private functions
-		//float_t semiWidth = pow( 2, ( (toneNumbers - i) / toneNumbers) ) - pow(2, ((toneNumbers - i - 1) / toneNumbers));
 		FretArea * area = _areas[i];
 
 		float_t semiWidth = widthSplit;
@@ -174,6 +170,17 @@ void Neck::setOctaves( int octaves ) {
 
 	std::cout << "OCATVES " << octaves << "\n\n\n";
 	_octaves = octaves;
+
+	setupBridgeUIHelper();
+
+	_Bar->raise();
+
+};
+
+void Neck::setSemiTones( int semi ) {
+
+	std::cout << "SEMITONES " << semi << "\n\n\n";
+	_semiTones = semi;
 
 	setupBridgeUIHelper();
 

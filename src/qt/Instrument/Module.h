@@ -104,9 +104,10 @@ class Module : public QWidget, public BaseModule {
 
 
 		/**
-		 * Update octaves on neck
+		 * Update octaves and semitones on neck
 		 */
 		void setOctaves( int );
+		void setSemiTones( int );
 
 
 	public slots:

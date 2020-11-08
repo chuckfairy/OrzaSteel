@@ -73,11 +73,20 @@ make -j8
 ```
 
 
-# Pi
+# Midi
 
-```shell
-sudo apt-get install x11vncserver wiringPi
-```
+You can connect to the app via midi and play from an outside program or external device. OrzaSteel will connect to **all** midi devices on startup. Controlling it works as follows.
+
+Eventually I plan on being able to configure these, but they hardcoded for now.
+
+
+## Notes
+- *24(C1) - 47(B2)* = String on/off
+- *48(C3) - 61(B4)* = Pedal on/off
+
+## Control
+- *14* Pitch or tonebar position
+- *15* Volume control
 
 
 # Jack

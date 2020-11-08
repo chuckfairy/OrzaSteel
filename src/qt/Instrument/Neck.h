@@ -74,7 +74,7 @@ class Neck : public QWidget {
 
 		void setOctaves( int );
 
-		//void setSemiTones( int ); //@TODO
+		void setSemiTones( int ); //@TODO
 
 
 	public slots:

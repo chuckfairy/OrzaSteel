@@ -350,6 +350,12 @@ void Module::setOctaves( int octaves ) {
 
 };
 
+void Module::setSemiTones( int octaves ) {
+
+	_neck->setSemiTones( octaves );
+
+};
+
 void Module::handleVolumeChanged() {
 
 	float_t volume = (float_t)_window->getUI()->volume_slider->value();

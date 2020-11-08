@@ -75,7 +75,7 @@ class StringEditor : public TreeNode {
 		void handleAddClick();
 
 		void updateOctaves( int );
-		//void updateSemiTones( int ); //@TODO
+		void updateSemiTones( int );
 
 
 	protected:

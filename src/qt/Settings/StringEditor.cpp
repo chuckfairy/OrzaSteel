@@ -39,6 +39,13 @@ StringEditor::StringEditor( Window * window ) :
 		SLOT( updateOctaves( int ) )
 	);
 
+	connect(
+		_UI.semitone_input,
+		SIGNAL( currentIndexChanged( int ) ),
+		this,
+		SLOT( updateSemiTones( int ) )
+	);
+
 };
 
 
@@ -138,6 +145,20 @@ void StringEditor::updateOctaves( int index ) {
 	int octaves = _UI.octave_input->currentText().toInt();
 
 	insta->setOctaves(octaves);
+
+}
+
+/**
+ * Updates octaves for insrument
+ */
+void StringEditor::updateSemiTones( int index ) {
+
+	//@TODO move
+	Module * insta = (Module*) _win->getModules()[0];
+
+	int semitones = _UI.semitone_input->currentText().toInt();
+
+	insta->setSemiTones(semitones);
 
 }
 
