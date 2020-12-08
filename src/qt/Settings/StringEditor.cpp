@@ -46,6 +46,13 @@ StringEditor::StringEditor( Window * window ) :
 		SLOT( updateSemiTones( int ) )
 	);
 
+	connect(
+		_UI.tonebar_image_input,
+		SIGNAL( FileChanged( string ) ),
+		this,
+		SLOT( updateTonebarImage( string ) )
+	);
+
 };
 
 
@@ -159,6 +166,18 @@ void StringEditor::updateSemiTones( int index ) {
 	int semitones = _UI.semitone_input->currentText().toInt();
 
 	insta->setSemiTones(semitones);
+
+}
+
+/**
+ * Updates octaves for insrument
+ */
+void StringEditor::updateTonebarImage( string file ) {
+
+	//@TODO move
+	Module * insta = (Module*) _win->getModules()[0];
+
+	insta->setTonebarImage(file);
 
 }
 

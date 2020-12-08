@@ -10,6 +10,7 @@ set(AUTOGEN_TARGET_DEPENDS ON)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Qml REQUIRED)
+find_package(Qt5Designer REQUIRED)
 
 
 file(GLOB orzasteel.qt_UIS
@@ -19,6 +20,7 @@ file(GLOB orzasteel.qt_UIS
 	Settings/PedalEditArea.ui
 	Settings/StringEditor.ui
 	Settings/StringEditArea.ui
+	"${ORZASTEEL_ROOT_PATH}/lib-src/inputwidgets/src/*.ui"
 )
 
 
@@ -45,6 +47,9 @@ include_directories(
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/src"
 	"${ORZASTEEL_ROOT_PATH}/lib-src/liborza-qt/lib-src"
 
+	"${ORZASTEEL_ROOT_PATH}/lib-src/inputwidgets/src"
+	"${CMAKE_CURRENT_BINARY_DIR}/../../lib-src/inputwidgets/src"
+
 	"${CMAKE_CURRENT_BINARY_DIR}/../../lib-src/liborza/src"
 	"${CMAKE_CURRENT_BINARY_DIR}/../../lib-src/liborza-qt/src"
 
@@ -58,6 +63,8 @@ file(
 	GLOB
 	orzasteel.qt_SRC
 	"${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.cpp"
+	"${ORZASTEEL_ROOT_PATH}/lib-src/inputwidgets/src/fileinputwidget.cpp"
+	"${ORZASTEEL_ROOT_PATH}/lib-src/inputwidgets/src/ColorInput.cpp"
 	Resource/*.cpp
 	Instrument/*.cpp
 	Midi/*.cpp
@@ -73,11 +80,14 @@ file(
 
 file( GLOB orzasteel.qt_moc_files
 	"${ORZASTEEL_ROOT_PATH}/lib-src/QtAwesome/*.h"
+	"${ORZASTEEL_ROOT_PATH}/lib-src/inputwidgets/src/fileinputwidget.h"
+	"${ORZASTEEL_ROOT_PATH}/lib-src/inputwidgets/src/ColorInput.h"
 	Window.h
 	Widget/BackgroundImage.h
 	Instrument/StringArea.h
 	Instrument/Bridge.h
 	Instrument/Neck.h
+	Instrument/Tonebar.h
 	Instrument/Module.h
 	Instrument/PedalWrap.h
 	Instrument/PedalArea.h
@@ -121,6 +131,7 @@ target_link_libraries( orzasteel.qt
 	Qt5::Core
 	Qt5::Gui
 	Qt5::Qml
+	Qt5::Designer
 	${Boost_LIBRARIES}
 )
 

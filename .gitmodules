@@ -1,0 +1,3 @@
+[submodule "lib-src/inputwidgets"]
+	path = lib-src/inputwidgets
+	url = https://git.chuckfairy.com/chuckfairy/Qt5-InputWidgets

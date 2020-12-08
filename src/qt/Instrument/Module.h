@@ -73,6 +73,8 @@ class Module : public QWidget, public BaseModule {
 
 		void setNeckPitch(float_t);
 
+		void setTonebarImage(string);
+
 
 		/**
 		 * Main jack stuff

@@ -22,6 +22,18 @@ class BackgroundImage : public QWidget {
 			_opacity = opacity;
 		};
 
+
+	public slots:
+
+		void setSource( const char * src ) {
+			_src = src;
+		};
+
+
+	signals:
+
+		void emitSetSource( const char * );
+
 	private:
 
 		const char * _src;

@@ -393,6 +393,11 @@ void Module::setNeckPitch(float_t val) {
 
 };
 
+void Module::setTonebarImage(string file) {
 
+	Tonebar * bar = _neck->getTonebar();
+	emit bar->emitSetImage(file.c_str());
+
+};
 
 } } }

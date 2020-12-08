@@ -11,6 +11,14 @@ BackgroundImage::BackgroundImage( const char * src, float opacity ) :
 	_opacity( opacity )
 {
 	setAttribute(Qt::WA_TransparentForMouseEvents);
+
+	//Emitting for src change
+	connect(
+		this,
+		SIGNAL( emitSetSource(const char *) ),
+		this,
+		SLOT( setSource(const char *) )
+	);
 };
 
 void BackgroundImage::paintEvent(QPaintEvent *p2)

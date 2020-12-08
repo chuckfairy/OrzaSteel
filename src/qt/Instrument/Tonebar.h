@@ -10,6 +10,10 @@
 #include <Util/Dispatcher.h>
 
 #include <Widget/BaseWidget.h>
+#include <Widget/BackgroundImage.h>
+
+
+using Orza::Steel::Widget::BackgroundImage;
 
 
 namespace Orza { namespace Steel { namespace Instrument {
@@ -17,13 +21,15 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher {
 
+	Q_OBJECT;
+
 	public:
 
 		/**
 		 * Template css
 		 */
 
-		static const char * TEMPLATE;
+		static const char * DEFAULT_IMAGE;
 
 
 		/**
@@ -38,7 +44,18 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		~Tonebar() {};
 
 
+		/**
+		 * Set tonebar image
+		 */
 		void setImage( const char * );
+
+
+	signals:
+
+		/**
+		 * To change image on the right thread
+		 */
+		void emitSetImage( const char * );
 
 
 	protected:
@@ -48,6 +65,8 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		 */
 
 	private:
+
+		BackgroundImage * _img;
 
 		bool _showLine = true;
 

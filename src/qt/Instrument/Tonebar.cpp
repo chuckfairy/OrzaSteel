@@ -6,7 +6,6 @@
 #include <QGraphicsOpacityEffect>
 
 #include <Widget/Line.h>
-#include <Widget/BackgroundImage.h>
 
 
 using Orza::Steel::Widget::Line;
@@ -16,10 +15,7 @@ using Orza::Steel::Widget::BackgroundImage;
 namespace Orza { namespace Steel { namespace Instrument {
 
 
-const char * Tonebar::TEMPLATE = "\
-	border-image:url(\"%s\")  0 0 0 0 stretch stretch;\
-	background: transparent;\
-";
+const char * Tonebar::DEFAULT_IMAGE = ":/tonebars/malort.png";
 
 /**
  * Constructor
@@ -40,19 +36,18 @@ Tonebar::Tonebar( QWidget * parent ) :
 
 	setGeometry( 10, 0, 75, parentWidget()->height());
 
-	BackgroundImage * img = new BackgroundImage(":/tonebars/malort.png");
-	img->setGeometry( 0, 0, 75, 200 );
-	img->setParent(this);
-
-	//opacity
-	QGraphicsOpacityEffect * op = new QGraphicsOpacityEffect();
-	op->setOpacity(1); //0 to 1 will cause the fade effect to kick in
-	img->setGraphicsEffect(op);
-	img->setAutoFillBackground(true);
+	setImage(DEFAULT_IMAGE);
 
 	if(_showLine) {
 		createLine();
 	}
+
+	connect(
+		this,
+		SIGNAL( emitSetImage(const char *) ),
+		this,
+		SLOT( setImage(const char *) )
+	);
 
 	raise();
 
@@ -65,7 +60,21 @@ Tonebar::Tonebar( QWidget * parent ) :
  * Set image
  */
 
-void Tonebar::setImage( const char * img ) {
+void Tonebar::setImage( const char * src ) {
+
+	if(_img != nullptr) {
+		delete _img;
+	}
+
+	_img = new BackgroundImage(src);
+	_img->setGeometry( 0, 0, 75, 200 );
+	_img->setParent(this);
+
+	//opacity
+	QGraphicsOpacityEffect * op = new QGraphicsOpacityEffect();
+	op->setOpacity(1); //0 to 1 will cause the fade effect to kick in
+	_img->setGraphicsEffect(op);
+	_img->setAutoFillBackground(true);
 
 };
 
