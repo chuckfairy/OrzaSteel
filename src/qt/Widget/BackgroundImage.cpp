@@ -1,4 +1,5 @@
 #include "BackgroundImage.h"
+#include <iostream>
 
 /**
  * construct
@@ -23,6 +24,8 @@ BackgroundImage::BackgroundImage( const char * src, float opacity ) :
 
 void BackgroundImage::paintEvent(QPaintEvent *p2)
 {
+
+	std::cout << "Loading image " << _src << "\n";
 	QPixmap pixmap;
 	pixmap.load( _src );
 
@@ -30,6 +33,7 @@ void BackgroundImage::paintEvent(QPaintEvent *p2)
 	paint.setOpacity(_opacity);
 	paint.drawPixmap(0, 0, pixmap.scaled( size() ) );
 	QWidget::paintEvent(p2);
+
 };
 
 } } };

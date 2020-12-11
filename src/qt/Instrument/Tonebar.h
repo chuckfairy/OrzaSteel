@@ -3,6 +3,8 @@
  */
 #pragma once
 
+#include <string>
+
 #include <QtGui>
 #include <QtCore>
 #include <QWidget>
@@ -12,6 +14,8 @@
 #include <Widget/BaseWidget.h>
 #include <Widget/BackgroundImage.h>
 
+
+using std::string;
 
 using Orza::Steel::Widget::BackgroundImage;
 
@@ -44,6 +48,8 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		~Tonebar() {};
 
 
+	public slots:
+
 		/**
 		 * Set tonebar image
 		 */
@@ -71,6 +77,8 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		bool _showLine = true;
 
 		void createLine();
+
+		string _srcString;
 
 };
 

@@ -62,19 +62,21 @@ Tonebar::Tonebar( QWidget * parent ) :
 
 void Tonebar::setImage( const char * src ) {
 
-	if(_img != nullptr) {
-		delete _img;
+	_srcString = string(src);
+
+	if(_img == nullptr) {
+		_img = new BackgroundImage(_srcString.c_str());
+		_img->setGeometry( 0, 0, 75, 200 );
+		_img->setParent(this);
+
+		//opacity
+		QGraphicsOpacityEffect * op = new QGraphicsOpacityEffect();
+		op->setOpacity(1); //0 to 1 will cause the fade effect to kick in
+		_img->setGraphicsEffect(op);
+		_img->setAutoFillBackground(true);
 	}
 
-	_img = new BackgroundImage(src);
-	_img->setGeometry( 0, 0, 75, 200 );
-	_img->setParent(this);
-
-	//opacity
-	QGraphicsOpacityEffect * op = new QGraphicsOpacityEffect();
-	op->setOpacity(1); //0 to 1 will cause the fade effect to kick in
-	_img->setGraphicsEffect(op);
-	_img->setAutoFillBackground(true);
+	_img->setSource(_srcString.c_str());
 
 };
 
