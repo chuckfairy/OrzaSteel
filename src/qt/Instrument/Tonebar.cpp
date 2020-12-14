@@ -34,7 +34,7 @@ Tonebar::Tonebar( QWidget * parent ) :
 		"
 	);
 
-	setGeometry( 10, 0, 75, parentWidget()->height());
+	setGeometry( 10, 0, 100, parentWidget()->height());
 
 	setImage(DEFAULT_IMAGE);
 
@@ -66,8 +66,9 @@ void Tonebar::setImage( const char * src ) {
 
 	if(_img == nullptr) {
 		_img = new BackgroundImage(_srcString.c_str());
-		_img->setGeometry( 0, 0, 75, 200 );
+
 		_img->setParent(this);
+
 
 		//opacity
 		QGraphicsOpacityEffect * op = new QGraphicsOpacityEffect();
@@ -77,6 +78,14 @@ void Tonebar::setImage( const char * src ) {
 	}
 
 	_img->setSource(_srcString.c_str());
+
+	int height = 0;
+
+	//Determine geometry
+	int widthSet = 100;
+	QPixmap pixmap = _img->getPixmap();
+	QPixmap scaledPixmap = pixmap.scaledToWidth(widthSet);
+	_img->setGeometry( 0, height, widthSet, scaledPixmap.height() );
 
 };
 

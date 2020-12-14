@@ -22,12 +22,20 @@ BackgroundImage::BackgroundImage( const char * src, float opacity ) :
 	);
 };
 
+QPixmap BackgroundImage::getPixmap() {
+
+	QPixmap pixmap;
+	pixmap.load( _src );
+
+	return pixmap;
+
+};
+
+
 void BackgroundImage::paintEvent(QPaintEvent *p2)
 {
 
-	std::cout << "Loading image " << _src << "\n";
-	QPixmap pixmap;
-	pixmap.load( _src );
+	QPixmap pixmap = getPixmap();;
 
 	QPainter paint(this);
 	paint.setOpacity(_opacity);

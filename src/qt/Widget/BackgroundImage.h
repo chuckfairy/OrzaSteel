@@ -22,6 +22,7 @@ class BackgroundImage : public QWidget {
 			_opacity = opacity;
 		};
 
+		QPixmap getPixmap();
 
 	public slots:
 

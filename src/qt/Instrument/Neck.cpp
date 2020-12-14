@@ -74,6 +74,11 @@ void Neck::handleResize() {
 
 	_Bar->raise();
 
+	//Move Bar to middle
+
+	//float h = (float)height() / 2.0f;
+	//_Bar->move( 0, (h - (_Bar->height() / 2.0f)) );
+
 };
 
 
