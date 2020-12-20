@@ -34,7 +34,7 @@ Tonebar::Tonebar( QWidget * parent ) :
 		"
 	);
 
-	setGeometry( 10, 0, 100, parentWidget()->height());
+	setGeometry( 10, 0, 80, parentWidget()->height());
 
 	setImage(DEFAULT_IMAGE);
 
@@ -64,6 +64,8 @@ void Tonebar::setImage( const char * src ) {
 
 	_srcString = string(src);
 
+	int heightFromTop = 30;
+
 	if(_img == nullptr) {
 		_img = new BackgroundImage(_srcString.c_str());
 
@@ -75,17 +77,17 @@ void Tonebar::setImage( const char * src ) {
 		op->setOpacity(1); //0 to 1 will cause the fade effect to kick in
 		_img->setGraphicsEffect(op);
 		_img->setAutoFillBackground(true);
+
+		_img->move(0, heightFromTop);
 	}
 
 	_img->setSource(_srcString.c_str());
 
-	int height = 0;
-
 	//Determine geometry
-	int widthSet = 100;
+	int widthSet = width();
 	QPixmap pixmap = _img->getPixmap();
 	QPixmap scaledPixmap = pixmap.scaledToWidth(widthSet);
-	_img->setGeometry( 0, height, widthSet, scaledPixmap.height() );
+	_img->setGeometry( 0, heightFromTop, widthSet, scaledPixmap.height() );
 
 };
 

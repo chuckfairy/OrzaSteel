@@ -47,6 +47,8 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 		Tonebar() {};
 		~Tonebar() {};
 
+		void setPosition(int, int);
+
 
 	public slots:
 

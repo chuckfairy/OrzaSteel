@@ -29,7 +29,7 @@ Bridge::Bridge() {
 	_downEvent = new StringDownEvent<Bridge, StringArea>( this );
 	_upEvent = new StringUpEvent<Bridge, StringArea>( this );
 
-    setAttribute( Qt::WA_AcceptTouchEvents, true );
+	setAttribute( Qt::WA_AcceptTouchEvents, true );
 
 	setupLayout();
 

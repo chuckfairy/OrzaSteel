@@ -74,11 +74,6 @@ void Neck::handleResize() {
 
 	_Bar->raise();
 
-	//Move Bar to middle
-
-	//float h = (float)height() / 2.0f;
-	//_Bar->move( 0, (h - (_Bar->height() / 2.0f)) );
-
 };
 
 
@@ -111,7 +106,7 @@ void Neck::setupBridgeUIHelper() {
 	float widthSoFar = 0.0;
 	float fullWidth = (float) width();
 	float percent = 0.0;
-	float heightChild = height() - 10;
+	float heightChild = height();
 
 	float widthSplit = fullWidth / (toneNumbers);
 
