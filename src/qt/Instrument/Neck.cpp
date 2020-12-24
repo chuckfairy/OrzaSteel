@@ -113,7 +113,14 @@ void Neck::setupBridgeUIHelper() {
 	for( int i = 0; i < toneNumbers; ++ i ) {
 		int labelIndex = i - (_semiTones * floor(i / _semiTones));
 
+		const char * color = STEPS_13[ labelIndex ];
+		const char * label = Orza::Numbers::ROMAN_13[ labelIndex ];
+
 		FretArea * area = _areas[i];
+
+		AreaData * data = area->getData();
+		data->color = color;
+		data->label = label;
 
 		float_t semiWidth = widthSplit;
 
@@ -122,6 +129,9 @@ void Neck::setupBridgeUIHelper() {
 		area->setGeometry( 0, 0, semiWidth, heightChild );
 		area->move( widthSoFar, 0 );
 		area->setMouseTracking( true );
+
+		area->render();
+
 		area->raise();
 		area->show();
 

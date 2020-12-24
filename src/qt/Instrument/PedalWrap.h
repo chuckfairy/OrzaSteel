@@ -61,7 +61,7 @@ class PedalWrap : public Orza::Steel::Widget::BaseWidget {
 		 * props
 		 */
 
-		vector<PedalArea*> _pedals;
+		vector<PedalArea*> _areas;
 
 		QHBoxLayout * _layout;
 

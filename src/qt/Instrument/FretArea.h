@@ -38,6 +38,10 @@ class FretArea : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher
 		FretArea( AreaData * );
 		~FretArea() {};
 
+		AreaData * getData();
+
+		void render();
+
 
 	private:
 

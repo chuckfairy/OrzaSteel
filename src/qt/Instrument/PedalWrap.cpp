@@ -51,18 +51,14 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
 		Pedal * pedal = pedals[ i ];
 
-		AreaData * data = new AreaData();
+		PedalArea * area = _areas[i];
+
+		AreaData * data = area->getData();
 		data->label = pedal->label.c_str();
 
-		PedalArea * area = new PedalArea( data );
+		area->build();
 		area->setMouseTracking( true );
-
-		_layout->addWidget( area );
-
-		//@TODO figure out why we need
-		_layout->addWidget( new QLabel() );
-
-		_pedals.push_back( area );
+		area->show();
 
 	}
 
@@ -75,7 +71,7 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
 void PedalWrap::setPedalActive( int index, bool active ) {
 
-	_pedals[ index ]->setActive( active );
+	_areas[ index ]->setActive( active );
 
 };
 
@@ -87,7 +83,7 @@ void PedalWrap::setPedalActive( int index, bool active ) {
 void PedalWrap::setupLayout() {
 
 	_layout = new QHBoxLayout();
-	_layout->setSpacing( 0 );
+	_layout->setSpacing( 2 );
 	_layout->setContentsMargins(0, 0, 0, 0);
 
 	setLayout( _layout );
@@ -101,20 +97,28 @@ void PedalWrap::setupLayout() {
 
 void PedalWrap::clearArea() {
 
-	_pedals.clear();
+	if(_areas.size() == 0) {
+		//Max number of areas ever
+		int pedalNumbers = 12 * 4;
 
-	QLayoutItem * item;
+		for(int i = 0; i < pedalNumbers; ++i) {
+			AreaData * data = new AreaData();
 
-	while( ( item = _layout->takeAt( 0 ) ) ) {
+			PedalArea * area = new PedalArea( data );
 
-		if( item->widget() ) {
+			_layout->addWidget( area );
 
-			delete item->widget();
-
+			_areas.push_back(area);
 		}
+	}
 
-		delete item;
+	//@TODO figure out why we need
+	//Will not display without it
+	_layout->addWidget( new QLabel() );
 
+	int al = _areas.size();
+	for( int i = 0; i < al; ++ i ) {
+		_areas[i]->hide();
 	}
 
 }

@@ -64,7 +64,7 @@ void Tonebar::setImage( const char * src ) {
 
 	_srcString = string(src);
 
-	int heightFromTop = 30;
+	int heightFromTop = 35;
 
 	if(_img == nullptr) {
 		_img = new BackgroundImage(_srcString.c_str());

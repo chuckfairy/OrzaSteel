@@ -25,6 +25,10 @@ StringEditor::StringEditor( Window * window ) :
 
 	_UI.setupUi( this );
 
+
+	//Tonebar image selector extras
+	_UI.tonebar_image_input->SetShowFullFile(false);
+
 	connect(
 		_UI.add_btn,
 		SIGNAL( clicked() ),
@@ -133,6 +137,7 @@ void StringEditor::updateInstrument() {
 void StringEditor::afterRemove() {
 
 	updateInstrument();
+
 };
 
 void StringEditor::handleNodeUpdate( TreeNode * node ) {

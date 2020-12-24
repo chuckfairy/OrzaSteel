@@ -17,7 +17,7 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 const char * PedalArea::TEMPLATE = "\
 background: #%s;\
-border-radius: 5px 5px 0 0;\
+border-radius: 5px 5px 5px 5px;\
 color: #000;\
 border: 1px solid #000;\
 ";
@@ -31,9 +31,6 @@ PedalArea::PedalArea( AreaData * data ) :
 	_data( data ),
 	_label( new QLabel )
 {
-
-	_label->setParent( this );
-	_label->setText( data->label );
 
 	setActive( false );
 
@@ -50,6 +47,13 @@ PedalArea::PedalArea( AreaData * data ) :
 		this,
 		SLOT( setActive(bool) )
 	);
+
+};
+
+void PedalArea::build() {
+
+	_label->setParent( this );
+	_label->setText( _data->label );
 
 };
 
@@ -72,6 +76,12 @@ void PedalArea::setActive( bool flag ) {
 	sprintf( css, TEMPLATE, color );
 
 	_label->setStyleSheet( css );
+
+};
+
+AreaData * PedalArea::getData() {
+
+	return _data;
 
 };
 

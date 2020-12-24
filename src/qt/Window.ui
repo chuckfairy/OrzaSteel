@@ -44,7 +44,14 @@
          <layout class="QHBoxLayout" name="neck"/>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="pedals"/>
+         <layout class="QHBoxLayout" name="pedals">
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>2</number>
+          </property>
+         </layout>
         </item>
        </layout>
       </item>

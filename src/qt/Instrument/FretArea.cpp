@@ -37,19 +37,35 @@ FretArea::FretArea( AreaData * data ) :
 	setSizePolicy(sizePolicy2);
 	setMinimumSize(QSize(250, 0));
 
+	show();
+
+};
+
+
+void FretArea::render() {
+
 	char * css = formatStyleSheet( _data->color );
 
 
 	setStyleSheet( css );
 
 	QLabel * label = new QLabel(this);
-	label->setText( data->label );
+	label->setText( _data->label );
 	label->move( 5, 15 );
 	label->setStyleSheet(
 		"color: #000000; border-left: none;"
 	);
 
-	show();
+};
+
+
+/**
+ * Area data grab
+ */
+
+AreaData * FretArea::getData() {
+
+	return _data;
 
 };
 
