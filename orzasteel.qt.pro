@@ -13,6 +13,7 @@ HEADERS  += src/qt/Window.h
 FORMS    += src/qt/Window.ui\
     src/qt/Settings/Settings.ui\
     src/qt/Settings/PedalEditor.ui \
+    src/qt/Settings/SoundEditor.ui \
     src/qt/Settings/StringEditor.ui \
     src/qt/Settings/StringEditArea.ui \
     src/qt/Settings/PedalEditArea.ui \
