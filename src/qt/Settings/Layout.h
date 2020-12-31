@@ -15,6 +15,7 @@
 
 #include "PedalEditor.h"
 #include "StringEditor.h"
+#include "SoundEditor.h"
 
 #include <MidiControl/Control.h>
 
@@ -91,6 +92,8 @@ class Layout : public Orza::Steel::Widget::BaseWidget {
 		PedalEditor * _PedalEditor;
 
 		StringEditor * _StringEditor;
+
+		SoundEditor * _SoundEditor;
 
 		MidiControl::Control * _ControlEditor;
 

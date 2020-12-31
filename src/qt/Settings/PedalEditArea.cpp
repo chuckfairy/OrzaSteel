@@ -65,7 +65,7 @@ PedalEditArea::PedalEditArea() {
 	setupKeySelect();
 
 
-	//@TODO string updater
+	//@TODO for loop
 	_UI.modifier_dropdown->addItem( "-12" );
 	_UI.modifier_dropdown->addItem( "-11" );
 	_UI.modifier_dropdown->addItem( "-10" );
@@ -92,6 +92,7 @@ PedalEditArea::PedalEditArea() {
 	_UI.modifier_dropdown->addItem( "11" );
 	_UI.modifier_dropdown->addItem( "12" );
 
+	//@TODO string updater
 	_UI.string_dropdown->addItem( "1" );
 	_UI.string_dropdown->addItem( "2" );
 	_UI.string_dropdown->addItem( "3" );

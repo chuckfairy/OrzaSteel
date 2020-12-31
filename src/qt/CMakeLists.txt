@@ -20,6 +20,7 @@ file(GLOB orzasteel.qt_UIS
 	Settings/PedalEditArea.ui
 	Settings/StringEditor.ui
 	Settings/StringEditArea.ui
+	Settings/SoundEditor.ui
 	"${ORZASTEEL_ROOT_PATH}/lib-src/inputwidgets/src/*.ui"
 )
 
@@ -95,6 +96,7 @@ file( GLOB orzasteel.qt_moc_files
 	Settings/StringEditArea.h
 	Settings/PedalEditor.h
 	Settings/PedalEditArea.h
+	Settings/SoundEditor.h
 )
 
 

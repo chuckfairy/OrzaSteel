@@ -52,7 +52,7 @@ float_t SquareWave::getRampSignal( float_t volume ) {
 		? volume
 		: (volume / (float_t) _freqs.size());
 
-    float_t deltaVol = volPer * 1;
+	float_t deltaVol = volPer * 1;
 
 	for( int i = 0; i < _freqs.size(); ++ i ) {
 
@@ -79,24 +79,24 @@ float_t SquareWave::getRampSignal( float_t volume ) {
 		_ramps[ i ] = ramp;
 
 
-        //Last sine usage
-        //@TODO move
+		//Last sine usage
+		//@TODO move
 
-        int sineSize = _sines.size() - 1;
-        if( sineSize < i ) {
+		int sineSize = _sines.size() - 1;
+		if( sineSize < i ) {
 
-            _sines.push_back( 0.0 );
+			_sines.push_back( 0.0 );
 
-        }
+		}
 
 
 		//Get sine signal
 
 		float_t sig = sin( DOUBLE_PI * ramp );
 
-        out += ( sig >= 0 )
-            ? deltaVol
-            : -deltaVol;
+		out += ( sig >= 0 )
+			? deltaVol
+			: -deltaVol;
 
 	}
 

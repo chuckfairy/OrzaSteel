@@ -28,6 +28,7 @@ Layout::Layout( Window * win ) :
 	_Patchbay( new Orza::Widget::Patchbay( win->getServer() ) ),
 	_PedalEditor( new PedalEditor( win ) ),
 	_StringEditor( new StringEditor( win ) ),
+	_SoundEditor( new SoundEditor( win ) ),
 	_ControlEditor( new Orza::MidiControl::Control( win->getServer() ) )
 {
 
@@ -48,6 +49,7 @@ Layout::Layout( Window * win ) :
 	_UI.tab_effects_layout->addWidget( _Patchbay->getWidgetContainer() );
 	_UI.tab_pedals_layout->addWidget( _PedalEditor );
 	_UI.tab_strings_layout->addWidget( _StringEditor );
+	_UI.tab_sound_layout->addWidget( _SoundEditor );
 	_UI.tab_control_layout->addWidget( _ControlEditor->getWidget() );
 
 

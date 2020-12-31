@@ -111,6 +111,8 @@ class Module : public QWidget, public BaseModule {
 		void setOctaves( int );
 		void setSemiTones( int );
 
+		void setWave( BaseWave * );
+
 
 	public slots:
 

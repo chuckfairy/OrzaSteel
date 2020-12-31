@@ -400,4 +400,12 @@ void Module::setTonebarImage(string file) {
 
 };
 
+
+void Module::setWave( BaseWave * wave ) {
+
+	_wave = wave;
+
+};
+
+
 } } }
