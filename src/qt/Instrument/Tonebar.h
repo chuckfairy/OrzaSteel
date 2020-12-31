@@ -74,7 +74,7 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 
 	private:
 
-		BackgroundImage * _img;
+		BackgroundImage * _img = nullptr;
 
 		bool _showLine = true;
 

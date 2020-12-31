@@ -88,6 +88,7 @@ void Tonebar::setImage( const char * src ) {
 	QPixmap pixmap = _img->getPixmap();
 	QPixmap scaledPixmap = pixmap.scaledToWidth(widthSet);
 	_img->setGeometry( 0, heightFromTop, widthSet, scaledPixmap.height() );
+	//_img->resize( widthSet, scaledPixmap.height() );
 
 };
 
