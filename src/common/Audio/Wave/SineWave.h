@@ -8,6 +8,8 @@
 
 using std::vector;
 
+using Orza::Audio::Envelope;
+
 
 namespace Orza { namespace Steel { namespace Audio { namespace Wave {
 
@@ -21,24 +23,12 @@ class SineWave : public BaseWave {
 		SineWave() {};
 		~SineWave() {};
 
-		/**
-		 * Sine wave impl of output
-		 */
-
-		void setOutputForTime(
-			float * output,
-			uint32_t nframes,
-			float_t volume = 1.0
-		);
-
-
-	private:
 
 		/**
-		 * Internal
+		 * Rampe signal per vol
 		 */
 
-		float_t getRampSignal( float_t volume );
+		float_t getRampSignal( Envelope *, float_t volume );
 
 };
 

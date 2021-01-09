@@ -46,7 +46,8 @@ Module::Module( Window * win ) :
 	_wave( new SineWave ),
 	_nullWave( new NullWave ),
 	_stereoInterface( new PortInterface( win->getServer()->getJackClient() ) ),
-	_midiReader( new MidiReader( win->getServer() ) )
+	_midiReader( new MidiReader( win->getServer() ) ),
+	_envelope( new Envelope() )
 {
 
 	setStrings( StringInstrument::NECK_STEEL_STANDARD_10 );
@@ -177,6 +178,7 @@ void Module::process( jack_nframes_t nframes ) {
 		_stereoInterface->getOutputPortLeft(),
 		waveUse,
 		nframes,
+		_envelope,
 		_instrument->getVelocity()[0]
 	);
 
@@ -217,9 +219,6 @@ map<uint8_t, float_t> Module::getHandMap( vector<uint8_t> * bridged ) {
  */
 
 void Module::handleKeyEvent( QKeyEvent * event ) {
-
-	std::cout << "Key Type : " << (event->type() == QEvent::KeyPress) << "\n";
-	std::cout << "Key Btn : " << event->text().toUtf8().data() << "\n";
 
 	//@TODO configs
 	switch( event->key() ) {

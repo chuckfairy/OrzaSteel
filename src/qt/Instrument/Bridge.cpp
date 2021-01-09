@@ -110,8 +110,6 @@ void Bridge::setStringDown( uint8_t index ) {
 
 	if ( ! Util::Vector::has<uint8_t>( &_hand, index ) ) {
 
-		std::cout << "String Down : " << unsigned(index) << "\n";
-
 		_hand.push_back( index );
 
 		emit _areas[ index ]->emitActive( true );
@@ -125,8 +123,6 @@ void Bridge::setStringDown( uint8_t index ) {
 void Bridge::setStringUp( uint8_t index ) {
 
 	if ( Util::Vector::has<uint8_t>( &_hand, index ) ) {
-
-		std::cout << "String Up : " << unsigned(index) << "\n";
 
 		Util::Vector::remove<uint8_t>( &_hand, index );
 

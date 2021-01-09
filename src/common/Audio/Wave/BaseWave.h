@@ -12,7 +12,9 @@
 #include <Audio/Envelope.h>
 
 
+using std::map;
 using std::vector;
+
 using Orza::Audio::Envelope;
 
 
@@ -29,12 +31,15 @@ class BaseWave {
 		 * This should also update the time based on the delta
 		 */
 
-		virtual void setOutputForTime(
+		void setOutputForTime(
 			float * output,
 			uint32_t nframes,
+			Envelope * env,
 			float_t volume = 1.0
-		) {};
+		);
 
+
+		virtual float_t getRampSignal( Envelope *, float_t ) {};
 
 		/**
 		 * Main setter for data
@@ -43,28 +48,7 @@ class BaseWave {
 		void setWave(
 			vector<float_t> newFreqs,
 			uint32_t newRate
-		) {
-
-			_freqs.clear();
-			//_ramps.clear();
-
-			int rampSize = _ramps.size() - 1;
-
-			_rate = newRate;
-
-			for( int i = 0; i < newFreqs.size(); ++ i ) {
-
-				_freqs.push_back( newFreqs[ i ] / _rate );
-
-				if( rampSize < i )  {
-
-					_ramps.push_back( 0.0 );
-
-				}
-
-			}
-
-		};
+		);
 
 		void setDelta( float_t newDelta ) {
 
@@ -77,6 +61,12 @@ class BaseWave {
 			_threshold = newThres;
 
 		};
+
+
+		/**
+		 * Envelope data
+		 */
+		float_t getVolumeFromEnvelope( Envelope * env, float_t ramp );
 
 
 	protected:
@@ -96,14 +86,15 @@ class BaseWave {
 		float_t _threshold = 1.0;
 
 		vector<float_t> _freqs;
+		vector<float_t> _offFreqs;
 
 		uint32_t _rate;
 
 		vector<float_t> _ramps;
 
-		Envelope * _env;
-
-		Envelope * _envs;
+		//Used for Envelope to ramp
+		map<float, long> _rampTimes;
+		map<float, long> _rampTimesOff;
 
 };
 

@@ -18,11 +18,11 @@ class NullWave : public BaseWave {
 		NullWave() {};
 		~NullWave() {};
 
-		void setOutputForTime(
-			float * output,
-			uint32_t nframes,
-			float_t volume = 1.0
-		);
+		/**
+		 * Ramp grabber
+		 */
+
+		float_t getRampSignal( float_t volume );
 
 };
 

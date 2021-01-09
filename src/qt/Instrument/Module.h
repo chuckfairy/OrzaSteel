@@ -15,6 +15,8 @@
 
 #include <Audio/Pedal.h>
 
+#include <Audio/Envelope.h>
+
 #include <Module/BaseModule.h>
 
 #include <Audio/Wave/BaseWave.h>
@@ -33,6 +35,8 @@
 
 using std::map;
 using std::vector;
+
+using Orza::Audio::Envelope;
 
 using Orza::Steel::BaseModule;
 using Orza::Steel::Window;
@@ -159,6 +163,8 @@ class Module : public QWidget, public BaseModule {
 		BaseWave * _wave;
 
 		NullWave * _nullWave;
+
+		Envelope * _envelope;
 
 
 		/**

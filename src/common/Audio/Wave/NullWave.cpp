@@ -13,18 +13,11 @@ namespace Orza { namespace Steel { namespace Audio { namespace Wave {
  * Null just 0
  */
 
-void NullWave::setOutputForTime(
-	float * output,
-	uint32_t nframes,
+float_t NullWave::getRampSignal(
 	float_t volume
 ) {
 
-	//loop frames
-	for( uint32_t i = 0; i < nframes; ++i ) {
-
-		output[i] = 0.0;
-
-	}
+	return 0.0;
 
 };
 

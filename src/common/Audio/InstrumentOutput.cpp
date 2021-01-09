@@ -8,6 +8,9 @@
 #include "InstrumentOutput.h"
 
 
+using Orza::Audio::Envelope;
+
+
 namespace Orza { namespace Steel { namespace Audio {
 
 /**
@@ -42,6 +45,7 @@ void InstrumentOutput::writeOutputWave(
 	jack_port_t * port,
 	Wave::BaseWave * wave,
 	jack_nframes_t nframes,
+	Envelope * env,
 	float_t volume
 ) {
 
@@ -50,6 +54,7 @@ void InstrumentOutput::writeOutputWave(
 	wave->setOutputForTime(
 		out,
 		nframes,
+		env,
 		volume
 	);
 

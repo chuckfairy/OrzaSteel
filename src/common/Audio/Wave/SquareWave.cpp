@@ -6,32 +6,13 @@
 
 using std::vector;
 
+using Orza::Audio::Envelope;
+
 
 namespace Orza { namespace Steel { namespace Audio { namespace Wave {
 
 
 float_t SquareWave::DOUBLE_PI = 2 * M_PI;
-
-
-/**
- * Main output
- */
-
-void SquareWave::setOutputForTime(
-	float * output,
-	uint32_t nframes,
-	float_t volume
-) {
-
-	//loop frames
-
-	for( uint32_t i = 0; i < nframes; ++ i ) {
-
-		output[i] = volume * getRampSignal( volume );
-
-	}
-
-};
 
 
 /**
@@ -42,7 +23,7 @@ void SquareWave::setOutputForTime(
  *
  */
 
-float_t SquareWave::getRampSignal( float_t volume ) {
+float_t SquareWave::getRampSignal( Envelope * env, float_t volume ) {
 
 	float_t out = 0.0;
 
@@ -77,17 +58,6 @@ float_t SquareWave::getRampSignal( float_t volume ) {
 		//Set ramp for next time
 
 		_ramps[ i ] = ramp;
-
-
-		//Last sine usage
-		//@TODO move
-
-		int sineSize = _sines.size() - 1;
-		if( sineSize < i ) {
-
-			_sines.push_back( 0.0 );
-
-		}
 
 
 		//Get sine signal

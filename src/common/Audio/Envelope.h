@@ -1,10 +1,10 @@
 /**
  * Envelope struct
  *
- * attack 0-1
- * sustain seconds?
- * state int frames
- * volume 0-1
+ * attack, decay, and release in seconds
+ * must use sample rate outside of this
+ *
+ * sustain in percentage 0-1.0
  */
 #pragma once
 
@@ -21,48 +21,48 @@ namespace Orza { namespace Audio {
 
 struct Envelope {
 
-    /**
-     * Props
-     */
+	/**
+	 * Props
+	 */
 
-    float_t attack = 1.0;
+	float_t attack = 0.0;
 
-    float_t sustain = 1.0;
+	float_t decay = 0.0;
 
-    uint32_t state = 0;
+	float_t sustain = 1.0;
 
-    float_t volume = 1.0;
+	float_t release = 1.0;
 
 
-    /**
-     * Helpers
-     */
+	/**
+	 * Helpers
+	 */
 
-    Envelope(
-        float_t attack_ = 1.0,
-        float_t sustain_ = 0.0,
-        uint32_t state_ = 0,
-        float_t volume_ = 1.0
-    ) {
-        attack = attack_;
-        sustain = sustain_;
-        state = state_;
-        volume = volume_;
-    };
+	Envelope(
+		float_t attack_ = 2.0,
+		float_t decay_ = 0.0,
+		float_t sustain_ = 1.0,
+		float_t release_ = 0.0
+	) {
+		attack = attack_;
+		decay = decay_;
+		sustain = sustain_;
+		release = release_;
+	};
 
-    Envelope clone() {
+	Envelope clone() {
 
-        return Envelope(
-            attack,
-            sustain,
-            state,
-            volume
-        );
+		return Envelope(
+			attack,
+			decay,
+			sustain,
+			release
+		);
 
-    };
+	};
 
 };
 
-const Envelope DefaultEnvelope();
+static const Envelope DefaultEnvelope();
 
 } }

@@ -6,32 +6,13 @@
 
 using std::vector;
 
+using Orza::Audio::Envelope;
+
 
 namespace Orza { namespace Steel { namespace Audio { namespace Wave {
 
 
 float_t TriangleWave::DOUBLE_PI = 2 * M_PI;
-
-
-/**
- * Main output
- */
-
-void TriangleWave::setOutputForTime(
-	float * output,
-	uint32_t nframes,
-	float_t volume
-) {
-
-	//loop frames
-
-	for( uint32_t i = 0; i < nframes; ++ i ) {
-
-		output[i] = volume * getRampSignal( volume );
-
-	}
-
-};
 
 
 /**
@@ -42,7 +23,7 @@ void TriangleWave::setOutputForTime(
  *
  */
 
-float_t TriangleWave::getRampSignal( float_t volume ) {
+float_t TriangleWave::getRampSignal( Envelope * env, float_t volume ) {
 
 	float_t out = 0.0;
 
@@ -79,34 +60,12 @@ float_t TriangleWave::getRampSignal( float_t volume ) {
 		_ramps[ i ] = ramp;
 
 
-		//Last sine usage
-		//@TODO move
-
-		int sineSize = _sines.size() - 1;
-		if( sineSize < i ) {
-
-			_sines.push_back( 0.0 );
-
-		}
-
-
-		//Get sine signal
-
-		float_t oldSine = _sines[ i ];
-
-		//float_t sig = 1 - ( abs( fmod( ( DOUBLE_PI * ramp ), 4.0f ) - 2 ) );
-
-		float_t sig = ( ( 2 * deltaVol )/ M_PI ) * asin( sin( DOUBLE_PI * ramp ) );
+		float_t sig = ( ( 2 * deltaVol ) / M_PI ) * asin( sin( DOUBLE_PI * ramp ) );
 
 
 		//get what direction from old
 
 		out += sig;
-		//out += ( sig - oldSine >= 0 )
-			//? deltaVol
-			//: -deltaVol;
-
-		_sines[ i ] = sig;
 
 	}
 
