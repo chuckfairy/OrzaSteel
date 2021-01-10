@@ -39,7 +39,7 @@ struct Envelope {
 	 */
 
 	Envelope(
-		float_t attack_ = 2.0,
+		float_t attack_ = 1.0,
 		float_t decay_ = 0.0,
 		float_t sustain_ = 1.0,
 		float_t release_ = 0.0

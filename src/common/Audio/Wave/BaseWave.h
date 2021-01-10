@@ -46,7 +46,7 @@ class BaseWave {
 		 */
 
 		void setWave(
-			vector<float_t> newFreqs,
+			map<uint8_t, float_t> newFreqs,
 			uint32_t newRate
 		);
 
@@ -66,7 +66,7 @@ class BaseWave {
 		/**
 		 * Envelope data
 		 */
-		float_t getVolumeFromEnvelope( Envelope * env, float_t ramp );
+		float_t getVolumeFromEnvelope( Envelope * env, uint8_t ramp );
 
 
 	protected:
@@ -85,16 +85,16 @@ class BaseWave {
 
 		float_t _threshold = 1.0;
 
-		vector<float_t> _freqs;
-		vector<float_t> _offFreqs;
+		map<uint8_t, float_t> _freqs;
+		map<uint8_t, float_t> _offFreqs;
 
 		uint32_t _rate;
 
-		vector<float_t> _ramps;
+		map<uint8_t, float_t> _ramps;
 
 		//Used for Envelope to ramp
-		map<float, long> _rampTimes;
-		map<float, long> _rampTimesOff;
+		map<uint8_t, long> _rampTimes;
+		map<uint8_t, long> _rampTimesOff;
 
 };
 

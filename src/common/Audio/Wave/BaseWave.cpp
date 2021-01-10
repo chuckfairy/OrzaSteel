@@ -40,41 +40,52 @@ void BaseWave::setOutputForTime(
  */
 
 void BaseWave::setWave(
-	vector<float_t> newFreqs,
+	map<uint8_t, float_t> newFreqs,
 	uint32_t newRate
 ) {
 
-	_offFreqs = _freqs;
-	_freqs.clear();
+	//_rampTimesOff = _rampTimes;
+
+	map<uint8_t, float_t>::iterator it;
+	int i = 0;
+
+	//_freqs.clear();
 	//_ramps.clear();
 
 	int rampSize = _ramps.size() - 1;
 
 	_rate = newRate;
 
-	for( int i = 0; i < (int)newFreqs.size(); ++ i ) {
+	for(it = newFreqs.begin(); it != newFreqs.end(); ++it) {
 
-		float freqRate = newFreqs[ i ] / _rate;
-		_freqs.push_back(freqRate);
+		float freqRate = it->second / _rate;
+		//_freqs.push_back(freqRate);
+		_freqs[it->first] = freqRate;
 
-		//Off frequency for release usage
-		if(Util::Vector::has<float_t>(&_offFreqs, freqRate)) {
-			Util::Vector::remove<float_t>(&_offFreqs, freqRate);
-			_rampTimes.erase(freqRate);
-			_rampTimesOff[freqRate] = 0;
-			continue;
+		//Start ramp time for attack
+		if( _rampTimes.count( it->first ) != 1 ) {
+			std::cout << (int)it->first << "\n";
+			_rampTimes[it->first] = 0;
 		}
 
-		if(!_rampTimes.count(freqRate)) {
-			_rampTimes[freqRate] = 0;
-		}
+		if( _ramps.count( it->first ) != 1 )  {
 
-		if( rampSize < i )  {
-
-			_ramps.push_back( 0.0 );
+			_ramps[it->first] = 0.0;
 
 		}
 
+	}
+
+	//Off ramp time checks
+	map<uint8_t, long>::iterator rt;
+	for(rt = _rampTimes.begin(); rt != _rampTimes.end(); ++rt) {
+		if( newFreqs.count(rt->first) != 1 ) {
+			std::cout << "Erasing " << (int)rt->first << "\n";
+			_rampTimes[rt->first] = 0;
+			_rampTimesOff[rt->first] = 0;
+			_freqs[rt->first] = 0;
+			//_freqs.erase(_freqs.find(rt->first));
+		}
 	}
 
 };
@@ -82,7 +93,7 @@ void BaseWave::setWave(
 /**
  * Envelope data
  */
-float_t BaseWave::getVolumeFromEnvelope( Envelope * env, float_t ramp ) {
+float_t BaseWave::getVolumeFromEnvelope( Envelope * env, uint8_t ramp ) {
 
 	//Release
 	if(_rampTimesOff.count(ramp) && false) {
@@ -101,7 +112,7 @@ float_t BaseWave::getVolumeFromEnvelope( Envelope * env, float_t ramp ) {
 	float attack = env->attack * _rate;
 	float rampTime = ((float)_rampTimes[ramp]) * ((float)_rate);
 
-	std::cout << "Attack " << attack << " " << _rampTimes[ramp] << " " << _rate << "\n";
+	//std::cout << "Attack " << attack << " " << _rampTimes[ramp] << " " << _rate << "\n";
 
 	float vol = std::min<float>(1.0f, _rampTimes[ramp] / attack);
 

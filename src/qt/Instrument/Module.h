@@ -175,6 +175,8 @@ class Module : public QWidget, public BaseModule {
 
 		map<uint8_t, float_t> getHandMap( vector<uint8_t> * bridged );
 
+		map<uint8_t, float_t> getHandMapPitches( vector<float_t>, map<uint8_t, float_t> );
+
 		void processPedals( char keyPressed, bool active );
 
 		void midiSetup();

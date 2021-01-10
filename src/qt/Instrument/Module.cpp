@@ -146,12 +146,14 @@ void Module::process( jack_nframes_t nframes ) {
 
 	vector<float_t> freqs = _instrument->getPitches( handMap );
 
+	map<uint8_t, float_t> mappedFreqs = getHandMapPitches( freqs, handMap );
+
 
 	if( _bridge->hasChange() || _neck->hasChange() || HAS_CHANGE ) {
 
 		//Wave setup
 		_wave->setWave(
-			freqs,
+			mappedFreqs,
 			_window->getServer()->getSampleRate()
 		);
 
@@ -211,6 +213,30 @@ map<uint8_t, float_t> Module::getHandMap( vector<uint8_t> * bridged ) {
 	return out;
 
 };
+
+
+map<uint8_t, float_t> Module::getHandMapPitches(
+	vector<float_t> freqs,
+	map<uint8_t, float_t> handMap
+) {
+	map<uint8_t, float_t> out;
+
+	map<uint8_t, float_t>::iterator it;
+	int i = 0;
+
+	for(it = handMap.begin(); it != handMap.end(); ++it) {
+		if(freqs[i] == 0) {
+			continue;
+		}
+
+		out[it->first] = freqs[i];
+
+		++i;
+	}
+
+	return out;
+
+}
 
 
 

@@ -31,13 +31,15 @@ float_t SineWave::getRampSignal( Envelope * env, float_t volume ) {
 		? volume
 		: (volume / (float_t) _freqs.size());
 
-	for( int i = 0; i < _freqs.size(); ++ i ) {
+	map<uint8_t, float_t>::iterator it;
+
+	for(it = _freqs.begin(); it != _freqs.end(); ++it) {
 
 		//Get
 
-		float_t noteFrequency = _freqs[ i ];
+		float_t noteFrequency = it->second;
 
-		float_t ramp = _ramps[ i ];
+		float_t ramp = _ramps[ it->first ];
 
 
 		//Check threwshold from add
@@ -53,16 +55,16 @@ float_t SineWave::getRampSignal( Envelope * env, float_t volume ) {
 
 		//Set ramp for next time
 
-		_ramps[ i ] = ramp;
+		_ramps[ it->first ] = ramp;
 
 
 		//Get sine signal
 
 		float_t sig = sin( DOUBLE_PI * ramp );
 
-		out += ( sig * (volPer * getVolumeFromEnvelope(env, noteFrequency) ) );
+		out += ( sig * (volPer * getVolumeFromEnvelope(env, it->first) ) );
 
-		++_rampTimes[noteFrequency];
+		++_rampTimes[it->first];
 
 	}
 
