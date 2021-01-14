@@ -39,7 +39,7 @@ class BaseWave {
 		);
 
 
-		virtual float_t getRampSignal( Envelope *, float_t ) {};
+		virtual float_t getRampSignal( Envelope *, float_t ramp ) {};
 
 		/**
 		 * Main setter for data

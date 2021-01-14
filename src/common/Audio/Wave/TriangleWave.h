@@ -29,7 +29,7 @@ class TriangleWave : public BaseWave {
 
 		vector<float_t> _sines;
 
-		float_t getRampSignal( Envelope *, float_t volume );
+		float_t getRampSignal( Envelope *, float_t ramp );
 
 };
 

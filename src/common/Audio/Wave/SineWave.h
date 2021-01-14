@@ -28,7 +28,7 @@ class SineWave : public BaseWave {
 		 * Rampe signal per vol
 		 */
 
-		float_t getRampSignal( Envelope *, float_t volume );
+		float_t getRampSignal( Envelope * env, float_t ramp );
 
 };
 

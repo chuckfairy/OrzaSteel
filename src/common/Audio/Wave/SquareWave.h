@@ -27,7 +27,7 @@ class SquareWave : public BaseWave {
 		 * Ramp grabber
 		 */
 
-		float_t getRampSignal( Envelope *, float_t volume );
+		float_t getRampSignal( Envelope *, float_t ramp );
 
 };
 

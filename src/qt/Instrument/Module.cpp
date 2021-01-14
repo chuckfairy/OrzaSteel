@@ -225,10 +225,6 @@ map<uint8_t, float_t> Module::getHandMapPitches(
 	int i = 0;
 
 	for(it = handMap.begin(); it != handMap.end(); ++it) {
-		if(freqs[i] == 0) {
-			continue;
-		}
-
 		out[it->first] = freqs[i];
 
 		++i;
@@ -237,7 +233,6 @@ map<uint8_t, float_t> Module::getHandMapPitches(
 	return out;
 
 }
-
 
 
 /**

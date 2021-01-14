@@ -26,9 +26,51 @@ void BaseWave::setOutputForTime(
 
 	//loop frames
 
+	int freqSize = _freqs.size();
+
+	float_t volPer = freqSize == 1
+		? volume
+		: (volume / (float_t) _freqs.size());
+
+	map<uint8_t, float_t>::iterator it;
+
+
+	//Nframes
 	for( uint32_t i = 0; i < nframes; ++ i ) {
 
-		output[i] = getRampSignal( env, volume );
+		output[i] = 0;
+
+		//Frequency loop
+		for(it = _freqs.begin(); it != _freqs.end(); ++it) {
+
+			//Getters
+			float_t noteFrequency = it->second;
+
+			float_t ramp = _ramps[ it->first ];
+
+
+			//Check threshold from add
+			ramp += noteFrequency;
+
+			if( ramp > _threshold ) {
+				ramp -= _delta;
+			}
+
+
+			//Frequency from volPer and Envelope
+			float_t frequencyVolume = volPer * getVolumeFromEnvelope(env, it->first);
+
+			//Abstract grabber for signal
+			output[i] += getRampSignal( env, ramp ) * frequencyVolume;
+
+
+			//Set ramp for next time
+			_ramps[ it->first ] = ramp;
+
+			//Ramp times for Envelope
+			++ _rampTimes[ it->first ];
+
+		}
 
 	}
 
@@ -49,7 +91,8 @@ void BaseWave::setWave(
 	map<uint8_t, float_t>::iterator it;
 	int i = 0;
 
-	//_freqs.clear();
+	_offFreqs = _freqs;
+	_freqs.clear();
 	//_ramps.clear();
 
 	int rampSize = _ramps.size() - 1;
@@ -61,6 +104,7 @@ void BaseWave::setWave(
 		float freqRate = it->second / _rate;
 		//_freqs.push_back(freqRate);
 		_freqs[it->first] = freqRate;
+		_offFreqs[it->first] = 0;
 
 		//Start ramp time for attack
 		if( _rampTimes.count( it->first ) != 1 ) {
@@ -77,15 +121,21 @@ void BaseWave::setWave(
 	}
 
 	//Off ramp time checks
-	map<uint8_t, long>::iterator rt;
-	for(rt = _rampTimes.begin(); rt != _rampTimes.end(); ++rt) {
-		if( newFreqs.count(rt->first) != 1 ) {
+	map<uint8_t, long>::iterator rt = _rampTimes.begin();
+	while( rt != _rampTimes.end() ) {
+		if( newFreqs.find(rt->first) == newFreqs.end() && _rampTimes[rt->first] != 0) {
 			std::cout << "Erasing " << (int)rt->first << "\n";
 			_rampTimes[rt->first] = 0;
 			_rampTimesOff[rt->first] = 0;
 			_freqs[rt->first] = 0;
+			_offFreqs[rt->first] = 0;
+
+			//_freqs[rt->first] = 0;
 			//_freqs.erase(_freqs.find(rt->first));
+			//continue;
 		}
+
+		++rt;
 	}
 
 };
