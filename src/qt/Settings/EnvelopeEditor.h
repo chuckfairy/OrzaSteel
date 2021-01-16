@@ -27,7 +27,7 @@ class EnvelopeEditor : public QWidget {
 
 		static const char * ENVELOPE_CHANGE;
 
-		EnvelopeEditor();
+		EnvelopeEditor(Envelope *);
 		~EnvelopeEditor() {};
 
 
@@ -37,6 +37,8 @@ class EnvelopeEditor : public QWidget {
 
 		Envelope * getEnvelope();
 
+		void setEnvelope(Envelope *);
+
 
 	public slots:
 
@@ -45,7 +47,7 @@ class EnvelopeEditor : public QWidget {
 
 	signals:
 
-		Envelope * EnvelopeChange();
+		void EnvelopeChange(Envelope *);
 
 
 	private:
@@ -53,6 +55,10 @@ class EnvelopeEditor : public QWidget {
 		Envelope * _env;
 
 		Ui_EnvelopeEditor _UI;
+
+		void setup();
+
+		void emitUpdate();
 
 };
 

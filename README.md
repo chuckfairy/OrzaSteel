@@ -29,13 +29,6 @@ This is a sound application to mimic playing a [pedal steel guitar](https://en.w
 - mouse to move tonebar / raise or lower pitch
 - Set characters in pedal editor, but the default is a,b,c and various others for the knee levers modeled after this website https://www.steelguitar.com/tunings.html
 
-## Midi
-
-You can connect to the app via midi and play from an outside program or external device. OrzaSteel will connect to **all** midi devices on startup. Controlling it works as follows.
-
-Eventually I plan on being able to configure these, but they hardcoded for now.
-
-
 # Install
 
 
@@ -78,6 +71,13 @@ make -j8
 #gui, only qt rn
 ./src/qt/orzabal.qt
 ```
+
+
+# Midi
+
+You can connect to the app via midi and play from an outside program or external device. OrzaSteel will connect to **all** midi devices on startup. Controlling it works as follows.
+
+Eventually I plan on being able to configure these, but they hardcoded for now.
 
 
 ## Notes

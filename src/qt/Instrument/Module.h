@@ -117,6 +117,8 @@ class Module : public QWidget, public BaseModule {
 
 		void setWave( BaseWave * );
 
+		void setEnvelope(Envelope *);
+
 
 	public slots:
 

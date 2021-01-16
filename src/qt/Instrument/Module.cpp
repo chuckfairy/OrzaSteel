@@ -427,5 +427,11 @@ void Module::setWave( BaseWave * wave ) {
 
 };
 
+void Module::setEnvelope(Envelope * newEnv) {
+
+	_envelope = newEnv;
+
+};
+
 
 } } }

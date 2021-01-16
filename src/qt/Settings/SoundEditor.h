@@ -14,6 +14,11 @@
 #include <Audio/Wave/SineWave.h>
 #include <Audio/Wave/TriangleWave.h>
 #include <Audio/Wave/SquareWave.h>
+#include <Audio/Wave/SawtoothWave.h>
+
+#include <Audio/Envelope.h>
+
+#include "EnvelopeEditor.h"
 
 #include <ui_SoundEditor.h>
 
@@ -30,6 +35,7 @@ class Window;
 
 using std::vector;
 
+using Orza::Audio::Envelope;
 using Orza::Steel::Window;
 using Orza::Steel::Audio::Wave::BaseWave;
 
@@ -73,9 +79,13 @@ class SoundEditor : public QWidget {
 
 		Window * _win;
 
+		EnvelopeEditor * _envelopeEditor;
+
 		bool _building = false;
 
 		vector<BaseWave*> _waves;
+
+		Envelope * _env;
 
 		void buildWaveformCombo();
 

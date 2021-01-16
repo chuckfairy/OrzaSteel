@@ -18,16 +18,22 @@ using Orza::Steel::Audio::Wave::NullWave;
 using Orza::Steel::Audio::Wave::SineWave;
 using Orza::Steel::Audio::Wave::SquareWave;
 using Orza::Steel::Audio::Wave::TriangleWave;
+using Orza::Steel::Audio::Wave::SawtoothWave;
 
 
 namespace Orza { namespace Steel { namespace Settings {
 
 
 SoundEditor::SoundEditor( Window * window ) :
-    _win( window )
+    _win( window ),
+	_env(new Envelope)
 {
 
+	_envelopeEditor = new EnvelopeEditor(_env);
+
 	_UI.setupUi( this );
+
+	_UI.contentLayout->addWidget(_envelopeEditor);
 
 	buildWaveformCombo();
 
@@ -37,6 +43,11 @@ SoundEditor::SoundEditor( Window * window ) :
 		this,
 		SLOT( handleWaveCombo(int) )
 	);
+
+	//@TODO move
+	Module * insta = (Module*) _win->getModules()[0];
+
+	insta->setEnvelope(_env);
 
 };
 
@@ -60,10 +71,12 @@ void SoundEditor::buildWaveformCombo() {
 	_waves.push_back(new SineWave);
 	_waves.push_back(new SquareWave);
 	_waves.push_back(new TriangleWave);
+	_waves.push_back(new SawtoothWave);
 
 	_UI.waveform_combo->addItem("Sine");
 	_UI.waveform_combo->addItem("Square");
 	_UI.waveform_combo->addItem("Triangle");
+	_UI.waveform_combo->addItem("Sawtooth");
 
 };
 

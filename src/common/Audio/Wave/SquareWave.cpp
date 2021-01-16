@@ -17,7 +17,7 @@ float_t SquareWave::DOUBLE_PI = 2 * M_PI;
 
 /**
  * Main signal math for chords
- * triangle wave from a sine wave
+ * Square wave from a sine wave
  *
  * https://stackoverflow.com/questions/7400834/creating-a-triangle-wave-from-a-sine-wave-in-c
  *

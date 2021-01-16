@@ -15,22 +15,26 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QVBoxLayout" name="contentLayout">
      <item>
-      <widget class="QLabel" name="waform_label">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Waveform</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="waveform_combo"/>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="waform_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Waveform</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="waveform_combo"/>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
