@@ -19,47 +19,45 @@ namespace Orza { namespace Audio {
  * Main struct
  */
 
-struct Envelope {
+class Envelope {
 
-	/**
-	 * Props
-	 */
+	public:
 
-	float_t attack = 0.0;
+		/**
+		 * Helpers
+		 */
+		Envelope(float_t rate);
 
-	float_t decay = 0.0;
+		//Setters
+		void setAttack(float_t);
+		void setDecay(float_t);
+		void setSustain(float_t);
+		void setRelease(float_t);
+		void setRate(float_t);
 
-	float_t sustain = 1.0;
+		//Getters
+		float_t getAttack();
+		float_t getDecay();
+		float_t getSustain();
+		float_t getRelease();
+		float_t getRate();
 
-	float_t release = 1.0;
+	private:
 
+		/**
+		 * Props
+		 */
 
-	/**
-	 * Helpers
-	 */
+		float_t attack = 1.0;
 
-	Envelope(
-		float_t attack_ = 1.0,
-		float_t decay_ = 0.0,
-		float_t sustain_ = 1.0,
-		float_t release_ = 0.0
-	) {
-		attack = attack_;
-		decay = decay_;
-		sustain = sustain_;
-		release = release_;
-	};
+		float_t decay = 0.0;
 
-	Envelope clone() {
+		float_t sustain = 1.0;
 
-		return Envelope(
-			attack,
-			decay,
-			sustain,
-			release
-		);
+		float_t release = 1.0;
 
-	};
+		float_t rate = 44100;
+
 
 };
 

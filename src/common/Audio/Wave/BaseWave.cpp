@@ -147,11 +147,11 @@ float_t BaseWave::getVolumeFromEnvelope( Envelope * env, uint8_t ramp ) {
 
 	//Release
 	if(_rampTimesOff.count(ramp) && false) {
-		if(env->release <= 0) {
+		if(env->getRelease() <= 0) {
 			return 0;
 		}
 
-		float release = env->release * _rate;
+		float release = env->getRelease();
 
 		float_t vol = ( release - _rampTimesOff[ramp] ) / release;
 		return vol < 0
@@ -159,12 +159,23 @@ float_t BaseWave::getVolumeFromEnvelope( Envelope * env, uint8_t ramp ) {
 			: vol;
 	}
 
-	float attack = env->attack * _rate;
-	float rampTime = ((float)_rampTimes[ramp]) * ((float)_rate);
+	//ADS
+	float vol = 1.0f;
+	float rampTime = _rampTimes[ramp];
 
-	//std::cout << "Attack " << attack << " " << _rampTimes[ramp] << " " << _rate << "\n";
-
-	float vol = std::min<float>(1.0f, _rampTimes[ramp] / attack);
+	if(rampTime < env->getAttack()) {
+		//Attack
+		vol = std::min<float>(1.0f, rampTime / env->getAttack());
+	} else if((rampTime - env->getAttack()) < env->getDecay()) {
+		//Decay
+		vol = std::max<float>(
+			env->getSustain(),
+			1.0f - ((rampTime - env->getAttack()) / env->getDecay())
+		);
+	} else {
+		//Sustain
+		vol = env->getSustain();
+	}
 
 	return vol;
 

@@ -47,7 +47,7 @@ Module::Module( Window * win ) :
 	_nullWave( new NullWave ),
 	_stereoInterface( new PortInterface( win->getServer()->getJackClient() ) ),
 	_midiReader( new MidiReader( win->getServer() ) ),
-	_envelope( new Envelope() )
+	_envelope( new Envelope(_window->getServer()->getSampleRate()) )
 {
 
 	setStrings( StringInstrument::NECK_STEEL_STANDARD_10 );
@@ -430,6 +430,12 @@ void Module::setWave( BaseWave * wave ) {
 void Module::setEnvelope(Envelope * newEnv) {
 
 	_envelope = newEnv;
+
+};
+
+Envelope * Module::getEnvelope() {
+
+	return _envelope;
 
 };
 

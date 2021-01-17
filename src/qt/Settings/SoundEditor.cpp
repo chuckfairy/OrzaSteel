@@ -25,9 +25,13 @@ namespace Orza { namespace Steel { namespace Settings {
 
 
 SoundEditor::SoundEditor( Window * window ) :
-    _win( window ),
-	_env(new Envelope)
+    _win( window )
 {
+
+	//@TODO move
+	Module * insta = (Module*) _win->getModules()[0];
+
+	_env = insta->getEnvelope();
 
 	_envelopeEditor = new EnvelopeEditor(_env);
 
@@ -43,11 +47,6 @@ SoundEditor::SoundEditor( Window * window ) :
 		this,
 		SLOT( handleWaveCombo(int) )
 	);
-
-	//@TODO move
-	Module * insta = (Module*) _win->getModules()[0];
-
-	insta->setEnvelope(_env);
 
 };
 

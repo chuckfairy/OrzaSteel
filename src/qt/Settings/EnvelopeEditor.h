@@ -43,6 +43,9 @@ class EnvelopeEditor : public QWidget {
 	public slots:
 
 		void handleAttackChange(int);
+		void handleDecayChange(int);
+		void handleSustainChange(int);
+		void handleReleaseChange(int);
 
 
 	signals:
