@@ -62,6 +62,8 @@ class BaseWave {
 
 		};
 
+		float_t getFrequencyRamp(float_t noteFrequency, float_t ramp);
+
 
 		/**
 		 * Envelope data
@@ -87,6 +89,7 @@ class BaseWave {
 
 		map<uint8_t, float_t> _freqs;
 		map<uint8_t, float_t> _offFreqs;
+		map<uint8_t, bool> _rampTimesOn;
 
 		uint32_t _rate;
 
@@ -94,7 +97,10 @@ class BaseWave {
 
 		//Used for Envelope to ramp
 		map<uint8_t, long> _rampTimes;
-		map<uint8_t, long> _rampTimesOff;
+		map<uint8_t, float_t> _lastVolume;
+		//map<uint8_t, long> _rampTimesOff;
+
+		float_t getOutputFromFrequencyAndRamp(float_t frequency, float_t ramp);
 
 };
 

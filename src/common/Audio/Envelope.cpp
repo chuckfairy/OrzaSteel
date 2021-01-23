@@ -22,7 +22,7 @@ Envelope::Envelope(float_t rate) :
 	setAttack(1.0);
 	setDecay(0.0);
 	setSustain(1.0);
-	setRelease(0.0);
+	setRelease(4.0);
 }
 
 

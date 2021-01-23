@@ -169,9 +169,7 @@ void Module::process( jack_nframes_t nframes ) {
 
 	//Null wave if 0 freqs
 
-	BaseWave * waveUse = ( freqs.size() == 0 )
-		? _nullWave
-		: _wave;
+	BaseWave * waveUse = _wave;
 
 
 	//Output
