@@ -90,6 +90,7 @@ file( GLOB orzasteel.qt_moc_files
 	Instrument/Bridge.h
 	Instrument/Neck.h
 	Instrument/Tonebar.h
+	Instrument/NoteDisplay.h
 	Instrument/Module.h
 	Instrument/PedalWrap.h
 	Instrument/PedalArea.h

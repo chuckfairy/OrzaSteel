@@ -20,10 +20,20 @@ namespace Orza { namespace Steel { namespace Instrument {
 
 class NoteDisplay : public QWidget {
 
+	Q_OBJECT;
+
 	public:
 
 		explicit NoteDisplay(QLabel * widget);
 		~NoteDisplay() {};
+
+
+	public slots:
+
+		void handleUpdate(vector<float_t>);
+
+
+	signals:
 
 		/**
 		 * Main update

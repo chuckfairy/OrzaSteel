@@ -138,18 +138,18 @@ void Module::process( jack_nframes_t nframes ) {
 	}
 
 
-	//Get frequencies
-
-	vector<uint8_t> * hand = _bridge->getHand();
-
-	map<uint8_t, float_t> handMap = getHandMap( hand );
-
-	vector<float_t> freqs = _instrument->getPitches( handMap );
-
-	map<uint8_t, float_t> mappedFreqs = getHandMapPitches( freqs, handMap );
-
-
 	if( _bridge->hasChange() || _neck->hasChange() || HAS_CHANGE ) {
+
+		//Get frequencies
+
+		vector<uint8_t> * hand = _bridge->getHand();
+
+		map<uint8_t, float_t> handMap = getHandMap( hand );
+
+		vector<float_t> freqs = _instrument->getPitches( handMap );
+
+		map<uint8_t, float_t> mappedFreqs = getHandMapPitches( freqs, handMap );
+
 
 		//Wave setup
 		_wave->setWave(
@@ -160,7 +160,7 @@ void Module::process( jack_nframes_t nframes ) {
 		//Updates for ui
 		_bridge->setChanged();
 		_neck->setChanged();
-		_noteDisplay->update(freqs);
+		emit _noteDisplay->update(freqs);
 
 		HAS_CHANGE = false;
 

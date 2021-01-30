@@ -87,9 +87,12 @@ class BaseWave {
 
 		float_t _threshold = 1.0;
 
+		float_t _maxFrequencies = 10;
+
 		map<uint8_t, float_t> _freqs;
 		map<uint8_t, float_t> _offFreqs;
 		map<uint8_t, bool> _rampTimesOn;
+		map<uint8_t, bool> _rampTimesFinished;
 
 		uint32_t _rate;
 
