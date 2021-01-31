@@ -15,7 +15,8 @@ using Orza::Steel::Audio::Pedal;
 namespace Orza { namespace Steel { namespace Settings {
 
 
-InstrumentPresetWriter::InstrumentPresetWriter( StringInstrument * s ) :
+InstrumentPresetWriter::InstrumentPresetWriter( Module * m, StringInstrument * s ) :
+	_module(m),
 	_instrument( s )
 {
 };
@@ -32,6 +33,7 @@ void InstrumentPresetWriter::writeLayoutToFile( string fileName, Patchbay * p ) 
 	}
 
 	output["octaves"] = _instrument->getOctaves();
+	output["semitones"] = _instrument->getSemitones();
 
 	//Pedals
 	const vector<Pedal*> * pedals = _instrument->getPedals();
@@ -48,6 +50,16 @@ void InstrumentPresetWriter::writeLayoutToFile( string fileName, Patchbay * p ) 
 		output["pedals"].push_back(pedalJSON);
 	}
 
+	//Sound
+	//output["wave"] = "";
+	//output["envelope"]["attack"] = "";
+	//output["envelope"]["decay"] = "";
+	//output["envelope"]["sustain"] = "";
+	//output["envelope"]["release"] = "";
+
+	//View
+	//output["tonebar_image"] = "";
+	//output["neck_colors"] = "";
 
 	//Save json
 

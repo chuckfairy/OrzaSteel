@@ -61,7 +61,7 @@ Layout::Layout( Window * win ) :
 	_PedalEditor->buildFrom( *(instrument->getPedals()) );
 
 	//General Settings setup
-	InstrumentPresetWriter * writer = new InstrumentPresetWriter(instrument);
+	InstrumentPresetWriter * writer = new InstrumentPresetWriter(insta, instrument);
 	InstrumentPresetLoader * loader = new InstrumentPresetLoader(
 		_Server,
 		instrument,

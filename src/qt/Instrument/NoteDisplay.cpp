@@ -24,13 +24,22 @@ NoteDisplay::NoteDisplay(
 	//Volume slider connection
 	connect(
 		this,
-		SIGNAL( update(vector<float_t>) ),
+		SIGNAL( updateUI() ),
 		this,
-		SLOT( handleUpdate(vector<float_t>) )
+		SLOT( handleUpdate() )
 	);
 };
 
-void NoteDisplay::handleUpdate(vector<float_t> pitches = {}) {
+
+void NoteDisplay::update(vector<float_t> newPitches) {
+
+	pitches = newPitches;
+
+	emit updateUI();
+
+};
+
+void NoteDisplay::handleUpdate() {
 
 	int pitchesSize = pitches.size();
 

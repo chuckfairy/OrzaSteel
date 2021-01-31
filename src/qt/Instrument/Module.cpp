@@ -160,7 +160,7 @@ void Module::process( jack_nframes_t nframes ) {
 		//Updates for ui
 		_bridge->setChanged();
 		_neck->setChanged();
-		emit _noteDisplay->update(freqs);
+		_noteDisplay->update(freqs);
 
 		HAS_CHANGE = false;
 

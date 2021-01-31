@@ -28,20 +28,25 @@ class NoteDisplay : public QWidget {
 		~NoteDisplay() {};
 
 
-	public slots:
-
-		void handleUpdate(vector<float_t>);
-
-
-	signals:
-
 		/**
 		 * Main update
 		 */
 
 		void update(vector<float_t>);
 
+
+	public slots:
+
+		void handleUpdate();
+
+
+	signals:
+
+		void updateUI();
+
 	private:
+
+		vector<float_t> pitches;
 
 		QLabel * _widget;
 

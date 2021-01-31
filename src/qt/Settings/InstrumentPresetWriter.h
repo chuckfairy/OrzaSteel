@@ -13,12 +13,17 @@
 
 #include <Audio/StringInstrument.h>
 
+#include <Instrument/Module.h>
+
 
 using std::string;
 using std::vector;
 using nlohmann::json;
+
 using Audio::Patchbay;
+
 using Orza::Steel::Audio::StringInstrument;
+using Orza::Steel::Instrument::Module;
 
 
 
@@ -29,7 +34,7 @@ class InstrumentPresetWriter : public Orza::Layouts::LayoutWriter {
 
 	public:
 
-		 InstrumentPresetWriter( StringInstrument * );
+		 InstrumentPresetWriter( Module *, StringInstrument * );
 		 ~InstrumentPresetWriter() {};
 
 		 /**
@@ -40,6 +45,7 @@ class InstrumentPresetWriter : public Orza::Layouts::LayoutWriter {
 	private:
 
 		StringInstrument * _instrument;
+		Module * _module;
 
 };
 
