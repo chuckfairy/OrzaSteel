@@ -20,7 +20,7 @@ class SawtoothWave : public BaseWave {
 		static float_t DOUBLE_PI;
 
 
-		SawtoothWave() {};
+		SawtoothWave();
 		~SawtoothWave() {};
 
 

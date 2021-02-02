@@ -16,6 +16,16 @@ float_t SquareWave::DOUBLE_PI = 2 * M_PI;
 
 
 /**
+ * Construct
+ */
+SquareWave::SquareWave()
+{
+	type = "square";
+};
+
+
+
+/**
  * Main signal math for chords
  * Square wave from a sine wave
  *

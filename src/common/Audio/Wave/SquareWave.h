@@ -20,7 +20,7 @@ class SquareWave : public BaseWave {
 		static float_t DOUBLE_PI;
 
 
-		SquareWave() {};
+		SquareWave();
 		~SquareWave() {};
 
 		/**
@@ -28,6 +28,7 @@ class SquareWave : public BaseWave {
 		 */
 
 		float_t getRampSignal( Envelope *, float_t ramp );
+
 
 };
 

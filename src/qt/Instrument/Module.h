@@ -115,8 +115,15 @@ class Module : public QWidget, public BaseModule {
 		void setOctaves( int );
 		void setSemiTones( int );
 
+		/**
+		 * Wave
+		 */
 		void setWave( BaseWave * );
+		BaseWave * getWave();
 
+		/**
+		 * Envelope
+		 */
 		void setEnvelope(Envelope *);
 		Envelope * getEnvelope();
 
@@ -164,8 +171,6 @@ class Module : public QWidget, public BaseModule {
 		 */
 
 		BaseWave * _wave;
-
-		NullWave * _nullWave;
 
 		Envelope * _envelope;
 

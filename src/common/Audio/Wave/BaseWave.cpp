@@ -209,5 +209,10 @@ float_t BaseWave::getFrequencyRamp(float_t noteFrequency, float_t ramp) {
 
 };
 
+string BaseWave::getType() {
+
+	return type;
+
+}
 
 } } } }

@@ -20,7 +20,7 @@ class SineWave : public BaseWave {
 		static float_t DOUBLE_PI;
 
 
-		SineWave() {};
+		SineWave();
 		~SineWave() {};
 
 

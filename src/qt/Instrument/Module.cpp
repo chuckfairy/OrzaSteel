@@ -44,7 +44,6 @@ Module::Module( Window * win ) :
 	_instrument( new StringInstrument ),
 	_outputter( new InstrumentOutput ),
 	_wave( new SineWave ),
-	_nullWave( new NullWave ),
 	_stereoInterface( new PortInterface( win->getServer()->getJackClient() ) ),
 	_midiReader( new MidiReader( win->getServer() ) ),
 	_envelope( new Envelope(_window->getServer()->getSampleRate()) )
@@ -434,6 +433,12 @@ void Module::setEnvelope(Envelope * newEnv) {
 Envelope * Module::getEnvelope() {
 
 	return _envelope;
+
+};
+
+BaseWave * Module::getWave() {
+
+	return _wave;
 
 };
 

@@ -18,6 +18,15 @@ float_t SineWave::DOUBLE_PI = 2 * M_PI;
 
 
 /**
+ * Construct
+ */
+SineWave::SineWave()
+{
+	type = "sine";
+};
+
+
+/**
  * Main signal math for chords
  */
 

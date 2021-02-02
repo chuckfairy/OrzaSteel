@@ -16,6 +16,17 @@ float_t TriangleWave::DOUBLE_PI = 2 * M_PI;
 
 
 /**
+ * Construct
+ */
+
+TriangleWave::TriangleWave() {
+
+	type = "triangle";
+
+}
+
+
+/**
  * Main signal math for chords
  * triangle wave from a sine wave
  *

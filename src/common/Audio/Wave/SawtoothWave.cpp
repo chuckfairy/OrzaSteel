@@ -18,6 +18,17 @@ float_t SawtoothWave::DOUBLE_PI = 2 * M_PI;
 
 
 /**
+ * Construct
+ */
+
+SawtoothWave::SawtoothWave() {
+
+	type = "sawtooth";
+
+}
+
+
+/**
  * Main signal math for chords
  *
  * https://en.wikipedia.org/wiki/Sawtooth_wave

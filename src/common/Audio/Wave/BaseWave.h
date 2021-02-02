@@ -3,6 +3,7 @@
  */
 #pragma once
 
+#include <string>
 #include <cmath>
 #include <cstdint>
 #include <map>
@@ -12,6 +13,7 @@
 #include <Audio/Envelope.h>
 
 
+using std::string;
 using std::map;
 using std::vector;
 
@@ -70,12 +72,15 @@ class BaseWave {
 		 */
 		float_t getVolumeFromEnvelope( Envelope * env, uint8_t ramp );
 
+		string getType();
+
 
 	protected:
 
 		BaseWave() {};
 		~BaseWave() {};
 
+		string type = "base-wave";
 
 		/**
 		 * Props

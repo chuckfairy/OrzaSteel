@@ -3,12 +3,19 @@
  */
 #include "InstrumentPresetWriter.h"
 
+#include <Audio/Wave/BaseWave.h>
+
 using std::string;
 using std::vector;
+
 using nlohmann::json;
+
 using Audio::Patchbay;
+
 using Orza::Steel::Audio::StringInstrument;
 using Orza::Steel::Audio::Pedal;
+using Orza::Steel::Audio::Wave::BaseWave;
+using Orza::Audio::Envelope;
 
 
 
@@ -51,11 +58,16 @@ void InstrumentPresetWriter::writeLayoutToFile( string fileName, Patchbay * p ) 
 	}
 
 	//Sound
-	//output["wave"] = "";
-	//output["envelope"]["attack"] = "";
-	//output["envelope"]["decay"] = "";
-	//output["envelope"]["sustain"] = "";
-	//output["envelope"]["release"] = "";
+
+
+	output["wave"] = _module->getWave()->getType();
+
+	Envelope * env = _module->getEnvelope();
+
+	output["envelope"]["attack"] = env->getAttack();
+	output["envelope"]["decay"] = env->getDecay();
+	output["envelope"]["sustain"] = env->getSustain();
+	output["envelope"]["release"] = env->getRelease();
 
 	//View
 	//output["tonebar_image"] = "";

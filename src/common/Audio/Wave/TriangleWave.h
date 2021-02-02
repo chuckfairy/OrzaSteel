@@ -20,14 +20,12 @@ class TriangleWave : public BaseWave {
 		static float_t DOUBLE_PI;
 
 
-		TriangleWave() {};
+		TriangleWave();
 		~TriangleWave() {};
 
 		/**
 		 * Ramp grabber
 		 */
-
-		vector<float_t> _sines;
 
 		float_t getRampSignal( Envelope *, float_t ramp );
 
