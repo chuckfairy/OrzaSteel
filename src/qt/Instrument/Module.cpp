@@ -49,7 +49,7 @@ Module::Module( Window * win ) :
 	_envelope( new Envelope(_window->getServer()->getSampleRate()) )
 {
 
-	setStrings( StringInstrument::NECK_STEEL_STANDARD_10 );
+	//setStrings( StringInstrument::NECK_STEEL_STANDARD_10 );
 
 	_window->getUI()->bridge->addWidget( _bridge );
 
@@ -61,14 +61,15 @@ Module::Module( Window * win ) :
 	//_pedalWrap->resize(500, 25 );
 	//_pedalWrap->raise();
 
+	//@TODO auto load
 	//Pedal setting from standard
-	vector<Pedal*> * pedals = &StringInstrument::PEDAL_STANDARD_10;
-
-	setPedals( pedals );
+	//vector<Pedal*> pedals = StringInstrument::PEDAL_STANDARD_10;
+	//setPedals( pedals );
 
 	//Change input
 	Jack::PatchbayEffects * effects = (Jack::PatchbayEffects*) _window->getServer()
-		->getPatchbay()->getEffects();
+		->getPatchbay()
+		->getEffects();
 
 	effects->connectInputTo( _stereoInterface->getOutputNameLeft() );
 
@@ -95,8 +96,11 @@ Module::Module( Window * win ) :
 		SLOT( setVolumeValue(float) )
 	);
 
+	//@TODO
+	//Velocity not controlled
 	_instrument->setVelocity(0, 1.0f);
 
+	//Midi external device patching
 	midiSetup();
 
 };
@@ -317,12 +321,12 @@ void Module::setStringState(int index, bool state) {
  * Pedal stuff
  */
 
-void Module::setPedals( vector<Pedal*> * pedals ) {
+void Module::setPedals( vector<Pedal*> pedals ) {
 
 	_instrument->clearPedals();
-	_instrument->addPedals( StringInstrument::PEDAL_STANDARD_10 );
+	_instrument->addPedals( pedals  );
 
-	_pedalWrap->createDisplay( *pedals );
+	_pedalWrap->createDisplay( pedals );
 
 };
 

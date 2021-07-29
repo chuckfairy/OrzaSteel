@@ -49,7 +49,7 @@ void InstrumentPresetWriter::writeLayoutToFile( string fileName, Patchbay * p ) 
 
 		json pedalJSON;
 
-		pedalJSON["key"] = pedal->key;
+		pedalJSON["key"] = string(1, pedal->key);
 		pedalJSON["label"] = pedal->label;
 		pedalJSON["steps"] = pedal->steps;
 		pedalJSON["strings"] = pedal->strings;

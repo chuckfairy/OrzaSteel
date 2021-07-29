@@ -95,7 +95,7 @@ class Module : public QWidget, public BaseModule {
 		 * Pedal stuff
 		 */
 
-		void setPedals( vector<Pedal*> * );
+		void setPedals( vector<Pedal*> );
 
 
 		/**

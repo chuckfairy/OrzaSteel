@@ -70,6 +70,9 @@ Layout::Layout( Window * win ) :
 		_Patchbay
 	);
 
+	//Load up default preset
+	loader->loadDefault();
+
 	_generalSettings = new Orza::Settings::Layout( win->getServer(), writer, loader);
 
 	_UI.tab_general_layout->addWidget( _generalSettings );

@@ -69,6 +69,8 @@ void PedalEditor::buildFrom( vector<Pedal*> pedals ) {
 
 	_building = false;
 
+	updateInstrument();
+
 };
 
 
@@ -96,7 +98,7 @@ void PedalEditor::updateInstrument() {
 
 	Module * insta = (Module*) _win->getModules()[0];
 
-	insta->setPedals( &pedals );
+	insta->setPedals( pedals );
 
 };
 
