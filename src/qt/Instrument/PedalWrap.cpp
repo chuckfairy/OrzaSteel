@@ -51,6 +51,9 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
 		Pedal * pedal = pedals[ i ];
 
+		std::cout << "PEDAL " << pedal->label << "\n";
+
+
 		PedalArea * area = _areas[i];
 
 		AreaData * data = area->getData();
@@ -98,7 +101,7 @@ void PedalWrap::setupLayout() {
 void PedalWrap::clearArea() {
 
 	if(_areas.size() == 0) {
-		//Max number of areas ever
+		//Max number of areas ever?
 		int pedalNumbers = 12 * 4;
 
 		for(int i = 0; i < pedalNumbers; ++i) {

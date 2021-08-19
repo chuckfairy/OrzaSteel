@@ -58,7 +58,14 @@ void InstrumentPresetLoader::load( json j ) {
 			string key = data["key"];
 			pedal->key = key.c_str()[0];
 			pedal->label = data["label"];
-			//pedal->strings = data["strings"];
+
+			//@TODO maybe don't loop
+			vector<int> strings = data["strings"];
+			for( int t = 0; t < strings.size(); ++t ) {
+				pedal->strings.push_back(strings[t]);
+			}
+
+			pedals.push_back(pedal);
 		}
 
 		//Sets up module too
