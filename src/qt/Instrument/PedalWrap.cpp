@@ -51,9 +51,6 @@ void PedalWrap::createDisplay( vector<Pedal*> pedals ) {
 
 		Pedal * pedal = pedals[ i ];
 
-		std::cout << "PEDAL " << pedal->label << "\n";
-
-
 		PedalArea * area = _areas[i];
 
 		AreaData * data = area->getData();

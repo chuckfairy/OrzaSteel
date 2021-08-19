@@ -45,7 +45,7 @@ void InstrumentPresetLoader::load( json j ) {
 		_stringEditor->buildFrom(strings);
 	}
 
-	_stringEditor->updateOctaves( ((float)j["octaves"]) || 2 );
+	_stringEditor->updateOctaves( ((int)j["octaves"]) );
 
 	//
 	if( ! j["pedals"].empty() ) {

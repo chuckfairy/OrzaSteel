@@ -75,6 +75,8 @@ class StringEditor : public TreeNode {
 		void handleAddClick();
 
 		void updateOctaves( int );
+		void updateOctavesEvent( int index );
+
 		void updateSemiTones( int );
 
 		void updateTonebarImage( string );

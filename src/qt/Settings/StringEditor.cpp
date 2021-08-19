@@ -40,7 +40,7 @@ StringEditor::StringEditor( Window * window ) :
 		_UI.octave_input,
 		SIGNAL( currentIndexChanged( int ) ),
 		this,
-		SLOT( updateOctaves( int ) )
+		SLOT( updateOctavesEvent( int ) )
 	);
 
 	connect(
@@ -149,12 +149,17 @@ void StringEditor::handleNodeUpdate( TreeNode * node ) {
 /**
  * Updates octaves for insrument
  */
-void StringEditor::updateOctaves( int index ) {
+void StringEditor::updateOctavesEvent( int index ) {
+
+	int octaves = _UI.octave_input->currentText().toInt();
+	updateOctaves(octaves);
+
+}
+
+void StringEditor::updateOctaves( int octaves ) {
 
 	//@TODO move
 	Module * insta = (Module*) _win->getModules()[0];
-
-	int octaves = _UI.octave_input->currentText().toInt();
 
 	insta->setOctaves(octaves);
 
