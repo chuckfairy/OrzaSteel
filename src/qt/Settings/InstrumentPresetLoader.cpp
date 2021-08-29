@@ -85,11 +85,16 @@ void InstrumentPresetLoader::load( json j ) {
 		//_soundEditor->
 		EnvelopeEditor * envEditor = _soundEditor->getEnvelopeEditor();
 		Envelope * env = envEditor->getEnvelope();
+		float_t rate = env->getRate();
 
-		env->setAttack((float)j["envelope"]["attack"]);
-		env->setDecay((float)j["envelope"]["decay"]);
+		//Set envelope values
+		env->setAttack((float)j["envelope"]["attack"] / rate);
+		env->setDecay((float)j["envelope"]["decay"] / rate);
 		env->setSustain((float)j["envelope"]["sustain"]);
-		env->setRelease((float)j["envelope"]["release"]);
+		env->setRelease((float)j["envelope"]["release"] / rate);
+
+		//Update editor
+		envEditor->updateFromEnvelope();
 	}
 
 	if( ! j["neck"].empty() ) {
