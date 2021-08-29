@@ -67,6 +67,7 @@ Layout::Layout( Window * win ) :
 		instrument,
 		_StringEditor,
 		_PedalEditor,
+		_SoundEditor,
 		_Patchbay
 	);
 

@@ -70,7 +70,7 @@ void InstrumentPresetWriter::writeLayoutToFile( string fileName, Patchbay * p ) 
 	output["envelope"]["release"] = env->getRelease();
 
 	//View
-	//output["tonebar_image"] = "";
+	output["tonebar_image"] = _module->getTonebarImage();
 	//output["neck_colors"] = "";
 
 	//Save json

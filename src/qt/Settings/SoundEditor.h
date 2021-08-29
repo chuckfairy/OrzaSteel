@@ -63,6 +63,13 @@ class SoundEditor : public QWidget {
 
 		void handleWaveChange( BaseWave * );
 
+		/**
+		 * Getters
+		 */
+		EnvelopeEditor * getEnvelopeEditor() {
+			return _envelopeEditor;
+		}
+
 
 	public slots:
 

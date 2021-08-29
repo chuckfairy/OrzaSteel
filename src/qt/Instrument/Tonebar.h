@@ -49,6 +49,10 @@ class Tonebar : public Orza::Steel::Widget::BaseWidget, public Util::Dispatcher 
 
 		void setPosition(int, int);
 
+		string getImage() {
+			return _srcString;
+		}
+
 
 	public slots:
 

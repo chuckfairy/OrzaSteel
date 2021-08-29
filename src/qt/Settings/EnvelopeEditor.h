@@ -38,6 +38,7 @@ class EnvelopeEditor : public QWidget {
 		Envelope * getEnvelope();
 
 		void setEnvelope(Envelope *);
+		void updateFromEnvelope();
 
 
 	public slots:
@@ -59,9 +60,14 @@ class EnvelopeEditor : public QWidget {
 
 		Ui_EnvelopeEditor _UI;
 
+
 		void setup();
 
 		void emitUpdate();
+
+		//UI Slider to Envelope change amount
+
+		float deltaValue = 5.0f;
 
 };
 

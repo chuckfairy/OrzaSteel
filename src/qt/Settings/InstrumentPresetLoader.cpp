@@ -18,11 +18,13 @@ InstrumentPresetLoader::InstrumentPresetLoader(
 	StringInstrument * s,
 	StringEditor * stringEditor,
 	PedalEditor * pedalEditor,
+	SoundEditor * soundEditor,
 	Orza::Widget::Patchbay * patchbay
 ) :
 	Orza::Layouts::PresetLoader( server, patchbay ),
 	_instrument( s ),
 	_stringEditor( stringEditor ),
+	_soundEditor( soundEditor ),
 	_pedalEditor( pedalEditor )
 {
 }
@@ -56,7 +58,7 @@ void InstrumentPresetLoader::load( json j ) {
 
 			json data = *it;
 			string key = data["key"];
-			pedal->key = key.c_str()[0];
+			pedal->key = (char)key.c_str()[0];
 			pedal->label = data["label"];
 
 			//@TODO maybe don't loop
@@ -80,6 +82,14 @@ void InstrumentPresetLoader::load( json j ) {
 
 	//@TODO
 	if( ! j["envelope"].empty() ) {
+		//_soundEditor->
+		EnvelopeEditor * envEditor = _soundEditor->getEnvelopeEditor();
+		Envelope * env = envEditor->getEnvelope();
+
+		env->setAttack((float)j["envelope"]["attack"]);
+		env->setDecay((float)j["envelope"]["decay"]);
+		env->setSustain((float)j["envelope"]["sustain"]);
+		env->setRelease((float)j["envelope"]["release"]);
 	}
 
 	if( ! j["neck"].empty() ) {

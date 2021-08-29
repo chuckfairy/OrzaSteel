@@ -11,6 +11,7 @@
 
 #include "StringEditor.h"
 #include "PedalEditor.h"
+#include "SoundEditor.h"
 
 using nlohmann::json;
 using Orza::Steel::Audio::StringInstrument;
@@ -28,6 +29,7 @@ class InstrumentPresetLoader : public Orza::Layouts::PresetLoader {
 		InstrumentPresetLoader( Jack::Server * , StringInstrument * ,
 			StringEditor *,
 			PedalEditor *,
+			SoundEditor *,
 			Orza::Widget::Patchbay *
 		);
 
@@ -43,7 +45,9 @@ class InstrumentPresetLoader : public Orza::Layouts::PresetLoader {
 		StringInstrument * _instrument;
 
 		StringEditor * _stringEditor;
-		 PedalEditor * _pedalEditor;
+		PedalEditor * _pedalEditor;
+
+		SoundEditor * _soundEditor;
 
 };
 

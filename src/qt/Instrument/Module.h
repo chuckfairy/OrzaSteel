@@ -77,6 +77,18 @@ class Module : public QWidget, public BaseModule {
 
 		void setNeckPitch(float_t);
 
+		/**
+		 * Neck
+		 */
+		Tonebar * getTonebar() {
+			return _neck->getTonebar();
+		}
+
+		string getTonebarImage() {
+			return _neck->getTonebar()->getImage();
+		}
+
+
 		void setTonebarImage(string);
 
 
